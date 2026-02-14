@@ -1154,9 +1154,9 @@
     </div>
 
     <!-- ============ MONTH NAV ============ -->
-    <div class="nav">
+    <div class="nav" style="">
         <button onclick="changeMonth(-1)">◀</button>
-        <span class="month-year" id="monthYear">February 2026</span>
+        <span class="month-year" id="monthYear">March 2026</span>
         <button onclick="changeMonth(1)">▶</button>
     </div>
 
@@ -1169,28 +1169,28 @@
     </div>
 
     <!-- ============ MONTHLY THEME & VERSE ============ -->
-    <div class="month-verse" id="monthVerse">
-        <div class="theme-label">Love &amp; Unity</div>
-        <div class="verse-text">"Above all, clothe yourselves with love, which binds us all together in perfect harmony."</div>
-        <div class="verse-ref">— Colossians 3:14</div>
+    <div class="month-verse" id="monthVerse" style="">
+        <div class="theme-label">Faith &amp; Endurance</div>
+        <div class="verse-text">"Let us run with endurance the race that is set before us, looking unto Jesus."</div>
+        <div class="verse-ref">— Hebrews 12:1-2</div>
     </div>
 
     <!-- ============ DEPARTMENT FILTERS ============ -->
-    <div class="filters">
-        <button class="filter-btn active" data-dept="all" onclick="setFilter('all')">All</button>
+    <div class="filters" style="">
+        <button class="filter-btn" data-dept="all" onclick="setFilter('all')">All</button>
         <button class="filter-btn" data-dept="general" onclick="setFilter('general')">General</button>
         <button class="filter-btn" data-dept="ladies" onclick="setFilter('ladies')">Ladies</button>
         <button class="filter-btn" data-dept="men" onclick="setFilter('men')">Men</button>
         <button class="filter-btn" data-dept="youth" onclick="setFilter('youth')">Youth</button>
         <button class="filter-btn" data-dept="sunday-school" onclick="setFilter('sunday-school')">Sunday School</button>
-        <button class="filter-btn" data-dept="national" onclick="setFilter('national')">National</button>
+        <button class="filter-btn active" data-dept="national" onclick="setFilter('national')">National</button>
     </div>
 
     <!-- ============ MULTI-MONTH VIEW (quarter/half/full) ============ -->
-    <div id="multiMonthContainer" style="display:none;"></div>
+    <div id="multiMonthContainer" style="display: none;"><div class="multi-month-grid quarter"><div class="mini-month" onclick="currentMonth=0;setView('month');"><h4>January</h4><div style="text-align:center;font-style:italic;font-size:0.55rem;color:#999;margin-bottom:6px;font-family:Georgia,serif;">"Behold, I am doing a new thing; now it springs forth, do you..." — Isaiah 43:19</div><div class="mini-cal-grid"><span class="mini-hdr">M</span><span class="mini-hdr">T</span><span class="mini-hdr">W</span><span class="mini-hdr">T</span><span class="mini-hdr">F</span><span class="mini-hdr">S</span><span class="mini-hdr" style="color:#c62828">S</span><span class="mini-empty"></span><span class="mini-empty"></span><span class="mini-empty"></span><span class="mini-day mini-has-event">1</span><span class="mini-day mini-has-event">2</span><span class="mini-day mini-has-event">3</span><span class="mini-day mini-sunday mini-has-event">4</span><span class="mini-day mini-has-event">5</span><span class="mini-day mini-has-event">6</span><span class="mini-day mini-has-event">7</span><span class="mini-day mini-has-event">8</span><span class="mini-day mini-has-event">9</span><span class="mini-day mini-has-event">10</span><span class="mini-day mini-sunday mini-has-event">11</span><span class="mini-day">12</span><span class="mini-day">13</span><span class="mini-day">14</span><span class="mini-day">15</span><span class="mini-day">16</span><span class="mini-day mini-has-event">17</span><span class="mini-day mini-sunday">18</span><span class="mini-day">19</span><span class="mini-day">20</span><span class="mini-day">21</span><span class="mini-day">22</span><span class="mini-day">23</span><span class="mini-day">24</span><span class="mini-day mini-sunday mini-has-event">25</span><span class="mini-day">26</span><span class="mini-day">27</span><span class="mini-day">28</span><span class="mini-day">29</span><span class="mini-day">30</span><span class="mini-day">31</span></div><div class="mini-events"><div class="mini-ev">📌 1-10: Prayer and Fasting (10 Days)</div><div class="mini-ev">📌 4: Theme Unveiling</div><div class="mini-ev">📌 4: Leadership Meeting</div><div class="mini-ev">📌 11: Holy Communion</div><div class="mini-ev">📌 17: National Ladies Leadership Meeting</div></div></div><div class="mini-month" onclick="currentMonth=1;setView('month');"><h4>February</h4><div style="text-align:center;font-style:italic;font-size:0.55rem;color:#999;margin-bottom:6px;font-family:Georgia,serif;">"Above all, clothe yourselves with love, which binds us all t..." — Colossians 3:14</div><div class="mini-cal-grid"><span class="mini-hdr">M</span><span class="mini-hdr">T</span><span class="mini-hdr">W</span><span class="mini-hdr">T</span><span class="mini-hdr">F</span><span class="mini-hdr">S</span><span class="mini-hdr" style="color:#c62828">S</span><span class="mini-empty"></span><span class="mini-empty"></span><span class="mini-empty"></span><span class="mini-empty"></span><span class="mini-empty"></span><span class="mini-empty"></span><span class="mini-day mini-sunday">1</span><span class="mini-day">2</span><span class="mini-day">3</span><span class="mini-day">4</span><span class="mini-day">5</span><span class="mini-day">6</span><span class="mini-day">7</span><span class="mini-day mini-sunday mini-has-event">8</span><span class="mini-day">9</span><span class="mini-day">10</span><span class="mini-day">11</span><span class="mini-day">12</span><span class="mini-day">13</span><span class="mini-day mini-today mini-has-event">14</span><span class="mini-day mini-sunday">15</span><span class="mini-day">16</span><span class="mini-day">17</span><span class="mini-day">18</span><span class="mini-day">19</span><span class="mini-day">20</span><span class="mini-day mini-has-event">21</span><span class="mini-day mini-sunday mini-has-event">22</span><span class="mini-day">23</span><span class="mini-day">24</span><span class="mini-day">25</span><span class="mini-day">26</span><span class="mini-day">27</span><span class="mini-day mini-has-event">28</span></div><div class="mini-events"><div class="mini-ev">📌 8: Holy Communion</div><div class="mini-ev">📌 14: National Ladies Leadership Meeting</div><div class="mini-ev">📌 21: Men's Breakfast Meeting</div><div class="mini-ev">📌 22: Ladies Special Sunday</div><div class="mini-ev">📌 22: Holy Communion</div></div></div><div class="mini-month" onclick="currentMonth=2;setView('month');"><h4>March</h4><div style="text-align:center;font-style:italic;font-size:0.55rem;color:#999;margin-bottom:6px;font-family:Georgia,serif;">"Let us run with endurance the race that is set before us, lo..." — Hebrews 12:1-2</div><div class="mini-cal-grid"><span class="mini-hdr">M</span><span class="mini-hdr">T</span><span class="mini-hdr">W</span><span class="mini-hdr">T</span><span class="mini-hdr">F</span><span class="mini-hdr">S</span><span class="mini-hdr" style="color:#c62828">S</span><span class="mini-empty"></span><span class="mini-empty"></span><span class="mini-empty"></span><span class="mini-empty"></span><span class="mini-empty"></span><span class="mini-empty"></span><span class="mini-day mini-sunday">1</span><span class="mini-day">2</span><span class="mini-day">3</span><span class="mini-day">4</span><span class="mini-day">5</span><span class="mini-day">6</span><span class="mini-day">7</span><span class="mini-day mini-sunday mini-has-event">8</span><span class="mini-day">9</span><span class="mini-day">10</span><span class="mini-day">11</span><span class="mini-day">12</span><span class="mini-day">13</span><span class="mini-day mini-has-event">14</span><span class="mini-day mini-sunday">15</span><span class="mini-day">16</span><span class="mini-day">17</span><span class="mini-day">18</span><span class="mini-day">19</span><span class="mini-day">20</span><span class="mini-day">21</span><span class="mini-day mini-sunday mini-has-event">22</span><span class="mini-day">23</span><span class="mini-day">24</span><span class="mini-day">25</span><span class="mini-day">26</span><span class="mini-day">27</span><span class="mini-day">28</span><span class="mini-day mini-sunday mini-has-event">29</span><span class="mini-day">30</span><span class="mini-day">31</span></div><div class="mini-events"><div class="mini-ev">📌 8: Holy Communion</div><div class="mini-ev">📌 14: National Ladies Leadership Meeting</div><div class="mini-ev">📌 22: Holy Communion</div><div class="mini-ev">📌 29: Sunday School Special Sunday</div><div class="mini-ev">📌 29: Holy Communion</div></div></div></div></div>
 
     <!-- ============ CALENDAR BODY (single month) ============ -->
-    <div class="cal-container" id="singleMonthContainer">
+    <div class="cal-container" id="singleMonthContainer" style="">
         <!-- Watermark logo -->
         <svg class="watermark" viewBox="0 0 300 300">
             <defs>
@@ -1270,90 +1270,99 @@
         <div class="day-headers">
             <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
         </div>
-        <div class="cal-grid" id="calGrid"><div class="cal-cell empty"></div><div class="cal-cell empty"></div><div class="cal-cell empty"></div><div class="cal-cell empty"></div><div class="cal-cell empty"></div><div class="cal-cell empty"></div><div class="cal-cell sunday past" onclick="openDayModal(1, 1)">
+        <div class="cal-grid" id="calGrid"><div class="cal-cell empty"></div><div class="cal-cell empty"></div><div class="cal-cell empty"></div><div class="cal-cell empty"></div><div class="cal-cell empty"></div><div class="cal-cell empty"></div><div class="cal-cell sunday" onclick="openDayModal(2, 1)">
             <span class="day-num">1</span>
             
-        </div><div class="cal-cell past" onclick="openDayModal(1, 2)">
+        </div><div class="cal-cell" onclick="openDayModal(2, 2)">
             <span class="day-num">2</span>
-            <div class="event-dots"><span class="event-dot dot-prayer"></span></div>
-        </div><div class="cal-cell past" onclick="openDayModal(1, 3)">
+            
+        </div><div class="cal-cell" onclick="openDayModal(2, 3)">
             <span class="day-num">3</span>
             
-        </div><div class="cal-cell past" onclick="openDayModal(1, 4)">
+        </div><div class="cal-cell" onclick="openDayModal(2, 4)">
             <span class="day-num">4</span>
             
-        </div><div class="cal-cell past" onclick="openDayModal(1, 5)">
+        </div><div class="cal-cell" onclick="openDayModal(2, 5)">
             <span class="day-num">5</span>
             
-        </div><div class="cal-cell past" onclick="openDayModal(1, 6)">
+        </div><div class="cal-cell" onclick="openDayModal(2, 6)">
             <span class="day-num">6</span>
             
-        </div><div class="cal-cell past" onclick="openDayModal(1, 7)">
+        </div><div class="cal-cell" onclick="openDayModal(2, 7)">
             <span class="day-num">7</span>
             
-        </div><div class="cal-cell sunday past" onclick="openDayModal(1, 8)">
+        </div><div class="cal-cell sunday" onclick="openDayModal(2, 8)">
             <span class="day-num">8</span>
-            <div class="event-dots"><span class="event-dot dot-general"></span></div>
-        </div><div class="cal-cell past" onclick="openDayModal(1, 9)">
+            
+        </div><div class="cal-cell" onclick="openDayModal(2, 9)">
             <span class="day-num">9</span>
-            <div class="event-dots"><span class="event-dot dot-prayer"></span></div>
-        </div><div class="cal-cell past" onclick="openDayModal(1, 10)">
+            
+        </div><div class="cal-cell" onclick="openDayModal(2, 10)">
             <span class="day-num">10</span>
             
-        </div><div class="cal-cell past" onclick="openDayModal(1, 11)">
+        </div><div class="cal-cell" onclick="openDayModal(2, 11)">
             <span class="day-num">11</span>
             
-        </div><div class="cal-cell past" onclick="openDayModal(1, 12)">
+        </div><div class="cal-cell" onclick="openDayModal(2, 12)">
             <span class="day-num">12</span>
             
-        </div><div class="cal-cell past" onclick="openDayModal(1, 13)">
+        </div><div class="cal-cell" onclick="openDayModal(2, 13)">
             <span class="day-num">13</span>
             
-        </div><div class="cal-cell today" onclick="openDayModal(1, 14)">
+        </div><div class="cal-cell" onclick="openDayModal(2, 14)">
             <span class="day-num">14</span>
             <div class="event-dots"><span class="event-dot dot-national"></span></div>
-        </div><div class="cal-cell sunday" onclick="openDayModal(1, 15)">
+        </div><div class="cal-cell sunday" onclick="openDayModal(2, 15)">
             <span class="day-num">15</span>
             
-        </div><div class="cal-cell" onclick="openDayModal(1, 16)">
+        </div><div class="cal-cell" onclick="openDayModal(2, 16)">
             <span class="day-num">16</span>
-            <div class="event-dots"><span class="event-dot dot-prayer"></span></div>
-        </div><div class="cal-cell" onclick="openDayModal(1, 17)">
+            
+        </div><div class="cal-cell" onclick="openDayModal(2, 17)">
             <span class="day-num">17</span>
             
-        </div><div class="cal-cell" onclick="openDayModal(1, 18)">
+        </div><div class="cal-cell" onclick="openDayModal(2, 18)">
             <span class="day-num">18</span>
             
-        </div><div class="cal-cell" onclick="openDayModal(1, 19)">
+        </div><div class="cal-cell" onclick="openDayModal(2, 19)">
             <span class="day-num">19</span>
             
-        </div><div class="cal-cell" onclick="openDayModal(1, 20)">
+        </div><div class="cal-cell" onclick="openDayModal(2, 20)">
             <span class="day-num">20</span>
             
-        </div><div class="cal-cell" onclick="openDayModal(1, 21)">
+        </div><div class="cal-cell" onclick="openDayModal(2, 21)">
             <span class="day-num">21</span>
-            <div class="event-dots"><span class="event-dot dot-men"></span></div>
-        </div><div class="cal-cell sunday" onclick="openDayModal(1, 22)">
+            
+        </div><div class="cal-cell sunday" onclick="openDayModal(2, 22)">
             <span class="day-num">22</span>
-            <div class="event-dots"><span class="event-dot dot-ladies"></span><span class="event-dot dot-general"></span></div>
-        </div><div class="cal-cell" onclick="openDayModal(1, 23)">
+            
+        </div><div class="cal-cell" onclick="openDayModal(2, 23)">
             <span class="day-num">23</span>
-            <div class="event-dots"><span class="event-dot dot-prayer"></span></div>
-        </div><div class="cal-cell" onclick="openDayModal(1, 24)">
+            
+        </div><div class="cal-cell" onclick="openDayModal(2, 24)">
             <span class="day-num">24</span>
             
-        </div><div class="cal-cell" onclick="openDayModal(1, 25)">
+        </div><div class="cal-cell" onclick="openDayModal(2, 25)">
             <span class="day-num">25</span>
             
-        </div><div class="cal-cell" onclick="openDayModal(1, 26)">
+        </div><div class="cal-cell" onclick="openDayModal(2, 26)">
             <span class="day-num">26</span>
             
-        </div><div class="cal-cell" onclick="openDayModal(1, 27)">
+        </div><div class="cal-cell" onclick="openDayModal(2, 27)">
             <span class="day-num">27</span>
             
-        </div><div class="cal-cell" onclick="openDayModal(1, 28)">
+        </div><div class="cal-cell" onclick="openDayModal(2, 28)">
             <span class="day-num">28</span>
-            <div class="event-dots"><span class="event-dot dot-general"></span></div>
+            
+        </div><div class="cal-cell sunday" onclick="openDayModal(2, 29)">
+            <span class="day-num">29</span>
+            
+        </div><div class="cal-cell" onclick="openDayModal(2, 30)">
+            <span class="day-num">30</span>
+            
+        </div><div class="cal-cell" onclick="openDayModal(2, 31)">
+            <span class="day-num">31</span>
+            
         </div></div>
 
         <!-- Legend -->
@@ -1368,24 +1377,7 @@
         </div>
 
         <!-- Event list for month -->
-        <div class="month-events" id="monthEvents"><h3>February 2026 — Events</h3><div class="event-item" onclick="showActivityInfo('Prayer and Fasting')">
-            <div class="event-date-badge bg-prayer">MON</div>
-            <div class="event-info">
-                <div class="event-title">Prayer &amp; Fasting (Every Monday)</div>
-                <div class="event-dept">Weekly · Dates: 2, 9, 16, 23</div>
-            </div>
-            <div class="info-icon" title="What is this?">?</div>
-        </div><div class="event-item" onclick="openDayModal(1, 8)">
-            <div class="event-date-badge bg-general">8</div>
-            <div class="event-info">
-                <div class="event-title">Holy Communion</div>
-                <div class="event-dept">Sunday · General</div>
-                <div class="event-service">
-                    🎤 Mr T Ncube · 📖 Pastor C Mudada
-                </div>
-            </div>
-            <div class="info-icon" onclick="event.stopPropagation();showActivityInfo('Holy Communion')">?</div>
-        </div><div class="event-item" onclick="openDayModal(1, 14)">
+        <div class="month-events" id="monthEvents"><h3>March 2026 — Events</h3><div class="event-item" onclick="openDayModal(2, 14)">
             <div class="event-date-badge bg-national">14</div>
             <div class="event-info">
                 <div class="event-title">National Ladies Leadership Meeting</div>
@@ -1393,48 +1385,43 @@
                 
             </div>
             <div class="info-icon" onclick="event.stopPropagation();showActivityInfo('National Ladies Leadership Meeting')">?</div>
-        </div><div class="event-item" onclick="openDayModal(1, 21)">
-            <div class="event-date-badge bg-men">21</div>
-            <div class="event-info">
-                <div class="event-title">Men's Breakfast Meeting</div>
-                <div class="event-dept">Saturday · Men</div>
-                
-            </div>
-            <div class="info-icon" onclick="event.stopPropagation();showActivityInfo('Men\'s Breakfast Meeting')">?</div>
-        </div><div class="event-item" onclick="openDayModal(1, 22)">
-            <div class="event-date-badge bg-ladies">22</div>
-            <div class="event-info">
-                <div class="event-title">Ladies Special Sunday</div>
-                <div class="event-dept">Sunday · Ladies</div>
-                <div class="event-service">
-                    🎤 Mrs F Ncube · 📖 Mrs Pastor L Mudada
-                </div>
-            </div>
-            <div class="info-icon" onclick="event.stopPropagation();showActivityInfo('Ladies Special Sunday')">?</div>
-        </div><div class="event-item" onclick="openDayModal(1, 22)">
-            <div class="event-date-badge bg-general">22</div>
-            <div class="event-info">
-                <div class="event-title">Holy Communion</div>
-                <div class="event-dept">Sunday · General</div>
-                <div class="event-service">
-                    🎤 Mrs F Ncube · 📖 Mrs Pastor L Mudada
-                </div>
-            </div>
-            <div class="info-icon" onclick="event.stopPropagation();showActivityInfo('Holy Communion')">?</div>
-        </div><div class="event-item" onclick="openDayModal(1, 28)">
-            <div class="event-date-badge bg-general">28</div>
-            <div class="event-info">
-                <div class="event-title">Couples Meeting</div>
-                <div class="event-dept">Saturday · General</div>
-                
-            </div>
-            <div class="info-icon" onclick="event.stopPropagation();showActivityInfo('Couples Meeting')">?</div>
         </div></div>
     </div>
 
     <!-- ============ MODAL ============ -->
     <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
-        <div class="modal" id="modalContent"><div class="modal-handle"></div><h2>⚙ App Settings</h2><div class="modal-date">One-time setup</div><div class="section-label">WhatsApp Confirmation Links</div><div class="description-box" style="margin:8px 0;">📱 Enter numbers with country code, no spaces or dashes.<br>Example: <strong>353871234567</strong> (Ireland = 353)</div><label style="font-size:0.75rem;font-weight:600;">Secretary WhatsApp Number:</label><input type="tel" id="secPhone" value="353871081856" placeholder="353871081856" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:6px;margin:4px 0 10px;font-size:0.8rem;"><label style="font-size:0.75rem;font-weight:600;">Pastor WhatsApp Number:</label><input type="tel" id="pastorPhone" value="353899407593" placeholder="353871234567" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:6px;margin:4px 0 14px;font-size:0.8rem;"><div class="section-label">GitHub Auto-Publish</div><div class="description-box" style="margin:8px 0;">📌 <strong>How to get a Token:</strong><br>1. Go to <a href="https://github.com/settings/tokens" target="_blank" style="color:#007bff;">github.com/settings/tokens</a><br>2. Click <strong>"Generate new token (classic)"</strong><br>3. Give it a name (e.g. "AFM Calendar")<br>4. Check the <strong>"repo"</strong> scope<br>5. Click "Generate token" and copy it</div><label style="font-size:0.75rem;font-weight:600;">Personal Access Token:</label><input type="password" id="ghToken" value="" placeholder="ghp_xxxxxxxxxxxx" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:6px;margin:4px 0 10px;font-size:0.8rem;"><label style="font-size:0.75rem;font-weight:600;">Repository Owner:</label><input type="text" id="ghOwner" value="tuls78" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:6px;margin:4px 0 10px;font-size:0.8rem;"><label style="font-size:0.75rem;font-weight:600;">Repository Name:</label><input type="text" id="ghRepo" value="eCalGalway" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:6px;margin:4px 0 10px;font-size:0.8rem;"><div style="margin-top:12px;display:flex;gap:8px;"><button class="btn btn-confirm" onclick="saveGHSettings()">💾 Save All Settings</button><button class="btn btn-close" onclick="closeModal()">Cancel</button></div></div>
+        <div class="modal" id="modalContent"><div class="modal-handle"></div><h2>Sunday, 1 March 2026</h2><div class="section-label">Sunday Service — 10:00 AM</div><div class="detail-card">
+                <div class="label">Facilitator / Chairperson</div>
+                <div class="value">Dube Daughter 2 
+                    <span class="status-badge status-pending">PENDING</span>
+                </div>
+            </div><div class="detail-card">
+                <div class="label">Preacher</div>
+                <div class="value">Sister Emily 
+                    <span class="status-badge status-pending">PENDING</span>
+                </div>
+            </div><div class="confirm-section"><div class="section-label">Availability Management</div><div class="detail-card">
+                <div class="label">🎤 Facilitator: Dube Daughter 2</div>
+                <div class="reschedule-count">Reschedule attempts: 0 / 2</div>
+                <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:4px;">
+                    <button class="btn btn-confirm" onclick="confirmAssignment('2-1','facilitator')">✅ Confirm</button>
+                    <button class="btn btn-reschedule" onclick="rescheduleAssignment('2-1','facilitator',2,1)">🔄 Reschedule</button>
+                    <button class="btn btn-decline" onclick="declineAssignment('2-1','facilitator',2,1)">❌ Decline</button>
+                    <button class="btn btn-whatsapp" onclick="sendConfirmationRequest('2-1','facilitator',2,1)">📱 Ask via WhatsApp</button>
+                </div>
+            </div><div class="detail-card">
+                <div class="label">📖 Preacher: Sister Emily</div>
+                <div class="reschedule-count">Reschedule attempts: 0 / 2</div>
+                <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:4px;">
+                    <button class="btn btn-confirm" onclick="confirmAssignment('2-1','preacher')">✅ Confirm</button>
+                    <button class="btn btn-reschedule" onclick="rescheduleAssignment('2-1','preacher',2,1)">🔄 Reschedule</button>
+                    <button class="btn btn-decline" onclick="declineAssignment('2-1','preacher',2,1)">❌ Decline</button>
+                    <button class="btn btn-whatsapp" onclick="sendConfirmationRequest('2-1','preacher',2,1)">📱 Ask via WhatsApp</button>
+                </div>
+            </div></div><div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;">
+            <a href="https://wa.me/?text=%E2%9C%9D%EF%B8%8F%20*AFM%20IRELAND%20%E2%80%94%20GALWAY%20ASSEMBLY*%0A%F0%9F%93%85%20*Sunday%2C%201%20March%202026*%0A%0A%E2%9B%AA%20*Sunday%20Service%20%E2%80%94%2010%3A00%20AM*%0A%F0%9F%93%8D%20Galway%20Westside%20Community%20Hall%2C%20H91%20R853%0A%0A%F0%9F%8E%A4%20Facilitator%3A%20*Dube%20Daughter%202*%0A%F0%9F%93%96%20Preacher%3A%20*Sister%20Emily*%0A%0A%0A%F0%9F%99%8F%20_Worship%20With%20Us!_" target="_blank" class="btn btn-whatsapp" style="text-decoration:none;">📱 Share on WhatsApp</a>
+            <button class="btn btn-close" onclick="closeModal()">Close</button>
+        </div></div>
     </div>
 
     <!-- ============ ADMIN TOGGLE ============ -->
@@ -1462,8 +1449,12 @@
         <p style="font-size:0.65rem;color:#aaa;margin:4px 0 6px;">Hand over calendar management to the Pastor when you're unavailable.</p>
         <button class="btn btn-edit" style="width: 100%; margin: 6px 0px;" onclick="toggleDelegation()" id="delegateBtn">📡 Delegate Duties to Pastor</button>
         <hr style="margin:10px 0;border:none;border-top:1px solid #eee;">
+        <label style="font-size:0.75rem;font-weight:600;color:#9C27B0;">Allocation Matrix:</label>
+        <p style="font-size:0.65rem;color:#aaa;margin:4px 0 6px;">View the year-end balance of preaching &amp; facilitation duties across all members.</p>
+        <button class="btn btn-confirm" style="width:100%;margin:6px 0;background:#9C27B0;" onclick="showAllocationMatrix()">📊 View Allocation Matrix</button>
+        <hr style="margin:10px 0;border:none;border-top:1px solid #eee;">
         <label style="font-size:0.75rem;font-weight:600;">Reset:</label>
-        <button class="btn btn-decline" style="width:100%;margin:6px 0;" onclick="if(confirm('Reset ALL assignments and confirmations?')){localStorage.clear();location.reload();}">🔄
+        <button class="btn btn-decline" style="width:100%;margin:6px 0;" onclick="if(confirm('Reset ALL assignments and confirmations?\n\nYour settings (GitHub token, phone numbers) will be kept.')){resetAssignmentsOnly();}">🔄
             Reset All Data</button>
     </div>
 
@@ -1473,7 +1464,7 @@
     </div>
 
     <!-- ============ TOAST ============ -->
-    <div class="toast" id="toast">✅ Settings saved!</div>
+    <div class="toast" id="toast">🔓 Welcome, Secretary!</div>
 
     <script>
         // ============================================================
@@ -1725,114 +1716,147 @@
             });
         }
 
+        // ============================================================
+        //  ALLOCATION ENGINE: Balanced Fair-Distribution Algorithm
+        // ============================================================
+        //  Rules:
+        //  • 14+ can facilitate, 18+ can preach
+        //  • No person on the SAME role two consecutive Sundays
+        //  • Pastor: ~2 preaching slots/month (max 3), always in alternatives
+        //  • Adults = heavy allocation, Youth = moderate, SS children = excluded
+        //  • Special Sundays = department members only (that ONE Sunday)
+        //  • By 31 Dec allocation must be roughly balanced
+        // ============================================================
+
+        function getMemberTier(member) {
+            if (!member.age) return 'adult';
+            if (['Youth Leader', 'Sunday School Supt'].includes(member.role)) return 'adult';
+            if (member.age >= 18) return 'young-adult';
+            if (member.age >= 14) return 'youth';
+            return 'child';
+        }
+
+        function getPreacherWeight(m) {
+            if (!m.canPreach) return 0;
+            if (m.id === 1) return 28;       // Pastor: ~2/month
+            if (m.id === 4) return 1;        // Panayote: limited
+            const t = getMemberTier(m);
+            if (t === 'adult') return 2.5;
+            if (t === 'young-adult') return 1.5;
+            return 0;
+        }
+
+        function getFacilitatorWeight(m) {
+            if (!m.canFacilitate) return 0;
+            if (m.id === 1) return 2;        // Pastor: light (preaches a lot)
+            if (m.id === 4) return 1;        // Panayote: limited
+            const t = getMemberTier(m);
+            if (t === 'adult') return 3.5;
+            if (t === 'young-adult') return 2.5;
+            if (t === 'youth') return 2;
+            return 0;
+        }
+
+        function pickCandidate(pool, lastId, excludeId, month, pastorMonthCap) {
+            // Filter available candidates
+            let candidates = pool.filter(p => {
+                if (p.id === excludeId) return false;
+                if (p.id === 4 && !isPanayoteAvailable(month)) return false;
+                return true;
+            });
+            // Prefer non-consecutive
+            const nonConsec = candidates.filter(p => p.id !== lastId);
+            if (nonConsec.length > 0) candidates = nonConsec;
+            // Pastor monthly cap (soft=2, hard=3)
+            if (pastorMonthCap) {
+                const capped = candidates.filter(p => {
+                    if (p.id === 1 && (p.monthly[month] || 0) >= 2) return false;
+                    return true;
+                });
+                if (capped.length > 0) candidates = capped;
+                // If still none, allow up to 3
+                if (candidates.length === 0) {
+                    candidates = pool.filter(p => {
+                        if (p.id === excludeId) return false;
+                        if (p.id === 4 && !isPanayoteAvailable(month)) return false;
+                        if (p.id === 1 && (p.monthly[month] || 0) >= 3) return false;
+                        return true;
+                    });
+                }
+            }
+            if (candidates.length === 0) {
+                candidates = pool.filter(p => p.id !== excludeId);
+            }
+            // Sort by deficit: most under-served first
+            candidates.sort((a, b) => {
+                const ra = a.target > 0 ? a.count / a.target : 999;
+                const rb = b.target > 0 ? b.count / b.target : 999;
+                return ra - rb;
+            });
+            return candidates[0].id;
+        }
+
         function generateInitialAssignments() {
             const sundays = getAllSundays2026();
             const saved = localStorage.getItem('afm_assignments');
             if (saved) return JSON.parse(saved);
 
-            // Preacher rotation pool (weighted)
-            const preacherPool = [
-                { id: 1, weight: 4 },   // Pastor - most frequent
-                { id: 5, weight: 2 },   // Mr Dube
-                { id: 12, weight: 2 },  // Mr V Gill
-                { id: 14, weight: 2 },  // Mr T Ncube
-                { id: 2, weight: 1.5 }, // Mrs Pastor L Mudada
-                { id: 10, weight: 1 },  // Sister Eve
-                { id: 11, weight: 1 },  // Sister Emily
-                { id: 6, weight: 0.7 }, // Mrs V Dube
-                { id: 13, weight: 0.7 },// Mrs S Gill
-                { id: 15, weight: 0.7 },// Mrs F Ncube
-                { id: 7, weight: 0.5 }, // Dube Daughter 1
-                { id: 16, weight: 0.5 },// Sister Thandiwe Ncube
-                { id: 4, weight: 0.3 }, // Brother Panayote (limited)
-            ];
+            // Build pools with weights
+            const preacherPool = MEMBERS.filter(m => getPreacherWeight(m) > 0).map(m => ({
+                id: m.id, weight: getPreacherWeight(m), count: 0, monthly: {}
+            }));
+            const facilitatorPool = MEMBERS.filter(m => getFacilitatorWeight(m) > 0).map(m => ({
+                id: m.id, weight: getFacilitatorWeight(m), count: 0, monthly: {}
+            }));
 
-            // Facilitator rotation pool
-            const facilitatorPool = [
-                { id: 14, weight: 2 },  // Mr T Ncube
-                { id: 5, weight: 2 },   // Mr Dube
-                { id: 12, weight: 2 },  // Mr V Gill
-                { id: 15, weight: 1.5 },// Mrs F Ncube
-                { id: 13, weight: 1.5 },// Mrs S Gill
-                { id: 6, weight: 1 },   // Mrs V Dube
-                { id: 2, weight: 1 },   // Mrs Pastor L Mudada
-                { id: 10, weight: 1 },  // Sister Eve
-                { id: 11, weight: 1 },  // Sister Emily
-                { id: 16, weight: 1 },  // Sister Thandiwe Ncube
-                { id: 7, weight: 0.8 }, // Dube Daughter 1
-                { id: 3, weight: 0.5 }, // Sister Makanaka Mudada (14)
-                { id: 8, weight: 0.5 }, // Dube Daughter 2 (16)
-                { id: 17, weight: 0.5 },// Brother Imanathi Ncube (16.5)
-                { id: 4, weight: 0.3 }, // Brother Panayote (limited)
-            ];
+            // Count normal (non-Special) Sundays and compute targets
+            const normalCount = sundays.filter(s => !getSpecialSundayDept(s.month, s.day)).length;
+            const totalPW = preacherPool.reduce((s, p) => s + p.weight, 0);
+            const totalFW = facilitatorPool.reduce((s, p) => s + p.weight, 0);
+            preacherPool.forEach(p => { p.target = Math.max(1, Math.round(normalCount * p.weight / totalPW)); });
+            facilitatorPool.forEach(p => { p.target = Math.max(1, Math.round(normalCount * p.weight / totalFW)); });
 
-            // Build weighted lists
-            function buildWeightedList(pool) {
-                const list = [];
-                pool.forEach(p => {
-                    const count = Math.round(p.weight * 3);
-                    for (let i = 0; i < count; i++) list.push(p.id);
-                });
-                return list;
-            }
-
-            const pList = buildWeightedList(preacherPool);
-            const fList = buildWeightedList(facilitatorPool);
-            let pi = 0, fi = 0;
-
+            let lastPreacherId = -1, lastFacilitatorId = -1;
+            const specialDeptCounters = {};
             const assignments = {};
+
             sundays.forEach(s => {
                 const key = `${s.month}-${s.day}`;
                 const specialDept = getSpecialSundayDept(s.month, s.day);
-
                 let preacherId, facilitatorId;
 
                 if (specialDept) {
-                    // ─── SPECIAL SUNDAY: Department members only ───
+                    // ─── SPECIAL SUNDAY: Department members only (this day only) ───
                     const leader = getDeptLeader(specialDept);
-                    const deptPreachers = getDeptMembers(specialDept, 'preacher');
-                    const deptFacilitators = getDeptMembers(specialDept, 'facilitator');
-
-                    // Preacher: department leader preaches by default
-                    if (leader && deptPreachers.find(m => m.id === leader)) {
-                        preacherId = leader;
-                    } else if (deptPreachers.length > 0) {
-                        preacherId = deptPreachers[0].id;
+                    const dp = getDeptMembers(specialDept, 'preacher');
+                    const df = getDeptMembers(specialDept, 'facilitator');
+                    preacherId = (leader && dp.find(m => m.id === leader)) ? leader : (dp.length ? dp[0].id : 1);
+                    const ef = df.filter(m => m.id !== preacherId);
+                    specialDeptCounters[specialDept] = (specialDeptCounters[specialDept] || 0);
+                    if (ef.length > 0) {
+                        facilitatorId = ef[specialDeptCounters[specialDept] % ef.length].id;
+                        specialDeptCounters[specialDept]++;
                     } else {
-                        preacherId = 1; // fallback to Pastor
+                        facilitatorId = df.length ? df[0].id : preacherId;
                     }
-
-                    // Facilitator: pick a dept member who isn't the preacher
-                    const eligibleFacilitators = deptFacilitators.filter(m => m.id !== preacherId);
-                    if (eligibleFacilitators.length > 0) {
-                        // Rotate among eligible facilitators
-                        facilitatorId = eligibleFacilitators[fi % eligibleFacilitators.length].id;
-                        fi++;
-                    } else if (deptFacilitators.length > 0) {
-                        facilitatorId = deptFacilitators[0].id;
-                    } else {
-                        facilitatorId = preacherId; // last resort
-                    }
+                    // Don't affect normal-Sunday counters
                 } else {
-                    // ─── NORMAL SUNDAY: Weighted pool rotation ───
-                    let attempts = 0;
-                    do {
-                        preacherId = pList[pi % pList.length];
-                        pi++;
-                        attempts++;
-                    } while (preacherId === 4 && !isPanayoteAvailable(s.month) && attempts < 50);
+                    // ─── NORMAL SUNDAY: Balanced allocation ───
+                    preacherId = pickCandidate(preacherPool, lastPreacherId, -1, s.month, true);
+                    facilitatorId = pickCandidate(facilitatorPool, lastFacilitatorId, preacherId, s.month, false);
 
-                    attempts = 0;
-                    do {
-                        facilitatorId = fList[fi % fList.length];
-                        fi++;
-                        attempts++;
-                    } while ((facilitatorId === preacherId || (facilitatorId === 4 && !isPanayoteAvailable(s.month))) && attempts < 50);
+                    const pp = preacherPool.find(p => p.id === preacherId);
+                    pp.count++; pp.monthly[s.month] = (pp.monthly[s.month] || 0) + 1;
+                    const fp = facilitatorPool.find(p => p.id === facilitatorId);
+                    fp.count++; fp.monthly[s.month] = (fp.monthly[s.month] || 0) + 1;
+
+                    lastPreacherId = preacherId;
+                    lastFacilitatorId = facilitatorId;
                 }
 
                 assignments[key] = {
-                    preacher: { memberId: preacherId, status: "pending", rescheduleCount: 0 },
-                    facilitator: { memberId: facilitatorId, status: "pending", rescheduleCount: 0 }
+                    preacher: { memberId: preacherId, status: 'pending', rescheduleCount: 0 },
+                    facilitator: { memberId: facilitatorId, status: 'pending', rescheduleCount: 0 }
                 };
             });
 
@@ -2372,10 +2396,12 @@
             const currentId = assignments[aKey][role].memberId;
             const specialDept = getSpecialSundayDept(month, day);
 
+            // Count current allocations for deficit sorting
+            const counts = computeAllocationCounts();
+
             // Get eligible alternatives
             let alternatives;
             if (specialDept) {
-                // Special Sunday: restrict to department members only
                 alternatives = getDeptMembers(specialDept, role).filter(m => {
                     if (m.id === currentId) return false;
                     if (m.id === 4 && !isPanayoteAvailable(month)) return false;
@@ -2395,6 +2421,23 @@
                 });
             }
 
+            // Sort by deficit: least-served members first (best alternatives)
+            const roleKey = isPreach ? 'preach' : 'facilitate';
+            alternatives.sort((a, b) => {
+                const ca = (counts[a.id] || {})[roleKey] || 0;
+                const cb = (counts[b.id] || {})[roleKey] || 0;
+                return ca - cb;
+            });
+
+            // Always include Pastor in alternatives for non-Special Sundays
+            if (!specialDept && !alternatives.find(m => m.id === 1)) {
+                const pastor = MEMBERS.find(m => m.id === 1);
+                const otherRole = role === 'preacher' ? 'facilitator' : 'preacher';
+                if (pastor && currentId !== 1 && assignments[aKey][otherRole].memberId !== 1) {
+                    alternatives.push(pastor);
+                }
+            }
+
             let html = '<div class="modal-handle"></div>';
             html += `<h2>Find Alternative ${role === 'preacher' ? 'Preacher' : 'Facilitator'}</h2>`;
             html += `<div class="modal-date">${day} ${MONTH_NAMES[month]} 2026</div>`;
@@ -2402,13 +2445,16 @@
                 const deptLabel = specialDept === 'sunday-school' ? 'Sunday School' : specialDept.charAt(0).toUpperCase() + specialDept.slice(1);
                 html += `<div class="section-label" style="color:#FF9800;">🏷️ ${deptLabel} Special Sunday — Department Members Only</div>`;
             } else {
-                html += '<div class="section-label">Available Members</div>';
+                html += '<div class="section-label">Available Members <small style="color:#888;">(sorted by least assigned)</small></div>';
             }
             html += '<div class="alternative-list">';
 
             alternatives.forEach(m => {
+                const mc = counts[m.id] || {};
+                const cnt = mc[roleKey] || 0;
+                const badge = `<small style="background:#f0f0f0;padding:2px 6px;border-radius:8px;margin-left:6px;">${roleKey === 'preach' ? '📖' : '🎤'} ${cnt}×</small>`;
                 html += `<div class="alt-member">
-            <span>${m.name} <small style="color:#888">(${m.role})</small></span>
+            <span>${m.name} <small style="color:#888">(${m.role})</small>${badge}</span>
             <button onclick="assignAlternative('${aKey}','${role}',${m.id},${month},${day})">Assign</button>
         </div>`;
             });
@@ -2497,8 +2543,9 @@
 
         function sendConfirmationRequest(aKey, role, month, day) {
             const member = MEMBERS.find(m => m.id === assignments[aKey][role].memberId);
-            const dateStr = `${day} ${MONTH_NAMES[month]} 2026`;
-            const roleLabel = role === 'facilitator' ? 'FACILITATOR/CHAIRPERSON' : 'PREACHER';
+            const dateStr = `${day} ${MONTH_NAMES[month]}`;
+            const roleLabel = role === 'facilitator' ? 'Facilitator' : 'Preacher';
+            const roleShort = role === 'facilitator' ? 'FAC' : 'PRE';
             const phone = getActivePhone();
 
             if (!phone) {
@@ -2507,24 +2554,168 @@
                 return;
             }
 
-            // Build clickable reply links
-            const confirmReply = encodeURIComponent(`✅ CONFIRM — I will be there on ${dateStr} as ${roleLabel}. God bless!`);
-            const rescheduleReply = encodeURIComponent(`🔄 RESCHEDULE — I need to reschedule my ${roleLabel} duty on ${dateStr}. Can we discuss an alternative date?`);
-            const declineReply = encodeURIComponent(`❌ DECLINE — Unfortunately I am unable to attend on ${dateStr} as ${roleLabel}. Please find a replacement. Sorry!`);
+            // Short reply texts
+            const confirmReply = encodeURIComponent(`✅ CONFIRM ${roleShort} ${dateStr}`);
+            const rescheduleReply = encodeURIComponent(`🔄 RESCHEDULE ${roleShort} ${dateStr}`);
+            const declineReply = encodeURIComponent(`❌ DECLINE ${roleShort} ${dateStr}`);
 
             const confirmLink = `https://wa.me/${phone}?text=${confirmReply}`;
             const rescheduleLink = `https://wa.me/${phone}?text=${rescheduleReply}`;
             const declineLink = `https://wa.me/${phone}?text=${declineReply}`;
 
-            const signer = isDelegatedToPastor() ? 'Pastor C Mudada' : 'Church Secretary';
+            const signer = isDelegatedToPastor() ? 'Pastor C Mudada' : 'Secretary';
             const specialDept = getSpecialSundayDept(month, day);
             const deptNote = specialDept ? (() => {
-                const deptLabel = specialDept === 'sunday-school' ? 'Sunday School' : specialDept.charAt(0).toUpperCase() + specialDept.slice(1);
-                return `\n🏷️ _This is a *${deptLabel} Department-Led Service* — the ${deptLabel} Department is running the entire service._\n`;
+                const dl = specialDept === 'sunday-school' ? 'Sunday School' : specialDept.charAt(0).toUpperCase() + specialDept.slice(1);
+                return `\n🏷️ *${dl} Dept-Led Service*\n`;
             })() : '';
-            const msg = `🙏 Dear ${member.name},\n\nYou have been assigned as *${roleLabel}* for the Sunday Service on *${dateStr}* at AFM Galway Assembly (10:00 AM, Galway Westside Community Hall).${deptNote}\n\n*Please tap one of the links below to respond:*\n\n✅ *CONFIRM* — I will be there:\n${confirmLink}\n\n🔄 *RESCHEDULE* — Propose different date:\n${rescheduleLink}\n\n❌ *DECLINE* — Unable to attend:\n${declineLink}\n\n_Note: You may reschedule a maximum of 2 times._\n\nThank you! God bless. 🙏\n— ${signer}`;
+
+            const msg = `✝️ *AFM Galway*\n\n🙏 Dear ${member.name},\n\nYou are *${roleLabel}* on *Sun ${dateStr}* (10AM).${deptNote}\n\nTap to reply:\n\n✅ CONFIRM: ${confirmLink}\n🔄 RESCHEDULE: ${rescheduleLink}\n❌ DECLINE: ${declineLink}\n\n— ${signer}`;
 
             window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        // ============================================================
+        //  ALLOCATION MATRIX & ANALYTICS
+        // ============================================================
+        function computeAllocationCounts() {
+            const counts = {};
+            MEMBERS.forEach(m => { counts[m.id] = { preach: 0, facilitate: 0, total: 0 }; });
+            const sundays = getAllSundays2026();
+            sundays.forEach(s => {
+                const key = `${s.month}-${s.day}`;
+                const a = assignments[key];
+                if (!a) return;
+                if (a.preacher && counts[a.preacher.memberId]) {
+                    counts[a.preacher.memberId].preach++;
+                    counts[a.preacher.memberId].total++;
+                }
+                if (a.facilitator && counts[a.facilitator.memberId]) {
+                    counts[a.facilitator.memberId].facilitate++;
+                    counts[a.facilitator.memberId].total++;
+                }
+            });
+            return counts;
+        }
+
+        function computeTargets() {
+            const sundays = getAllSundays2026();
+            const normalCount = sundays.filter(s => !getSpecialSundayDept(s.month, s.day)).length;
+            const pPool = MEMBERS.filter(m => getPreacherWeight(m) > 0);
+            const fPool = MEMBERS.filter(m => getFacilitatorWeight(m) > 0);
+            const totalPW = pPool.reduce((s, m) => s + getPreacherWeight(m), 0);
+            const totalFW = fPool.reduce((s, m) => s + getFacilitatorWeight(m), 0);
+            const targets = {};
+            MEMBERS.forEach(m => {
+                const pw = getPreacherWeight(m);
+                const fw = getFacilitatorWeight(m);
+                targets[m.id] = {
+                    preach: pw > 0 ? Math.max(1, Math.round(normalCount * pw / totalPW)) : 0,
+                    facilitate: fw > 0 ? Math.max(1, Math.round(normalCount * fw / totalFW)) : 0
+                };
+            });
+            return targets;
+        }
+
+        function showAllocationMatrix() {
+            const counts = computeAllocationCounts();
+            const targets = computeTargets();
+
+            let html = '<div class="modal-handle"></div>';
+            html += '<h2>📊 Allocation Matrix 2026</h2>';
+            html += '<div class="modal-date">Year-end duty distribution across all members</div>';
+
+            // Summary stats
+            const sundays = getAllSundays2026();
+            const normalCount = sundays.filter(s => !getSpecialSundayDept(s.month, s.day)).length;
+            const specialCount = sundays.length - normalCount;
+            html += `<div class="description-box" style="margin:10px 0;font-size:0.7rem;">📅 Total Sundays: <strong>${sundays.length}</strong> &nbsp;│&nbsp; Normal: <strong>${normalCount}</strong> &nbsp;│&nbsp; Special: <strong>${specialCount}</strong></div>`;
+
+            // Preacher table
+            html += '<div class="section-label">📖 Preaching Rota</div>';
+            html += '<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:0.7rem;margin:6px 0;">';
+            html += '<tr style="background:#f5f5f5;"><th style="text-align:left;padding:6px;">Member</th><th style="padding:6px;">Tier</th><th style="padding:6px;">Actual</th><th style="padding:6px;">Target</th><th style="padding:6px;">Balance</th></tr>';
+
+            const preachMembers = MEMBERS.filter(m => m.canPreach && getPreacherWeight(m) > 0)
+                .sort((a, b) => (counts[b.id].preach || 0) - (counts[a.id].preach || 0));
+            preachMembers.forEach(m => {
+                const c = counts[m.id].preach;
+                const t = targets[m.id].preach;
+                const diff = c - t;
+                const bar = buildBar(c, t);
+                const color = diff > 1 ? '#f44336' : (diff < -1 ? '#FF9800' : '#4CAF50');
+                const diffStr = diff > 0 ? `+${diff}` : `${diff}`;
+                const tier = getMemberTier(m);
+                const tierLabel = tier === 'adult' ? '👤' : (tier === 'young-adult' ? '🧑' : '👦');
+                html += `<tr style="border-bottom:1px solid #eee;">
+                    <td style="padding:6px;">${tierLabel} ${m.name}</td>
+                    <td style="padding:6px;text-align:center;font-size:0.6rem;color:#888;">${tier}</td>
+                    <td style="padding:6px;text-align:center;font-weight:700;">${c}</td>
+                    <td style="padding:6px;text-align:center;color:#888;">${t}</td>
+                    <td style="padding:6px;text-align:center;"><span style="color:${color};font-weight:600;">${diffStr}</span> ${bar}</td>
+                </tr>`;
+            });
+            html += '</table></div>';
+
+            // Facilitator table
+            html += '<div class="section-label">🎤 Facilitation Rota</div>';
+            html += '<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:0.7rem;margin:6px 0;">';
+            html += '<tr style="background:#f5f5f5;"><th style="text-align:left;padding:6px;">Member</th><th style="padding:6px;">Tier</th><th style="padding:6px;">Actual</th><th style="padding:6px;">Target</th><th style="padding:6px;">Balance</th></tr>';
+
+            const facMembers = MEMBERS.filter(m => m.canFacilitate && getFacilitatorWeight(m) > 0)
+                .sort((a, b) => (counts[b.id].facilitate || 0) - (counts[a.id].facilitate || 0));
+            facMembers.forEach(m => {
+                const c = counts[m.id].facilitate;
+                const t = targets[m.id].facilitate;
+                const diff = c - t;
+                const bar = buildBar(c, t);
+                const color = diff > 1 ? '#f44336' : (diff < -1 ? '#FF9800' : '#4CAF50');
+                const diffStr = diff > 0 ? `+${diff}` : `${diff}`;
+                const tier = getMemberTier(m);
+                const tierLabel = tier === 'adult' ? '👤' : (tier === 'young-adult' ? '🧑' : '👦');
+                html += `<tr style="border-bottom:1px solid #eee;">
+                    <td style="padding:6px;">${tierLabel} ${m.name}</td>
+                    <td style="padding:6px;text-align:center;font-size:0.6rem;color:#888;">${tier}</td>
+                    <td style="padding:6px;text-align:center;font-weight:700;">${c}</td>
+                    <td style="padding:6px;text-align:center;color:#888;">${t}</td>
+                    <td style="padding:6px;text-align:center;"><span style="color:${color};font-weight:600;">${diffStr}</span> ${bar}</td>
+                </tr>`;
+            });
+            html += '</table></div>';
+
+            // Monthly breakdown for Pastor
+            html += '<div class="section-label">📅 Pastor Monthly Preaching</div>';
+            html += '<div style="display:flex;flex-wrap:wrap;gap:4px;margin:6px 0;">';
+            for (let mo = 0; mo < 12; mo++) {
+                let moCount = 0;
+                const moSundays = getAllSundays2026().filter(s => s.month === mo);
+                moSundays.forEach(s => {
+                    const a = assignments[`${s.month}-${s.day}`];
+                    if (a && a.preacher.memberId === 1) moCount++;
+                });
+                const bg = moCount > 2 ? '#FF9800' : (moCount === 0 ? '#eee' : '#4CAF50');
+                const fg = moCount === 0 ? '#999' : '#fff';
+                html += `<div style="background:${bg};color:${fg};padding:4px 8px;border-radius:6px;font-size:0.65rem;min-width:55px;text-align:center;">
+                    <div style="font-weight:600;">${MONTH_NAMES[mo].slice(0,3)}</div><div style="font-size:0.8rem;">${moCount}</div>
+                </div>`;
+            }
+            html += '</div>';
+
+            html += `<div style="margin-top:16px;display:flex;gap:8px;">
+                <button class="btn btn-close" onclick="closeModal()">Close</button>
+            </div>`;
+
+            document.getElementById('modalContent').innerHTML = html;
+            document.getElementById('modalOverlay').classList.add('active');
+        }
+
+        function buildBar(actual, target) {
+            if (target === 0) return '';
+            const pct = Math.min(150, Math.round((actual / target) * 100));
+            const w = Math.min(60, Math.round(pct * 0.4));
+            const c = pct > 120 ? '#f44336' : (pct < 80 ? '#FF9800' : '#4CAF50');
+            return `<div style="display:inline-block;width:60px;height:6px;background:#eee;border-radius:3px;vertical-align:middle;margin-left:4px;">
+                <div style="width:${w}px;height:6px;background:${c};border-radius:3px;"></div></div>`;
         }
 
         // ============================================================
@@ -2625,6 +2816,20 @@
             showToast('✅ Settings saved!');
         }
 
+        // Reset assignments only — preserve settings (token, phones, delegation)
+        function resetAssignmentsOnly() {
+            const keysToKeep = ['gh_token', 'gh_owner', 'gh_repo', 'gh_file',
+                                'secretary_phone', 'pastor_phone', 'delegated_to_pastor'];
+            const preserved = {};
+            keysToKeep.forEach(k => {
+                const v = localStorage.getItem(k);
+                if (v !== null) preserved[k] = v;
+            });
+            localStorage.clear();
+            Object.entries(preserved).forEach(([k, v]) => localStorage.setItem(k, v));
+            location.reload();
+        }
+
         function buildPublishableHTML() {
             let htmlContent = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
             const dataString = JSON.stringify(assignments);
@@ -2634,7 +2839,7 @@
                 htmlContent = htmlContent.replace(regex, injection);
             } else {
                 htmlContent = htmlContent.replace(
-                    "let assignments = {"0-4":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":14,"status":"pending","rescheduleCount":0}},"0-11":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":14,"status":"pending","rescheduleCount":0}},"0-18":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":14,"status":"pending","rescheduleCount":0}},"0-25":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":14,"status":"pending","rescheduleCount":0}},"1-1":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":14,"status":"pending","rescheduleCount":0}},"1-8":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":14,"status":"pending","rescheduleCount":0}},"1-15":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":5,"status":"pending","rescheduleCount":0}},"1-22":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":15,"status":"pending","rescheduleCount":0}},"2-1":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":5,"status":"pending","rescheduleCount":0}},"2-8":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":5,"status":"pending","rescheduleCount":0}},"2-15":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":5,"status":"pending","rescheduleCount":0}},"2-22":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":5,"status":"pending","rescheduleCount":0}},"2-29":{"preacher":{"memberId":13,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":9,"status":"pending","rescheduleCount":0}},"3-5":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":12,"status":"pending","rescheduleCount":0}},"3-12":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":12,"status":"pending","rescheduleCount":0}},"3-19":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":12,"status":"pending","rescheduleCount":0}},"3-26":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":12,"status":"pending","rescheduleCount":0}},"4-3":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":12,"status":"pending","rescheduleCount":0}},"4-10":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":15,"status":"pending","rescheduleCount":0}},"4-17":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":15,"status":"pending","rescheduleCount":0}},"4-24":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":6,"status":"pending","rescheduleCount":0}},"4-31":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":15,"status":"pending","rescheduleCount":0}},"5-7":{"preacher":{"memberId":12,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":15,"status":"pending","rescheduleCount":0}},"5-14":{"preacher":{"memberId":12,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":13,"status":"pending","rescheduleCount":0}},"5-21":{"preacher":{"memberId":12,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":13,"status":"pending","rescheduleCount":0}},"5-28":{"preacher":{"memberId":12,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":13,"status":"pending","rescheduleCount":0}},"6-5":{"preacher":{"memberId":12,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":13,"status":"pending","rescheduleCount":0}},"6-12":{"preacher":{"memberId":12,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":13,"status":"pending","rescheduleCount":0}},"6-19":{"preacher":{"memberId":12,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":16,"status":"pending","rescheduleCount":0}},"6-26":{"preacher":{"memberId":14,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":6,"status":"pending","rescheduleCount":0}},"7-2":{"preacher":{"memberId":14,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":6,"status":"pending","rescheduleCount":0}},"7-9":{"preacher":{"memberId":14,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":2,"status":"pending","rescheduleCount":0}},"7-16":{"preacher":{"memberId":14,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":2,"status":"pending","rescheduleCount":0}},"7-23":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":10,"status":"pending","rescheduleCount":0}},"7-30":{"preacher":{"memberId":14,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":10,"status":"pending","rescheduleCount":0}},"8-6":{"preacher":{"memberId":14,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":10,"status":"pending","rescheduleCount":0}},"8-13":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":10,"status":"pending","rescheduleCount":0}},"8-20":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":11,"status":"pending","rescheduleCount":0}},"8-27":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":11,"status":"pending","rescheduleCount":0}},"9-4":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":11,"status":"pending","rescheduleCount":0}},"9-11":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":16,"status":"pending","rescheduleCount":0}},"9-18":{"preacher":{"memberId":10,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":16,"status":"pending","rescheduleCount":0}},"9-25":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":12,"status":"pending","rescheduleCount":0}},"10-1":{"preacher":{"memberId":10,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":7,"status":"pending","rescheduleCount":0}},"10-8":{"preacher":{"memberId":10,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":7,"status":"pending","rescheduleCount":0}},"10-15":{"preacher":{"memberId":11,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":3,"status":"pending","rescheduleCount":0}},"10-22":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":11,"status":"pending","rescheduleCount":0}},"10-29":{"preacher":{"memberId":11,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":8,"status":"pending","rescheduleCount":0}},"11-6":{"preacher":{"memberId":11,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":8,"status":"pending","rescheduleCount":0}},"11-13":{"preacher":{"memberId":6,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":17,"status":"pending","rescheduleCount":0}},"11-20":{"preacher":{"memberId":6,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":17,"status":"pending","rescheduleCount":0}},"11-27":{"preacher":{"memberId":12,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":8,"status":"pending","rescheduleCount":0}}}; // BAKED-IN DATA",
+                    "let assignments = {"0-4":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":2,"status":"pending","rescheduleCount":0}},"0-11":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":1,"status":"pending","rescheduleCount":0}},"0-18":{"preacher":{"memberId":4,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":3,"status":"pending","rescheduleCount":0}},"0-25":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":4,"status":"pending","rescheduleCount":0}},"1-1":{"preacher":{"memberId":6,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":5,"status":"pending","rescheduleCount":0}},"1-8":{"preacher":{"memberId":7,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":6,"status":"pending","rescheduleCount":0}},"1-15":{"preacher":{"memberId":10,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":7,"status":"pending","rescheduleCount":0}},"1-22":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":6,"status":"pending","rescheduleCount":0}},"2-1":{"preacher":{"memberId":11,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":8,"status":"pending","rescheduleCount":0}},"2-8":{"preacher":{"memberId":12,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":10,"status":"pending","rescheduleCount":0}},"2-15":{"preacher":{"memberId":13,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":11,"status":"pending","rescheduleCount":0}},"2-22":{"preacher":{"memberId":14,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":12,"status":"pending","rescheduleCount":0}},"2-29":{"preacher":{"memberId":13,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":9,"status":"pending","rescheduleCount":0}},"3-5":{"preacher":{"memberId":15,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":13,"status":"pending","rescheduleCount":0}},"3-12":{"preacher":{"memberId":16,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":14,"status":"pending","rescheduleCount":0}},"3-19":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":15,"status":"pending","rescheduleCount":0}},"3-26":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":12,"status":"pending","rescheduleCount":0}},"4-3":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":16,"status":"pending","rescheduleCount":0}},"4-10":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":17,"status":"pending","rescheduleCount":0}},"4-17":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":2,"status":"pending","rescheduleCount":0}},"4-24":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":10,"status":"pending","rescheduleCount":0}},"4-31":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":5,"status":"pending","rescheduleCount":0}},"5-7":{"preacher":{"memberId":6,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":10,"status":"pending","rescheduleCount":0}},"5-14":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":6,"status":"pending","rescheduleCount":0}},"5-21":{"preacher":{"memberId":10,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":11,"status":"pending","rescheduleCount":0}},"5-28":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":12,"status":"pending","rescheduleCount":0}},"6-5":{"preacher":{"memberId":11,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":13,"status":"pending","rescheduleCount":0}},"6-12":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":14,"status":"pending","rescheduleCount":0}},"6-19":{"preacher":{"memberId":12,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":3,"status":"pending","rescheduleCount":0}},"6-26":{"preacher":{"memberId":12,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":15,"status":"pending","rescheduleCount":0}},"7-2":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":3,"status":"pending","rescheduleCount":0}},"7-9":{"preacher":{"memberId":13,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":1,"status":"pending","rescheduleCount":0}},"7-16":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":7,"status":"pending","rescheduleCount":0}},"7-23":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":11,"status":"pending","rescheduleCount":0}},"7-30":{"preacher":{"memberId":14,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":8,"status":"pending","rescheduleCount":0}},"8-6":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":16,"status":"pending","rescheduleCount":0}},"8-13":{"preacher":{"memberId":15,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":17,"status":"pending","rescheduleCount":0}},"8-20":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":2,"status":"pending","rescheduleCount":0}},"8-27":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":5,"status":"pending","rescheduleCount":0}},"9-4":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":6,"status":"pending","rescheduleCount":0}},"9-11":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":10,"status":"pending","rescheduleCount":0}},"9-18":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":11,"status":"pending","rescheduleCount":0}},"9-25":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":14,"status":"pending","rescheduleCount":0}},"10-1":{"preacher":{"memberId":6,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":12,"status":"pending","rescheduleCount":0}},"10-8":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":13,"status":"pending","rescheduleCount":0}},"10-15":{"preacher":{"memberId":7,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":14,"status":"pending","rescheduleCount":0}},"10-22":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":15,"status":"pending","rescheduleCount":0}},"10-29":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":15,"status":"pending","rescheduleCount":0}},"11-6":{"preacher":{"memberId":4,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":1,"status":"pending","rescheduleCount":0}},"11-13":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":2,"status":"pending","rescheduleCount":0}},"11-20":{"preacher":{"memberId":10,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":3,"status":"pending","rescheduleCount":0}},"11-27":{"preacher":{"memberId":12,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":4,"status":"pending","rescheduleCount":0}}}; // BAKED-IN DATA",
                     injection
                 );
             }

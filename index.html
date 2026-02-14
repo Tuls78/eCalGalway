@@ -1,390 +1,1059 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>AFM Galway Assembly – 2026 E-Calendar</title>
     <style>
         /* ============ RESET & BASE ============ */
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f5f5f5; color: #333; line-height: 1.5;
-            min-height: 100vh; overflow-x: hidden;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.5;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
         /* ============ HEADER ============ */
         .header {
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            color: #fff; padding: 18px 16px 14px; text-align: center;
-            position: sticky; top: 0; z-index: 100;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+            color: #fff;
+            padding: 18px 16px 14px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
         }
+
         @media print {
-            .nav, .view-tabs, .filters, .admin-toggle, .share-bar, .admin-panel, .panel-overlay, .panel-buttons, .btn-whatsapp {
+
+            .nav,
+            .view-tabs,
+            .filters,
+            .admin-toggle,
+            .share-bar,
+            .admin-panel,
+            .panel-overlay,
+            .panel-buttons,
+            .btn-whatsapp {
                 display: none !important;
             }
-            .header, .nav { position: static !important; }
-            body, .cal-container { background: white !important; padding: 0 !important; }
-            .cal-grid { gap: 1px; background: #999; }
-            .cal-cell { background: white; border: none; }
-            .legend { display: flex !important; }
+
+            .header,
+            .nav {
+                position: static !important;
+            }
+
+            body,
+            .cal-container {
+                background: white !important;
+                padding: 0 !important;
+            }
+
+            .cal-grid {
+                gap: 1px;
+                background: #999;
+            }
+
+            .cal-cell {
+                background: white;
+                border: none;
+            }
+
+            .legend {
+                display: flex !important;
+            }
+
             /* Force single page per month if possible */
-            .cal-container { page-break-inside: avoid; }
+            .cal-container {
+                page-break-inside: avoid;
+            }
         }
-        .header h1 { font-size: 1.25rem; font-weight: 700; letter-spacing: 0.5px; color: #e94560; }
-        .header .subtitle { font-size: 0.75rem; opacity: 0.85; margin-top: 2px; }
-        .header .venue { font-size: 0.65rem; opacity: 0.6; margin-top: 2px; }
+
+        .header h1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #e94560;
+        }
+
+        .header .subtitle {
+            font-size: 0.75rem;
+            opacity: 0.85;
+            margin-top: 2px;
+        }
+
+        .header .venue {
+            font-size: 0.65rem;
+            opacity: 0.6;
+            margin-top: 2px;
+        }
+
         .header .service-time {
-            display: inline-block; margin-top: 6px; padding: 3px 14px;
-            background: #e94560; border-radius: 20px; font-size: 0.7rem; font-weight: 600;
+            display: inline-block;
+            margin-top: 6px;
+            padding: 3px 14px;
+            background: #e94560;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
         }
 
         /* ============ NAVIGATION ============ */
         .nav {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 10px 16px; background: #fff;
-            border-bottom: 1px solid #e0e0e0; position: sticky; top: 96px; z-index: 99;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 16px;
+            background: #fff;
+            border-bottom: 1px solid #e0e0e0;
+            position: sticky;
+            top: 96px;
+            z-index: 99;
         }
+
         .nav button {
-            background: none; border: 2px solid #e94560; color: #e94560;
-            width: 36px; height: 36px; border-radius: 50%; font-size: 1.1rem;
-            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            background: none;
+            border: 2px solid #e94560;
+            color: #e94560;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             transition: all 0.2s;
         }
-        .nav button:hover { background: #e94560; color: #fff; }
-        .nav .month-year { font-size: 1.1rem; font-weight: 700; color: #1a1a2e; }
+
+        .nav button:hover {
+            background: #e94560;
+            color: #fff;
+        }
+
+        .nav .month-year {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1a1a2e;
+        }
 
         /* ============ DEPARTMENT FILTERS ============ */
         .filters {
-            display: flex; gap: 6px; padding: 10px 16px;
-            overflow-x: auto; background: #fff; border-bottom: 1px solid #eee;
+            display: flex;
+            gap: 6px;
+            padding: 10px 16px;
+            overflow-x: auto;
+            background: #fff;
+            border-bottom: 1px solid #eee;
             -webkit-overflow-scrolling: touch;
         }
-        .filters::-webkit-scrollbar { display: none; }
-        .filter-btn {
-            white-space: nowrap; padding: 5px 12px; border-radius: 20px;
-            border: 1.5px solid #ddd; background: #fff; font-size: 0.7rem;
-            cursor: pointer; transition: all 0.2s; font-weight: 500;
+
+        .filters::-webkit-scrollbar {
+            display: none;
         }
-        .filter-btn.active { color: #fff; border-color: transparent; }
-        .filter-btn[data-dept="all"].active { background: #1a1a2e; }
-        .filter-btn[data-dept="general"].active { background: #e94560; }
-        .filter-btn[data-dept="ladies"].active { background: #E91E63; }
-        .filter-btn[data-dept="men"].active { background: #1565C0; }
-        .filter-btn[data-dept="youth"].active { background: #FF9800; }
-        .filter-btn[data-dept="sunday-school"].active { background: #4CAF50; }
-        .filter-btn[data-dept="national"].active { background: #7B1FA2; }
+
+        .filter-btn {
+            white-space: nowrap;
+            padding: 5px 12px;
+            border-radius: 20px;
+            border: 1.5px solid #ddd;
+            background: #fff;
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+
+        .filter-btn.active {
+            color: #fff;
+            border-color: transparent;
+        }
+
+        .filter-btn[data-dept="all"].active {
+            background: #1a1a2e;
+        }
+
+        .filter-btn[data-dept="general"].active {
+            background: #e94560;
+        }
+
+        .filter-btn[data-dept="ladies"].active {
+            background: #E91E63;
+        }
+
+        .filter-btn[data-dept="men"].active {
+            background: #1565C0;
+        }
+
+        .filter-btn[data-dept="youth"].active {
+            background: #FF9800;
+        }
+
+        .filter-btn[data-dept="sunday-school"].active {
+            background: #4CAF50;
+        }
+
+        .filter-btn[data-dept="national"].active {
+            background: #7B1FA2;
+        }
 
         /* ============ CALENDAR GRID ============ */
-        .cal-container { padding: 10px 12px 80px; position: relative; overflow: hidden; }
+        .cal-container {
+            padding: 10px 12px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
         .watermark {
-            position: absolute; top: 50%; left: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
             transform: translate(-50%, -50%);
-            opacity: 0.04; pointer-events: none; z-index: 0;
-            width: 320px; height: 320px;
+            opacity: 0.04;
+            pointer-events: none;
+            z-index: 0;
+            width: 320px;
+            height: 320px;
         }
-        .cal-grid, .day-headers, .legend, .event-list-section { position: relative; z-index: 1; }
+
+        .cal-grid,
+        .day-headers,
+        .legend,
+        .event-list-section {
+            position: relative;
+            z-index: 1;
+        }
+
         .day-headers {
-            display: grid; grid-template-columns: repeat(7, 1fr);
-            text-align: center; font-size: 0.9rem; font-weight: 800;
-            color: #1a1a2e; padding: 10px 0; border-bottom: 2px solid #ddd;
-            text-transform: uppercase; letter-spacing: 1px;
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: #1a1a2e;
+            padding: 10px 0;
+            border-bottom: 2px solid #ddd;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        .day-headers span:last-child { color: #c62828; font-weight: 900; }
+
+        .day-headers span:last-child {
+            color: #c62828;
+            font-weight: 900;
+        }
+
         .cal-grid {
-            display: grid; grid-template-columns: repeat(7, 1fr);
-            gap: 3px; margin-top: 4px;
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 3px;
+            margin-top: 4px;
         }
+
         .cal-cell {
-            min-height: 52px; padding: 3px; border-radius: 8px;
-            background: #fff; position: relative; cursor: pointer;
-            transition: all 0.15s; border: 1px solid #f0f0f0;
+            min-height: 52px;
+            padding: 3px;
+            border-radius: 8px;
+            background: #fff;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.15s;
+            border: 1px solid #f0f0f0;
         }
-        .cal-cell:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.1); transform: translateY(-1px); }
-        .cal-cell.empty { background: transparent; cursor: default; border: none; }
-        .cal-cell.empty:hover { box-shadow: none; transform: none; }
+
+        .cal-cell:hover {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .cal-cell.empty {
+            background: transparent;
+            cursor: default;
+            border: none;
+        }
+
+        .cal-cell.empty:hover {
+            box-shadow: none;
+            transform: none;
+        }
+
         .cal-cell .day-num {
-            font-size: 0.75rem; font-weight: 500; color: #888;
-            display: block; text-align: right; padding-right: 2px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #888;
+            display: block;
+            text-align: right;
+            padding-right: 2px;
         }
-        .cal-cell.today { border: 2px solid #e94560; background: #fff5f7; }
-        .cal-cell.today .day-num { color: #e94560; font-weight: 600; }
-        .cal-cell.past { opacity: 0.55; }
-        .cal-cell.sunday { background: #fef5e8; }
-        .cal-cell.sunday .day-num { color: #c62828; font-weight: 600; }
-        .event-dots { display: flex; flex-wrap: wrap; gap: 2px; margin-top: 2px; }
+
+        .cal-cell.today {
+            border: 2px solid #e94560;
+            background: #fff5f7;
+        }
+
+        .cal-cell.today .day-num {
+            color: #e94560;
+            font-weight: 600;
+        }
+
+        .cal-cell.past {
+            opacity: 0.55;
+        }
+
+        .cal-cell.sunday {
+            background: #fef5e8;
+        }
+
+        .cal-cell.sunday .day-num {
+            color: #c62828;
+            font-weight: 600;
+        }
+
+        .event-dots {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2px;
+            margin-top: 2px;
+        }
+
         .event-dot {
-            width: 7px; height: 7px; border-radius: 50%;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
         }
-        .dot-general { background: #e94560; }
-        .dot-ladies { background: #E91E63; }
-        .dot-men { background: #1565C0; }
-        .dot-youth { background: #FF9800; }
-        .dot-sunday-school { background: #4CAF50; }
-        .dot-national { background: #7B1FA2; }
-        .dot-prayer { background: #78909C; }
+
+        .dot-general {
+            background: #e94560;
+        }
+
+        .dot-ladies {
+            background: #E91E63;
+        }
+
+        .dot-men {
+            background: #1565C0;
+        }
+
+        .dot-youth {
+            background: #FF9800;
+        }
+
+        .dot-sunday-school {
+            background: #4CAF50;
+        }
+
+        .dot-national {
+            background: #7B1FA2;
+        }
+
+        .dot-prayer {
+            background: #78909C;
+        }
 
         /* ============ EVENT LIST (below calendar) ============ */
         .month-events {
-            margin-top: 16px; background: #fff; border-radius: 12px;
-            padding: 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+            margin-top: 16px;
+            background: #fff;
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
         }
+
         .month-events h3 {
-            font-size: 0.9rem; color: #1a1a2e; margin-bottom: 10px;
-            border-bottom: 2px solid #e94560; padding-bottom: 6px;
+            font-size: 0.9rem;
+            color: #1a1a2e;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #e94560;
+            padding-bottom: 6px;
         }
+
         .event-item {
-            display: flex; align-items: flex-start; gap: 10px;
-            padding: 8px 0; border-bottom: 1px solid #f5f5f5;
-            cursor: pointer; transition: background 0.15s;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid #f5f5f5;
+            cursor: pointer;
+            transition: background 0.15s;
         }
-        .event-item:hover { background: #fafafa; }
-        .event-item:last-child { border-bottom: none; }
+
+        .event-item:hover {
+            background: #fafafa;
+        }
+
+        .event-item:last-child {
+            border-bottom: none;
+        }
+
         .event-date-badge {
-            min-width: 42px; text-align: center; padding: 4px 6px;
-            border-radius: 8px; font-weight: 700; font-size: 0.8rem; color: #fff;
+            min-width: 42px;
+            text-align: center;
+            padding: 4px 6px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: #fff;
         }
-        .event-date-badge.bg-general { background: #e94560; }
-        .event-date-badge.bg-ladies { background: #E91E63; }
-        .event-date-badge.bg-men { background: #1565C0; }
-        .event-date-badge.bg-youth { background: #FF9800; }
-        .event-date-badge.bg-sunday-school { background: #4CAF50; }
-        .event-date-badge.bg-national { background: #7B1FA2; }
-        .event-date-badge.bg-prayer { background: #78909C; }
-        .event-info { flex: 1; }
-        .event-info .event-title { font-size: 0.82rem; font-weight: 600; color: #333; }
-        .event-info .event-dept { font-size: 0.65rem; color: #888; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        .event-date-badge.bg-general {
+            background: #e94560;
+        }
+
+        .event-date-badge.bg-ladies {
+            background: #E91E63;
+        }
+
+        .event-date-badge.bg-men {
+            background: #1565C0;
+        }
+
+        .event-date-badge.bg-youth {
+            background: #FF9800;
+        }
+
+        .event-date-badge.bg-sunday-school {
+            background: #4CAF50;
+        }
+
+        .event-date-badge.bg-national {
+            background: #7B1FA2;
+        }
+
+        .event-date-badge.bg-prayer {
+            background: #78909C;
+        }
+
+        .event-info {
+            flex: 1;
+        }
+
+        .event-info .event-title {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .event-info .event-dept {
+            font-size: 0.65rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
         .event-info .event-service {
-            font-size: 0.7rem; color: #555; margin-top: 2px;
+            font-size: 0.7rem;
+            color: #555;
+            margin-top: 2px;
         }
+
         .info-icon {
-            width: 18px; height: 18px; border-radius: 50%;
-            background: #eee; color: #888; font-size: 0.65rem;
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer; flex-shrink: 0; margin-top: 3px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #eee;
+            color: #888;
+            font-size: 0.65rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            flex-shrink: 0;
+            margin-top: 3px;
         }
-        .info-icon:hover { background: #e94560; color: #fff; }
+
+        .info-icon:hover {
+            background: #e94560;
+            color: #fff;
+        }
 
         /* ============ MODAL / POPUP ============ */
         .modal-overlay {
-            display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.5); z-index: 200;
-            align-items: flex-end; justify-content: center;
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 200;
+            align-items: flex-end;
+            justify-content: center;
         }
-        .modal-overlay.active { display: flex; }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
         .modal {
-            background: #fff; border-radius: 16px 16px 0 0;
-            width: 100%; max-width: 480px; max-height: 85vh;
-            overflow-y: auto; padding: 20px 16px 30px;
+            background: #fff;
+            border-radius: 16px 16px 0 0;
+            width: 100%;
+            max-width: 480px;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 20px 16px 30px;
             animation: slideUp 0.3s ease;
         }
-        @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+            }
+
+            to {
+                transform: translateY(0);
+            }
+        }
+
         .modal-handle {
-            width: 40px; height: 4px; background: #ddd;
-            border-radius: 2px; margin: 0 auto 16px;
+            width: 40px;
+            height: 4px;
+            background: #ddd;
+            border-radius: 2px;
+            margin: 0 auto 16px;
         }
-        .modal h2 { font-size: 1.1rem; color: #1a1a2e; margin-bottom: 4px; }
-        .modal .modal-date { font-size: 0.8rem; color: #888; margin-bottom: 14px; }
+
+        .modal h2 {
+            font-size: 1.1rem;
+            color: #1a1a2e;
+            margin-bottom: 4px;
+        }
+
+        .modal .modal-date {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 14px;
+        }
+
         .modal .section-label {
-            font-size: 0.7rem; font-weight: 700; color: #e94560;
-            text-transform: uppercase; letter-spacing: 1px; margin: 14px 0 6px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #e94560;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 14px 0 6px;
         }
+
         .modal .detail-card {
-            background: #f8f8f8; border-radius: 10px; padding: 12px;
+            background: #f8f8f8;
+            border-radius: 10px;
+            padding: 12px;
             margin-bottom: 8px;
         }
-        .modal .detail-card .label { font-size: 0.7rem; color: #888; }
-        .modal .detail-card .value { font-size: 0.9rem; font-weight: 600; color: #333; }
+
+        .modal .detail-card .label {
+            font-size: 0.7rem;
+            color: #888;
+        }
+
+        .modal .detail-card .value {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #333;
+        }
+
         .modal .status-badge {
-            display: inline-block; padding: 2px 10px; border-radius: 12px;
-            font-size: 0.65rem; font-weight: 600; margin-left: 6px;
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            margin-left: 6px;
         }
-        .status-pending { background: #FFF3E0; color: #E65100; }
-        .status-confirmed { background: #E8F5E9; color: #2E7D32; }
-        .status-declined { background: #FFEBEE; color: #C62828; }
-        .status-locked { background: #E8F5E9; color: #1B5E20; border: 1px solid #4CAF50; }
+
+        .status-pending {
+            background: #FFF3E0;
+            color: #E65100;
+        }
+
+        .status-confirmed {
+            background: #E8F5E9;
+            color: #2E7D32;
+        }
+
+        .status-declined {
+            background: #FFEBEE;
+            color: #C62828;
+        }
+
+        .status-locked {
+            background: #E8F5E9;
+            color: #1B5E20;
+            border: 1px solid #4CAF50;
+        }
+
         .modal .description-box {
-            background: #FFF8E1; border-left: 3px solid #FF9800;
-            padding: 10px 12px; border-radius: 0 8px 8px 0;
-            font-size: 0.8rem; color: #555; margin: 8px 0;
+            background: #FFF8E1;
+            border-left: 3px solid #FF9800;
+            padding: 10px 12px;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.8rem;
+            color: #555;
+            margin: 8px 0;
         }
+
         .modal .btn {
-            display: inline-flex; align-items: center; gap: 6px;
-            padding: 8px 16px; border-radius: 8px; border: none;
-            font-size: 0.8rem; font-weight: 600; cursor: pointer;
-            transition: all 0.2s; margin: 4px 4px 4px 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin: 4px 4px 4px 0;
         }
-        .btn-confirm { background: #4CAF50; color: #fff; }
-        .btn-confirm:hover { background: #388E3C; }
-        .btn-reschedule { background: #FF9800; color: #fff; }
-        .btn-reschedule:hover { background: #F57C00; }
-        .btn-decline { background: #f44336; color: #fff; }
-        .btn-decline:hover { background: #D32F2F; }
-        .btn-whatsapp { background: #25D366; color: #fff; }
-        .btn-whatsapp:hover { background: #1DA851; }
-        .btn-close { background: #eee; color: #333; }
-        .btn-close:hover { background: #ddd; }
-        .btn-edit { background: #1a1a2e; color: #fff; }
-        .btn-edit:hover { background: #333; }
+
+        .btn-confirm {
+            background: #4CAF50;
+            color: #fff;
+        }
+
+        .btn-confirm:hover {
+            background: #388E3C;
+        }
+
+        .btn-reschedule {
+            background: #FF9800;
+            color: #fff;
+        }
+
+        .btn-reschedule:hover {
+            background: #F57C00;
+        }
+
+        .btn-decline {
+            background: #f44336;
+            color: #fff;
+        }
+
+        .btn-decline:hover {
+            background: #D32F2F;
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: #fff;
+        }
+
+        .btn-whatsapp:hover {
+            background: #1DA851;
+        }
+
+        .btn-close {
+            background: #eee;
+            color: #333;
+        }
+
+        .btn-close:hover {
+            background: #ddd;
+        }
+
+        .btn-edit {
+            background: #1a1a2e;
+            color: #fff;
+        }
+
+        .btn-edit:hover {
+            background: #333;
+        }
 
         /* ============ ADMIN PANEL ============ */
         .admin-toggle {
-            position: fixed; bottom: 16px; right: 16px; z-index: 150;
-            width: 48px; height: 48px; border-radius: 50%;
-            background: #1a1a2e; color: #fff; border: none;
-            font-size: 1.2rem; cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            display: flex; align-items: center; justify-content: center;
+            position: fixed;
+            bottom: 16px;
+            right: 16px;
+            z-index: 150;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #1a1a2e;
+            color: #fff;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+
         .admin-panel {
-            display: none; position: fixed; bottom: 76px; right: 16px;
-            background: #fff; border-radius: 12px; padding: 16px;
-            width: 300px; max-height: 400px; overflow-y: auto;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15); z-index: 150;
+            display: none;
+            position: fixed;
+            bottom: 76px;
+            right: 16px;
+            background: #fff;
+            border-radius: 12px;
+            padding: 16px;
+            width: 300px;
+            max-height: 400px;
+            overflow-y: auto;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            z-index: 150;
         }
-        .admin-panel.active { display: block; }
-        .admin-panel h3 { font-size: 0.9rem; color: #1a1a2e; margin-bottom: 10px; }
-        .admin-panel select, .admin-panel input {
-            width: 100%; padding: 8px; border: 1px solid #ddd;
-            border-radius: 6px; font-size: 0.8rem; margin-bottom: 8px;
+
+        .admin-panel.active {
+            display: block;
+        }
+
+        .admin-panel h3 {
+            font-size: 0.9rem;
+            color: #1a1a2e;
+            margin-bottom: 10px;
+        }
+
+        .admin-panel select,
+        .admin-panel input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            margin-bottom: 8px;
         }
 
         /* ============ WHATSAPP SHARE BAR ============ */
         .share-bar {
-            position: fixed; bottom: 16px; left: 16px; z-index: 150;
+            position: fixed;
+            bottom: 16px;
+            left: 16px;
+            z-index: 150;
         }
+
         .share-bar button {
-            width: 48px; height: 48px; border-radius: 50%;
-            background: #25D366; color: #fff; border: none;
-            font-size: 1.3rem; cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-            display: flex; align-items: center; justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #25D366;
+            color: #fff;
+            border: none;
+            font-size: 1.3rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         /* ============ LEGEND ============ */
         .legend {
-            display: flex; flex-wrap: wrap; gap: 8px; padding: 10px 16px;
-            background: #fff; border-top: 1px solid #eee; margin-top: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 10px 16px;
+            background: #fff;
+            border-top: 1px solid #eee;
+            margin-top: 8px;
             border-radius: 12px;
         }
+
         .legend-item {
-            display: flex; align-items: center; gap: 4px;
-            font-size: 0.65rem; color: #666;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.65rem;
+            color: #666;
         }
-        .legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
 
         /* ============ TOAST NOTIFICATION ============ */
         .toast {
-            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
-            background: #333; color: #fff; padding: 10px 24px;
-            border-radius: 8px; font-size: 0.8rem; z-index: 300;
-            display: none; animation: fadeIn 0.3s ease;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            z-index: 300;
+            display: none;
+            animation: fadeIn 0.3s ease;
         }
-        .toast.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateX(-50%) translateY(-10px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
+
+        .toast.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
 
         /* ============ MONTHLY THEME / VERSE ============ */
         .month-verse {
-            text-align: center; padding: 12px 20px; margin: 0;
+            text-align: center;
+            padding: 12px 20px;
+            margin: 0;
             background: linear-gradient(135deg, #fdf6ec 0%, #fef9f0 100%);
             border-bottom: 1px solid #eed;
-            position: relative; overflow: hidden;
+            position: relative;
+            overflow: hidden;
         }
+
         .month-verse .theme-label {
-            font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
-            letter-spacing: 2px; color: #e94560; margin-bottom: 2px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #e94560;
+            margin-bottom: 2px;
         }
+
         .month-verse .verse-text {
             font-family: 'Georgia', 'Palatino', 'Book Antiqua', serif;
-            font-style: italic; font-size: 0.85rem; color: #5a3e2b;
-            line-height: 1.4; max-width: 420px; margin: 0 auto;
+            font-style: italic;
+            font-size: 0.85rem;
+            color: #5a3e2b;
+            line-height: 1.4;
+            max-width: 420px;
+            margin: 0 auto;
         }
+
         .month-verse .verse-ref {
-            font-family: 'Segoe UI', sans-serif; font-style: normal;
-            font-size: 0.65rem; color: #999; margin-top: 3px;
+            font-family: 'Segoe UI', sans-serif;
+            font-style: normal;
+            font-size: 0.65rem;
+            color: #999;
+            margin-top: 3px;
             font-weight: 600;
         }
 
         /* ============ VIEW MODE TABS ============ */
         .view-tabs {
-            display: flex; justify-content: center; gap: 4px;
-            padding: 8px 16px; background: #fff; border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+            padding: 8px 16px;
+            background: #fff;
+            border-bottom: 1px solid #eee;
         }
+
         .view-tab {
-            padding: 5px 14px; border-radius: 20px; border: 1.5px solid #ddd;
-            background: #fff; font-size: 0.7rem; cursor: pointer;
-            font-weight: 600; transition: all 0.2s; color: #666;
+            padding: 5px 14px;
+            border-radius: 20px;
+            border: 1.5px solid #ddd;
+            background: #fff;
+            font-size: 0.7rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+            color: #666;
         }
-        .view-tab.active { background: #1a1a2e; color: #fff; border-color: #1a1a2e; }
-        .view-tab:hover { border-color: #e94560; }
+
+        .view-tab.active {
+            background: #1a1a2e;
+            color: #fff;
+            border-color: #1a1a2e;
+        }
+
+        .view-tab:hover {
+            border-color: #e94560;
+        }
 
         /* ============ MULTI-MONTH VIEW ============ */
         .multi-month-grid {
-            display: grid; gap: 16px; padding: 16px;
+            display: grid;
+            gap: 16px;
+            padding: 16px;
         }
-        .multi-month-grid.quarter { grid-template-columns: 1fr; }
-        .multi-month-grid.half { grid-template-columns: 1fr; }
-        .multi-month-grid.full { grid-template-columns: 1fr; }
+
+        .multi-month-grid.quarter {
+            grid-template-columns: 1fr;
+        }
+
+        .multi-month-grid.half {
+            grid-template-columns: 1fr;
+        }
+
+        .multi-month-grid.full {
+            grid-template-columns: 1fr;
+        }
+
         @media (min-width: 700px) {
-            .multi-month-grid.quarter { grid-template-columns: repeat(3, 1fr); }
-            .multi-month-grid.half { grid-template-columns: repeat(3, 1fr); }
-            .multi-month-grid.full { grid-template-columns: repeat(3, 1fr); }
+            .multi-month-grid.quarter {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .multi-month-grid.half {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .multi-month-grid.full {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
+
         .mini-month {
-            background: #fff; border-radius: 10px; padding: 12px;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.06); cursor: pointer;
+            background: #fff;
+            border-radius: 10px;
+            padding: 12px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+            cursor: pointer;
             transition: all 0.2s;
         }
-        .mini-month:hover { box-shadow: 0 3px 12px rgba(0,0,0,0.12); }
+
+        .mini-month:hover {
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+        }
+
         .mini-month h4 {
-            font-size: 0.85rem; color: #1a1a2e; margin-bottom: 6px;
-            text-align: center; border-bottom: 2px solid #e94560; padding-bottom: 4px;
+            font-size: 0.85rem;
+            color: #1a1a2e;
+            margin-bottom: 6px;
+            text-align: center;
+            border-bottom: 2px solid #e94560;
+            padding-bottom: 4px;
         }
+
         .mini-cal-grid {
-            display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px;
-            font-size: 0.6rem; text-align: center;
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 1px;
+            font-size: 0.6rem;
+            text-align: center;
         }
-        .mini-cal-grid .mini-hdr { font-weight: 700; color: #999; font-size: 0.55rem; }
+
+        .mini-cal-grid .mini-hdr {
+            font-weight: 700;
+            color: #999;
+            font-size: 0.55rem;
+        }
+
         .mini-cal-grid .mini-day {
-            padding: 2px 0; border-radius: 3px; font-weight: 600; color: #444;
+            padding: 2px 0;
+            border-radius: 3px;
+            font-weight: 600;
+            color: #444;
         }
-        .mini-cal-grid .mini-day.mini-sunday { color: #c62828; font-weight: 700; }
-        .mini-cal-grid .mini-day.mini-today { background: #e94560; color: #fff; border-radius: 50%; }
-        .mini-cal-grid .mini-day.mini-has-event { background: #fef0f0; }
-        .mini-cal-grid .mini-empty { }
+
+        .mini-cal-grid .mini-day.mini-sunday {
+            color: #c62828;
+            font-weight: 700;
+        }
+
+        .mini-cal-grid .mini-day.mini-today {
+            background: #e94560;
+            color: #fff;
+            border-radius: 50%;
+        }
+
+        .mini-cal-grid .mini-day.mini-has-event {
+            background: #fef0f0;
+        }
+
+        .mini-cal-grid .mini-empty {}
+
         .mini-month .mini-events {
-            margin-top: 6px; border-top: 1px solid #f0f0f0; padding-top: 4px;
-            max-height: 80px; overflow-y: auto;
+            margin-top: 6px;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 4px;
+            max-height: 80px;
+            overflow-y: auto;
         }
+
         .mini-month .mini-ev {
-            font-size: 0.6rem; color: #555; padding: 1px 0;
-            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+            font-size: 0.6rem;
+            color: #555;
+            padding: 1px 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         /* ============ RESPONSIVE ============ */
         @media (min-width: 600px) {
-            .cal-container { max-width: 520px; margin: 0 auto; }
-            .modal { border-radius: 16px; margin: auto; }
-            .modal-overlay { align-items: center; }
-            .cal-cell { min-height: 72px; padding: 5px; }
-            .cal-cell .day-num { font-size: 1rem; }
+            .cal-container {
+                max-width: 520px;
+                margin: 0 auto;
+            }
+
+            .modal {
+                border-radius: 16px;
+                margin: auto;
+            }
+
+            .modal-overlay {
+                align-items: center;
+            }
+
+            .cal-cell {
+                min-height: 72px;
+                padding: 5px;
+            }
+
+            .cal-cell .day-num {
+                font-size: 1rem;
+            }
         }
 
         /* ============ CONFIRMATION WORKFLOW ============ */
-        .confirm-section { margin-top: 12px; padding-top: 12px; border-top: 1px solid #eee; }
-        .reschedule-count { font-size: 0.7rem; color: #888; margin-top: 4px; }
-        .alternative-list { margin-top: 8px; }
-        .alt-member {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 6px 10px; background: #f8f8f8; border-radius: 6px;
-            margin-bottom: 4px; font-size: 0.8rem;
+        .confirm-section {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #eee;
         }
+
+        .reschedule-count {
+            font-size: 0.7rem;
+            color: #888;
+            margin-top: 4px;
+        }
+
+        .alternative-list {
+            margin-top: 8px;
+        }
+
+        .alt-member {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 6px 10px;
+            background: #f8f8f8;
+            border-radius: 6px;
+            margin-bottom: 4px;
+            font-size: 0.8rem;
+        }
+
         .alt-member button {
-            padding: 3px 10px; border-radius: 4px; border: none;
-            background: #e94560; color: #fff; font-size: 0.7rem; cursor: pointer;
+            padding: 3px 10px;
+            border-radius: 4px;
+            border: none;
+            background: #e94560;
+            color: #fff;
+            font-size: 0.7rem;
+            cursor: pointer;
         }
     </style>
-<style> .admin-toggle { display: none !important; } </style> </head>
+</head>
+
 <body>
     <!-- ============ HEADER ============ -->
     <div class="header">
@@ -393,88 +1062,93 @@
             <svg width="56" height="56" viewBox="0 0 300 300" style="flex-shrink:0;" id="afmLogoHeader">
                 <defs>
                     <radialGradient id="bgGrad" cx="45%" cy="40%">
-                        <stop offset="0%" stop-color="#3068c8"></stop>
-                        <stop offset="100%" stop-color="#1a4590"></stop>
+                        <stop offset="0%" stop-color="#3068c8" />
+                        <stop offset="100%" stop-color="#1a4590" />
                     </radialGradient>
                     <linearGradient id="crownGrad" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stop-color="#dbbe44"></stop>
-                        <stop offset="100%" stop-color="#a88620"></stop>
+                        <stop offset="0%" stop-color="#dbbe44" />
+                        <stop offset="100%" stop-color="#a88620" />
                     </linearGradient>
                     <linearGradient id="silverRing" x1="0" y1="0" x2="1" y2="1">
-                        <stop offset="0%" stop-color="#e8e8ee"></stop>
-                        <stop offset="50%" stop-color="#c0c0cc"></stop>
-                        <stop offset="100%" stop-color="#e0e0e8"></stop>
+                        <stop offset="0%" stop-color="#e8e8ee" />
+                        <stop offset="50%" stop-color="#c0c0cc" />
+                        <stop offset="100%" stop-color="#e0e0e8" />
                     </linearGradient>
                 </defs>
                 <!-- Outer thin blue ring -->
-                <circle cx="150" cy="150" r="147" fill="none" stroke="#1a4590" stroke-width="3"></circle>
+                <circle cx="150" cy="150" r="147" fill="none" stroke="#1a4590" stroke-width="3" />
                 <!-- Thick silver/gray ring -->
-                <circle cx="150" cy="150" r="138" fill="none" stroke="url(#silverRing)" stroke-width="18"></circle>
+                <circle cx="150" cy="150" r="138" fill="none" stroke="url(#silverRing)" stroke-width="18" />
                 <!-- Inner thin blue ring -->
-                <circle cx="150" cy="150" r="126" fill="none" stroke="#1a4590" stroke-width="2.5"></circle>
+                <circle cx="150" cy="150" r="126" fill="none" stroke="#1a4590" stroke-width="2.5" />
                 <!-- Inner blue circle -->
-                <circle cx="150" cy="150" r="122" fill="url(#bgGrad)"></circle>
-                
+                <circle cx="150" cy="150" r="122" fill="url(#bgGrad)" />
+
                 <!-- Rays: 11 Long, 10 Short -->
                 <g transform="translate(142,155)">
                     <!-- Long Rays -->
-                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a"></polygon>
-                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(20)"></polygon>
-                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(40)"></polygon>
-                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(60)"></polygon>
-                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(80)"></polygon>
-                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(100)"></polygon>
-                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-20)"></polygon>
-                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-40)"></polygon>
-                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-60)"></polygon>
-                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-80)"></polygon>
-                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-100)"></polygon>
+                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" />
+                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(20)" />
+                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(40)" />
+                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(60)" />
+                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(80)" />
+                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(100)" />
+                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-20)" />
+                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-40)" />
+                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-60)" />
+                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-80)" />
+                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-100)" />
                     <!-- Short Rays -->
-                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(10)"></polygon>
-                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(30)"></polygon>
-                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(50)"></polygon>
-                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(70)"></polygon>
-                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(90)"></polygon>
-                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-10)"></polygon>
-                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-30)"></polygon>
-                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-50)"></polygon>
-                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-70)"></polygon>
-                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-90)"></polygon>
+                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(10)" />
+                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(30)" />
+                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(50)" />
+                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(70)" />
+                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(90)" />
+                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-10)" />
+                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-30)" />
+                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-50)" />
+                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-70)" />
+                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-90)" />
                 </g>
 
                 <!-- Dark blue orb behind crown -->
-                <circle cx="138" cy="138" r="16" fill="#0e2660" stroke="#c8a82a" stroke-width="2.5"></circle>
+                <circle cx="138" cy="138" r="16" fill="#0e2660" stroke="#c8a82a" stroke-width="2.5" />
 
                 <!-- Tilted red cross (Behnd Crown) -->
                 <g transform="translate(165,130) rotate(28)">
                     <!-- White border -->
-                    <rect x="-10" y="-90" width="20" height="180" rx="3" fill="#fff"></rect>
-                    <rect x="-45" y="-38" width="90" height="20" rx="3" fill="#fff"></rect>
+                    <rect x="-10" y="-90" width="20" height="180" rx="3" fill="#fff" />
+                    <rect x="-45" y="-38" width="90" height="20" rx="3" fill="#fff" />
                     <!-- Red cross -->
-                    <rect x="-7" y="-87" width="14" height="174" rx="2" fill="#cc1111"></rect>
-                    <rect x="-42" y="-35" width="84" height="14" rx="2" fill="#cc1111"></rect>
+                    <rect x="-7" y="-87" width="14" height="174" rx="2" fill="#cc1111" />
+                    <rect x="-42" y="-35" width="84" height="14" rx="2" fill="#cc1111" />
                 </g>
 
                 <!-- Crown body -->
                 <g transform="translate(148,168)">
                     <!-- Crown shape -->
-                    <polygon points="-62,12 -54,-14 -38,4 -22,-22 -8,0 8,-22 22,4 38,-14 62,12" fill="url(#crownGrad)" stroke="#8a6e18" stroke-width="1.5"></polygon>
+                    <polygon points="-62,12 -54,-14 -38,4 -22,-22 -8,0 8,-22 22,4 38,-14 62,12" fill="url(#crownGrad)"
+                        stroke="#8a6e18" stroke-width="1.5" />
                     <!-- Crown band/rim -->
-                    <ellipse cx="0" cy="14" rx="62" ry="10" fill="url(#crownGrad)" stroke="#8a6e18" stroke-width="1.2"></ellipse>
+                    <ellipse cx="0" cy="14" rx="62" ry="10" fill="url(#crownGrad)" stroke="#8a6e18"
+                        stroke-width="1.2" />
                     <!-- Red jewels -->
-                    <rect x="-5" y="6" width="10" height="10" rx="2" fill="#cc1111" stroke="#900" stroke-width="1" transform="rotate(45,0,11)"></rect>
-                    <rect x="-30" y="7" width="8" height="8" rx="1.5" fill="#cc1111" stroke="#900" stroke-width="0.8" transform="rotate(45,-26,11)"></rect>
-                    <rect x="22" y="7" width="8" height="8" rx="1.5" fill="#cc1111" stroke="#900" stroke-width="0.8" transform="rotate(45,26,11)"></rect>
+                    <rect x="-5" y="6" width="10" height="10" rx="2" fill="#cc1111" stroke="#900" stroke-width="1"
+                        transform="rotate(45,0,11)" />
+                    <rect x="-30" y="7" width="8" height="8" rx="1.5" fill="#cc1111" stroke="#900" stroke-width="0.8"
+                        transform="rotate(45,-26,11)" />
+                    <rect x="22" y="7" width="8" height="8" rx="1.5" fill="#cc1111" stroke="#900" stroke-width="0.8"
+                        transform="rotate(45,26,11)" />
                     <!-- White cushion at bottom -->
-                    <ellipse cx="0" cy="24" rx="55" ry="8" fill="#eef" stroke="#ccc" stroke-width="1"></ellipse>
-                    <ellipse cx="0" cy="23" rx="52" ry="6" fill="#fff" opacity="0.6"></ellipse>
+                    <ellipse cx="0" cy="24" rx="55" ry="8" fill="#eef" stroke="#ccc" stroke-width="1" />
+                    <ellipse cx="0" cy="23" rx="52" ry="6" fill="#fff" opacity="0.6" />
                 </g>
 
                 <!-- Gold orbs on crown tips -->
-                <circle cx="86" cy="154" r="7" fill="#e0d8b0" stroke="#c8a82a" stroke-width="2"></circle>
-                <circle cx="210" cy="154" r="7" fill="#e0d8b0" stroke="#c8a82a" stroke-width="2"></circle>
-                <circle cx="110" cy="172" r="6" fill="#e0d8b0" stroke="#c8a82a" stroke-width="1.5"></circle>
-                <circle cx="186" cy="172" r="6" fill="#e0d8b0" stroke="#c8a82a" stroke-width="1.5"></circle>
+                <circle cx="86" cy="154" r="7" fill="#e0d8b0" stroke="#c8a82a" stroke-width="2" />
+                <circle cx="210" cy="154" r="7" fill="#e0d8b0" stroke="#c8a82a" stroke-width="2" />
+                <circle cx="110" cy="172" r="6" fill="#e0d8b0" stroke="#c8a82a" stroke-width="1.5" />
+                <circle cx="186" cy="172" r="6" fill="#e0d8b0" stroke="#c8a82a" stroke-width="1.5" />
             </svg>
             <div>
                 <h1>AFM IRELAND</h1>
@@ -488,9 +1162,9 @@
 
     <!-- ============ MONTH NAV ============ -->
     <div class="nav">
-        <button onclick="changeMonth(-1)">◀</button>
-        <span class="month-year" id="monthYear">February 2026</span>
-        <button onclick="changeMonth(1)">▶</button>
+        <button onclick="changeMonth(-1)">&#9664;</button>
+        <span class="month-year" id="monthYear"></span>
+        <button onclick="changeMonth(1)">&#9654;</button>
     </div>
 
     <!-- ============ VIEW MODE TABS ============ -->
@@ -502,11 +1176,7 @@
     </div>
 
     <!-- ============ MONTHLY THEME & VERSE ============ -->
-    <div class="month-verse" id="monthVerse">
-        <div class="theme-label">Love &amp; Unity</div>
-        <div class="verse-text">"Above all, clothe yourselves with love, which binds us all together in perfect harmony."</div>
-        <div class="verse-ref">— Colossians 3:14</div>
-    </div>
+    <div class="month-verse" id="monthVerse"></div>
 
     <!-- ============ DEPARTMENT FILTERS ============ -->
     <div class="filters">
@@ -528,166 +1198,86 @@
         <svg class="watermark" viewBox="0 0 300 300">
             <defs>
                 <radialGradient id="wmBg" cx="45%" cy="40%">
-                    <stop offset="0%" stop-color="#3068c8"></stop>
-                    <stop offset="100%" stop-color="#1a4590"></stop>
+                    <stop offset="0%" stop-color="#3068c8" />
+                    <stop offset="100%" stop-color="#1a4590" />
                 </radialGradient>
                 <linearGradient id="wmCrown" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#dbbe44"></stop>
-                    <stop offset="100%" stop-color="#a88620"></stop>
+                    <stop offset="0%" stop-color="#dbbe44" />
+                    <stop offset="100%" stop-color="#a88620" />
                 </linearGradient>
                 <linearGradient id="wmSilver" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stop-color="#e8e8ee"></stop>
-                    <stop offset="50%" stop-color="#c0c0cc"></stop>
-                    <stop offset="100%" stop-color="#e0e0e8"></stop>
+                    <stop offset="0%" stop-color="#e8e8ee" />
+                    <stop offset="50%" stop-color="#c0c0cc" />
+                    <stop offset="100%" stop-color="#e0e0e8" />
                 </linearGradient>
             </defs>
-            <circle cx="150" cy="150" r="147" fill="none" stroke="#1a4590" stroke-width="3"></circle>
-            <circle cx="150" cy="150" r="138" fill="none" stroke="url(#wmSilver)" stroke-width="18"></circle>
-            <circle cx="150" cy="150" r="126" fill="none" stroke="#1a4590" stroke-width="2.5"></circle>
-            <circle cx="150" cy="150" r="122" fill="url(#wmBg)"></circle>
-            
+            <circle cx="150" cy="150" r="147" fill="none" stroke="#1a4590" stroke-width="3" />
+            <circle cx="150" cy="150" r="138" fill="none" stroke="url(#wmSilver)" stroke-width="18" />
+            <circle cx="150" cy="150" r="126" fill="none" stroke="#1a4590" stroke-width="2.5" />
+            <circle cx="150" cy="150" r="122" fill="url(#wmBg)" />
+
             <!-- Rays: 11 Long, 10 Short -->
             <g transform="translate(142,155)">
                 <!-- Long Rays -->
-                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a"></polygon>
-                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(20)"></polygon>
-                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(40)"></polygon>
-                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(60)"></polygon>
-                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(80)"></polygon>
-                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(100)"></polygon>
-                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-20)"></polygon>
-                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-40)"></polygon>
-                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-60)"></polygon>
-                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-80)"></polygon>
-                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-100)"></polygon>
+                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" />
+                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(20)" />
+                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(40)" />
+                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(60)" />
+                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(80)" />
+                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(100)" />
+                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-20)" />
+                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-40)" />
+                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-60)" />
+                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-80)" />
+                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-100)" />
                 <!-- Short Rays -->
-                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(10)"></polygon>
-                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(30)"></polygon>
-                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(50)"></polygon>
-                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(70)"></polygon>
-                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(90)"></polygon>
-                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-10)"></polygon>
-                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-30)"></polygon>
-                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-50)"></polygon>
-                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-70)"></polygon>
-                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-90)"></polygon>
+                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(10)" />
+                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(30)" />
+                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(50)" />
+                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(70)" />
+                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(90)" />
+                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-10)" />
+                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-30)" />
+                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-50)" />
+                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-70)" />
+                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-90)" />
             </g>
 
             <!-- Dark blue orb behind crown -->
-            <circle cx="138" cy="138" r="16" fill="#0e2660" stroke="#c8a82a" stroke-width="2.5"></circle>
+            <circle cx="138" cy="138" r="16" fill="#0e2660" stroke="#c8a82a" stroke-width="2.5" />
 
             <!-- Tilted red cross (MOVED BEHIND CROWN) -->
             <g transform="translate(165,130) rotate(28)">
-                <rect x="-10" y="-90" width="20" height="180" rx="3" fill="#fff"></rect>
-                <rect x="-45" y="-38" width="90" height="20" rx="3" fill="#fff"></rect>
-                <rect x="-7" y="-87" width="14" height="174" rx="2" fill="#cc1111"></rect>
-                <rect x="-42" y="-35" width="84" height="14" rx="2" fill="#cc1111"></rect>
+                <rect x="-10" y="-90" width="20" height="180" rx="3" fill="#fff" />
+                <rect x="-45" y="-38" width="90" height="20" rx="3" fill="#fff" />
+                <rect x="-7" y="-87" width="14" height="174" rx="2" fill="#cc1111" />
+                <rect x="-42" y="-35" width="84" height="14" rx="2" fill="#cc1111" />
             </g>
 
             <!-- Crown body -->
             <g transform="translate(148,168)">
-                <polygon points="-62,12 -54,-14 -38,4 -22,-22 -8,0 8,-22 22,4 38,-14 62,12" fill="url(#wmCrown)" stroke="#8a6e18" stroke-width="1.5"></polygon>
-                <ellipse cx="0" cy="14" rx="62" ry="10" fill="url(#wmCrown)" stroke="#8a6e18" stroke-width="1.2"></ellipse>
-                <rect x="-5" y="6" width="10" height="10" rx="2" fill="#cc1111" stroke="#900" stroke-width="1" transform="rotate(45,0,11)"></rect>
-                <rect x="-30" y="7" width="8" height="8" rx="1.5" fill="#cc1111" stroke="#900" stroke-width="0.8" transform="rotate(45,-26,11)"></rect>
-                <rect x="22" y="7" width="8" height="8" rx="1.5" fill="#cc1111" stroke="#900" stroke-width="0.8" transform="rotate(45,26,11)"></rect>
-                <ellipse cx="0" cy="24" rx="55" ry="8" fill="#eef" stroke="#ccc" stroke-width="1"></ellipse>
-                <ellipse cx="0" cy="23" rx="52" ry="6" fill="#fff" opacity="0.6"></ellipse>
+                <polygon points="-62,12 -54,-14 -38,4 -22,-22 -8,0 8,-22 22,4 38,-14 62,12" fill="url(#wmCrown)"
+                    stroke="#8a6e18" stroke-width="1.5" />
+                <ellipse cx="0" cy="14" rx="62" ry="10" fill="url(#wmCrown)" stroke="#8a6e18" stroke-width="1.2" />
+                <rect x="-5" y="6" width="10" height="10" rx="2" fill="#cc1111" stroke="#900" stroke-width="1"
+                    transform="rotate(45,0,11)" />
+                <rect x="-30" y="7" width="8" height="8" rx="1.5" fill="#cc1111" stroke="#900" stroke-width="0.8"
+                    transform="rotate(45,-26,11)" />
+                <rect x="22" y="7" width="8" height="8" rx="1.5" fill="#cc1111" stroke="#900" stroke-width="0.8"
+                    transform="rotate(45,26,11)" />
+                <ellipse cx="0" cy="24" rx="55" ry="8" fill="#eef" stroke="#ccc" stroke-width="1" />
+                <ellipse cx="0" cy="23" rx="52" ry="6" fill="#fff" opacity="0.6" />
             </g>
-            
-            <circle cx="86" cy="154" r="7" fill="#e0d8b0" stroke="#c8a82a" stroke-width="2"></circle>
-            <circle cx="210" cy="154" r="7" fill="#e0d8b0" stroke="#c8a82a" stroke-width="2"></circle>
-            <circle cx="110" cy="172" r="6" fill="#e0d8b0" stroke="#c8a82a" stroke-width="1.5"></circle>
-            <circle cx="186" cy="172" r="6" fill="#e0d8b0" stroke="#c8a82a" stroke-width="1.5"></circle>
+
+            <circle cx="86" cy="154" r="7" fill="#e0d8b0" stroke="#c8a82a" stroke-width="2" />
+            <circle cx="210" cy="154" r="7" fill="#e0d8b0" stroke="#c8a82a" stroke-width="2" />
+            <circle cx="110" cy="172" r="6" fill="#e0d8b0" stroke="#c8a82a" stroke-width="1.5" />
+            <circle cx="186" cy="172" r="6" fill="#e0d8b0" stroke="#c8a82a" stroke-width="1.5" />
         </svg>
         <div class="day-headers">
             <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
         </div>
-        <div class="cal-grid" id="calGrid"><div class="cal-cell empty"></div><div class="cal-cell empty"></div><div class="cal-cell empty"></div><div class="cal-cell empty"></div><div class="cal-cell empty"></div><div class="cal-cell empty"></div><div class="cal-cell sunday past" onclick="openDayModal(1, 1)">
-            <span class="day-num">1</span>
-            
-        </div><div class="cal-cell past" onclick="openDayModal(1, 2)">
-            <span class="day-num">2</span>
-            <div class="event-dots"><span class="event-dot dot-prayer"></span></div>
-        </div><div class="cal-cell past" onclick="openDayModal(1, 3)">
-            <span class="day-num">3</span>
-            
-        </div><div class="cal-cell past" onclick="openDayModal(1, 4)">
-            <span class="day-num">4</span>
-            
-        </div><div class="cal-cell past" onclick="openDayModal(1, 5)">
-            <span class="day-num">5</span>
-            
-        </div><div class="cal-cell past" onclick="openDayModal(1, 6)">
-            <span class="day-num">6</span>
-            
-        </div><div class="cal-cell past" onclick="openDayModal(1, 7)">
-            <span class="day-num">7</span>
-            
-        </div><div class="cal-cell sunday past" onclick="openDayModal(1, 8)">
-            <span class="day-num">8</span>
-            <div class="event-dots"><span class="event-dot dot-general"></span></div>
-        </div><div class="cal-cell past" onclick="openDayModal(1, 9)">
-            <span class="day-num">9</span>
-            <div class="event-dots"><span class="event-dot dot-prayer"></span></div>
-        </div><div class="cal-cell past" onclick="openDayModal(1, 10)">
-            <span class="day-num">10</span>
-            
-        </div><div class="cal-cell past" onclick="openDayModal(1, 11)">
-            <span class="day-num">11</span>
-            
-        </div><div class="cal-cell past" onclick="openDayModal(1, 12)">
-            <span class="day-num">12</span>
-            
-        </div><div class="cal-cell past" onclick="openDayModal(1, 13)">
-            <span class="day-num">13</span>
-            
-        </div><div class="cal-cell today" onclick="openDayModal(1, 14)">
-            <span class="day-num">14</span>
-            <div class="event-dots"><span class="event-dot dot-national"></span></div>
-        </div><div class="cal-cell sunday" onclick="openDayModal(1, 15)">
-            <span class="day-num">15</span>
-            
-        </div><div class="cal-cell" onclick="openDayModal(1, 16)">
-            <span class="day-num">16</span>
-            <div class="event-dots"><span class="event-dot dot-prayer"></span></div>
-        </div><div class="cal-cell" onclick="openDayModal(1, 17)">
-            <span class="day-num">17</span>
-            
-        </div><div class="cal-cell" onclick="openDayModal(1, 18)">
-            <span class="day-num">18</span>
-            
-        </div><div class="cal-cell" onclick="openDayModal(1, 19)">
-            <span class="day-num">19</span>
-            
-        </div><div class="cal-cell" onclick="openDayModal(1, 20)">
-            <span class="day-num">20</span>
-            
-        </div><div class="cal-cell" onclick="openDayModal(1, 21)">
-            <span class="day-num">21</span>
-            <div class="event-dots"><span class="event-dot dot-men"></span></div>
-        </div><div class="cal-cell sunday" onclick="openDayModal(1, 22)">
-            <span class="day-num">22</span>
-            <div class="event-dots"><span class="event-dot dot-ladies"></span><span class="event-dot dot-general"></span></div>
-        </div><div class="cal-cell" onclick="openDayModal(1, 23)">
-            <span class="day-num">23</span>
-            <div class="event-dots"><span class="event-dot dot-prayer"></span></div>
-        </div><div class="cal-cell" onclick="openDayModal(1, 24)">
-            <span class="day-num">24</span>
-            
-        </div><div class="cal-cell" onclick="openDayModal(1, 25)">
-            <span class="day-num">25</span>
-            
-        </div><div class="cal-cell" onclick="openDayModal(1, 26)">
-            <span class="day-num">26</span>
-            
-        </div><div class="cal-cell" onclick="openDayModal(1, 27)">
-            <span class="day-num">27</span>
-            
-        </div><div class="cal-cell" onclick="openDayModal(1, 28)">
-            <span class="day-num">28</span>
-            <div class="event-dots"><span class="event-dot dot-general"></span></div>
-        </div></div>
+        <div class="cal-grid" id="calGrid"></div>
 
         <!-- Legend -->
         <div class="legend">
@@ -701,68 +1291,7 @@
         </div>
 
         <!-- Event list for month -->
-        <div class="month-events" id="monthEvents"><h3>February 2026 — Events</h3><div class="event-item" onclick="showActivityInfo('Prayer and Fasting')">
-            <div class="event-date-badge bg-prayer">MON</div>
-            <div class="event-info">
-                <div class="event-title">Prayer &amp; Fasting (Every Monday)</div>
-                <div class="event-dept">Weekly · Dates: 2, 9, 16, 23</div>
-            </div>
-            <div class="info-icon" title="What is this?">?</div>
-        </div><div class="event-item" onclick="openDayModal(1, 8)">
-            <div class="event-date-badge bg-general">8</div>
-            <div class="event-info">
-                <div class="event-title">Holy Communion</div>
-                <div class="event-dept">Sunday · General</div>
-                <div class="event-service">
-                    🎤 Mr T Ncube · 📖 Pastor C Mudada
-                </div>
-            </div>
-            <div class="info-icon" onclick="event.stopPropagation();showActivityInfo('Holy Communion')">?</div>
-        </div><div class="event-item" onclick="openDayModal(1, 14)">
-            <div class="event-date-badge bg-national">14</div>
-            <div class="event-info">
-                <div class="event-title">National Ladies Leadership Meeting</div>
-                <div class="event-dept">Saturday · National</div>
-                
-            </div>
-            <div class="info-icon" onclick="event.stopPropagation();showActivityInfo('National Ladies Leadership Meeting')">?</div>
-        </div><div class="event-item" onclick="openDayModal(1, 21)">
-            <div class="event-date-badge bg-men">21</div>
-            <div class="event-info">
-                <div class="event-title">Men's Breakfast Meeting</div>
-                <div class="event-dept">Saturday · Men</div>
-                
-            </div>
-            <div class="info-icon" onclick="event.stopPropagation();showActivityInfo('Men\'s Breakfast Meeting')">?</div>
-        </div><div class="event-item" onclick="openDayModal(1, 22)">
-            <div class="event-date-badge bg-ladies">22</div>
-            <div class="event-info">
-                <div class="event-title">Ladies Special Sunday</div>
-                <div class="event-dept">Sunday · Ladies</div>
-                <div class="event-service">
-                    🎤 Mr Dube · 📖 Pastor C Mudada
-                </div>
-            </div>
-            <div class="info-icon" onclick="event.stopPropagation();showActivityInfo('Ladies Special Sunday')">?</div>
-        </div><div class="event-item" onclick="openDayModal(1, 22)">
-            <div class="event-date-badge bg-general">22</div>
-            <div class="event-info">
-                <div class="event-title">Holy Communion</div>
-                <div class="event-dept">Sunday · General</div>
-                <div class="event-service">
-                    🎤 Mr Dube · 📖 Pastor C Mudada
-                </div>
-            </div>
-            <div class="info-icon" onclick="event.stopPropagation();showActivityInfo('Holy Communion')">?</div>
-        </div><div class="event-item" onclick="openDayModal(1, 28)">
-            <div class="event-date-badge bg-general">28</div>
-            <div class="event-info">
-                <div class="event-title">Couples Meeting</div>
-                <div class="event-dept">Saturday · General</div>
-                
-            </div>
-            <div class="info-icon" onclick="event.stopPropagation();showActivityInfo('Couples Meeting')">?</div>
-        </div></div>
+        <div class="month-events" id="monthEvents"></div>
     </div>
 
     <!-- ============ MODAL ============ -->
@@ -772,23 +1301,23 @@
 
     <!-- ============ ADMIN TOGGLE ============ -->
     <button class="admin-toggle" onclick="toggleAdmin()" title="Secretary Panel">⚙</button>
-    <div class="admin-panel active" id="adminPanel">
+    <div class="admin-panel" id="adminPanel">
         <h3>⚙ Secretary Panel</h3>
-        <p style="font-size:0.7rem;color:#888;margin-bottom:10px;">Manage assignments &amp; confirmations</p>
+        <p style="font-size:0.7rem;color:#888;margin-bottom:10px;">Manage assignments & confirmations</p>
         <label style="font-size:0.75rem;font-weight:600;">Quick Actions:</label>
-        <button class="btn btn-edit" style="width:100%;margin:6px 0;" onclick="showAllPendingModal()">View All Pending</button>
-        <button class="btn btn-whatsapp" style="width:100%;margin:6px 0;" onclick="shareMonthCalendar()">📱 Share Month via WhatsApp</button>
-        <button class="btn btn-confirm" style="width:100%;margin:6px 0;" onclick="exportData()">💾 Export Data (Backup)</button>
-        <button class="btn btn-reschedule" style="width:100%;margin:6px 0;" onclick="importDataPrompt()">📂 Import Data (Restore)</button>
-        
-        <hr style="margin:10px 0;border:none;border-top:1px solid #eee;">
-        
-        <label style="font-size:0.75rem;font-weight:600;color:#007bff;">Public Publishing:</label>
-        <button class="btn btn-whatsapp" style="width:100%;margin:6px 0;background:#007bff;" onclick="generatePublicWebsite()">🌍 Generate Website File</button>
-        
+        <button class="btn btn-edit" style="width:100%;margin:6px 0;" onclick="showAllPendingModal()">View All
+            Pending</button>
+        <button class="btn btn-whatsapp" style="width:100%;margin:6px 0;" onclick="shareMonthCalendar()">📱 Share Month
+            via WhatsApp</button>
+        <button class="btn btn-confirm" style="width:100%;margin:6px 0;" onclick="exportData()">💾 Export Data
+            (Backup)</button>
+        <button class="btn btn-reschedule" style="width:100%;margin:6px 0;" onclick="importDataPrompt()">📂 Import Data
+            (Restore)</button>
         <hr style="margin:10px 0;border:none;border-top:1px solid #eee;">
         <label style="font-size:0.75rem;font-weight:600;">Reset:</label>
-        <button class="btn btn-decline" style="width:100%;margin:6px 0;" onclick="if(confirm('Reset ALL assignments and confirmations?')){localStorage.clear();location.reload();}">🔄 Reset All Data</button>
+        <button class="btn btn-decline" style="width:100%;margin:6px 0;"
+            onclick="if(confirm('Reset ALL assignments and confirmations?')){localStorage.clear();location.reload();}">🔄
+            Reset All Data</button>
     </div>
 
     <!-- ============ WHATSAPP SHARE ============ -->
@@ -799,419 +1328,419 @@
     <!-- ============ TOAST ============ -->
     <div class="toast" id="toast"></div>
 
-<script>
-// ============================================================
-//  DATA: MEMBERS
-// ============================================================
-const MEMBERS = [
-    { id: 1,  name: "Pastor C Mudada",             role: "Pastor",             canPreach: true,  canFacilitate: true,  dept: "general",  available: "always" },
-    { id: 2,  name: "Mrs Pastor L Mudada",          role: "Pastor's Wife",      canPreach: true,  canFacilitate: true,  dept: "ladies",   available: "always" },
-    { id: 3,  name: "Sister Makanaka Mudada",       role: "Member",             canPreach: false, canFacilitate: true,  dept: "youth",    available: "always", age: 14 },
-    { id: 4,  name: "Brother Panayote Mudada",      role: "Member",             canPreach: true,  canFacilitate: true,  dept: "youth",    available: "college-breaks", age: 18, note: "At college in Dundalk during term" },
-    { id: 5,  name: "Mr Dube",                      role: "Church Administrator", canPreach: true, canFacilitate: true,  dept: "general",  available: "always" },
-    { id: 6,  name: "Mrs V Dube",                   role: "Member",             canPreach: true,  canFacilitate: true,  dept: "ladies",   available: "always" },
-    { id: 7,  name: "Dube Daughter 1",              role: "Member",             canPreach: true,  canFacilitate: true,  dept: "youth",    available: "always", age: 20 },
-    { id: 8,  name: "Dube Daughter 2",              role: "Member",             canPreach: false, canFacilitate: true,  dept: "youth",    available: "always", age: 16 },
-    { id: 9,  name: "Dube Son",                     role: "Junior Member",      canPreach: false, canFacilitate: false, dept: "sunday-school", available: "always", age: 13 },
-    { id: 10, name: "Sister Eve",                   role: "Member",             canPreach: true,  canFacilitate: true,  dept: "ladies",   available: "always" },
-    { id: 11, name: "Sister Emily",                 role: "Member",             canPreach: true,  canFacilitate: true,  dept: "ladies",   available: "always" },
-    { id: 12, name: "Mr V Gill",                    role: "Youth Leader",       canPreach: true,  canFacilitate: true,  dept: "youth",    available: "always" },
-    { id: 13, name: "Mrs S Gill",                   role: "Sunday School Supt", canPreach: true,  canFacilitate: true,  dept: "sunday-school", available: "always" },
-    { id: 14, name: "Mr T Ncube",                   role: "Secretary",          canPreach: true,  canFacilitate: true,  dept: "general",  available: "always" },
-    { id: 15, name: "Mrs F Ncube",                  role: "Ladies' Secretary",  canPreach: true,  canFacilitate: true,  dept: "ladies",   available: "always" },
-    { id: 16, name: "Sister Thandiwe Ncube",        role: "Member",             canPreach: true,  canFacilitate: true,  dept: "youth",    available: "always", age: 18 },
-    { id: 17, name: "Brother Imanathi Ncube",       role: "Member",             canPreach: false, canFacilitate: true,  dept: "youth",    available: "always", age: 16.5 },
-    { id: 18, name: "Brother Thulani Aviel Ncube",  role: "Junior Member",      canPreach: false, canFacilitate: false, dept: "sunday-school", available: "always", age: 9.5 },
-    { id: 19, name: "Brother Siyanqoba Hadriel Ncube", role: "Junior Member",   canPreach: false, canFacilitate: false, dept: "sunday-school", available: "always", age: 6.5 }
-];
+    <script>
+        // ============================================================
+        //  DATA: MEMBERS
+        // ============================================================
+        const MEMBERS = [
+            { id: 1, name: "Pastor C Mudada", role: "Pastor", canPreach: true, canFacilitate: true, dept: "general", available: "always" },
+            { id: 2, name: "Mrs Pastor L Mudada", role: "Pastor's Wife", canPreach: true, canFacilitate: true, dept: "ladies", available: "always" },
+            { id: 3, name: "Sister Makanaka Mudada", role: "Member", canPreach: false, canFacilitate: true, dept: "youth", available: "always", age: 14 },
+            { id: 4, name: "Brother Panayote Mudada", role: "Member", canPreach: true, canFacilitate: true, dept: "youth", available: "college-breaks", age: 18, note: "At college in Dundalk during term" },
+            { id: 5, name: "Mr Dube", role: "Church Administrator", canPreach: true, canFacilitate: true, dept: "general", available: "always" },
+            { id: 6, name: "Mrs V Dube", role: "Member", canPreach: true, canFacilitate: true, dept: "ladies", available: "always" },
+            { id: 7, name: "Dube Daughter 1", role: "Member", canPreach: true, canFacilitate: true, dept: "youth", available: "always", age: 20 },
+            { id: 8, name: "Dube Daughter 2", role: "Member", canPreach: false, canFacilitate: true, dept: "youth", available: "always", age: 16 },
+            { id: 9, name: "Dube Son", role: "Junior Member", canPreach: false, canFacilitate: false, dept: "sunday-school", available: "always", age: 13 },
+            { id: 10, name: "Sister Eve", role: "Member", canPreach: true, canFacilitate: true, dept: "ladies", available: "always" },
+            { id: 11, name: "Sister Emily", role: "Member", canPreach: true, canFacilitate: true, dept: "ladies", available: "always" },
+            { id: 12, name: "Mr V Gill", role: "Youth Leader", canPreach: true, canFacilitate: true, dept: "youth", available: "always" },
+            { id: 13, name: "Mrs S Gill", role: "Sunday School Supt", canPreach: true, canFacilitate: true, dept: "sunday-school", available: "always" },
+            { id: 14, name: "Mr T Ncube", role: "Secretary", canPreach: true, canFacilitate: true, dept: "general", available: "always" },
+            { id: 15, name: "Mrs F Ncube", role: "Ladies' Secretary", canPreach: true, canFacilitate: true, dept: "ladies", available: "always" },
+            { id: 16, name: "Sister Thandiwe Ncube", role: "Member", canPreach: true, canFacilitate: true, dept: "youth", available: "always", age: 18 },
+            { id: 17, name: "Brother Imanathi Ncube", role: "Member", canPreach: false, canFacilitate: true, dept: "youth", available: "always", age: 16.5 },
+            { id: 18, name: "Brother Thulani Aviel Ncube", role: "Junior Member", canPreach: false, canFacilitate: false, dept: "sunday-school", available: "always", age: 9.5 },
+            { id: 19, name: "Brother Siyanqoba Hadriel Ncube", role: "Junior Member", canPreach: false, canFacilitate: false, dept: "sunday-school", available: "always", age: 6.5 }
+        ];
 
-// ============================================================
-//  DATA: ACTIVITY DESCRIPTIONS (for pop-ups)
-// ============================================================
-const ACTIVITY_INFO = {
-    "Prayer and Fasting": "A dedicated time of seeking God through prayer and abstaining from food. Members are encouraged to participate individually or as families.",
-    "Holy Communion": "The Lord's Supper — a sacred ordinance where believers partake of bread and wine/juice in remembrance of Christ's sacrifice (1 Corinthians 11:23-26).",
-    "Theme Unveiling": "The annual event where the church's spiritual theme and focus for the year is revealed by the Pastor. This theme guides all activities and teachings for the year.",
-    "Leadership Meeting": "A quarterly gathering of church leaders (Pastor, Administrator, Secretary, Department Heads) to discuss church direction, planning, and operational matters.",
-    "National Ladies Leadership Meeting": "A national gathering organised by AFM Ireland for all ladies' leaders across assemblies to strategise, plan, and fellowship.",
-    "Men's Breakfast Meeting": "A fellowship breakfast for men in the church — a time for bonding, mentorship, Bible discussion, and planning men's department activities.",
-    "Couples Meeting": "A special gathering for married couples focusing on strengthening marriages through Biblical teaching, sharing, and prayer.",
-    "Special Sunday Service": "A department-led service where the assigned department (Ladies, Men, Youth, or Sunday School) takes charge of the entire service — from worship to preaching.",
-    "Easter Conference": "A multi-day conference over the Easter weekend featuring special teachings, worship, and celebration of Christ's resurrection.",
-    "National Annual General Conference": "The annual AGM for all AFM Ireland assemblies. Includes reports, elections, national planning, and fellowship.",
-    "National Youth Camp Revival": "A national youth retreat/camp featuring worship, teaching, recreation, and spiritual revival for young people across AFM Ireland.",
-    "National Annual Youth Conference": "The annual national conference specifically for youth across AFM Ireland, featuring workshops, worship, and leadership development.",
-    "National Ladies Conference": "A multi-day national conference for ladies across AFM Ireland, featuring teachings, workshops, and fellowship.",
-    "Ladies Conference Galway": "A ladies' conference hosted locally by the Galway Assembly — a time of teaching, fellowship, and empowerment for women.",
-    "National Ladies Mentoring BBQ": "An informal national mentoring event for ladies combining food, fellowship, and intergenerational mentorship.",
-    "Ladies Special Sunday": "The Ladies Department leads the entire Sunday service — selecting songs, the facilitator/chairperson, the preacher, and managing all aspects of worship.",
-    "Men's Special Sunday": "The Men's Department leads the entire Sunday service — they choose the worship, facilitator, preacher, and run all service elements.",
-    "Youth Special Sunday": "The Youth Department leads the entire Sunday service — a chance for young people to showcase their gifts in worship, preaching, and service leadership.",
-    "Sunday School Special Sunday": "The Sunday School Department leads the service — children and teachers participate in worship, presentations, and ministry, showcasing what they've learned."
-};
-
-// ============================================================
-//  DATA: 2026 EVENTS
-// ============================================================
-function generate2026Events() {
-    const events = [];
-    const addEv = (m, d, title, dept, endDay) => {
-        events.push({ month: m, day: d, endDay: endDay || d, title, dept, key: `${m}-${d}-${title}` });
-    };
-
-    // ---- JANUARY ----
-    addEv(0, 1, "Prayer and Fasting (10 Days)", "general", 10);
-    addEv(0, 4, "Theme Unveiling", "general");
-    addEv(0, 4, "Leadership Meeting", "general");
-    addEv(0, 11, "Holy Communion", "general");
-    addEv(0, 17, "National Ladies Leadership Meeting", "national");
-    addEv(0, 25, "Holy Communion", "general");
-
-    // ---- FEBRUARY ----
-    addEv(1, 8, "Holy Communion", "general");
-    addEv(1, 14, "National Ladies Leadership Meeting", "national");
-    addEv(1, 21, "Men's Breakfast Meeting", "men");
-    addEv(1, 22, "Ladies Special Sunday", "ladies");
-    addEv(1, 22, "Holy Communion", "general");
-    addEv(1, 28, "Couples Meeting", "general");
-
-    // ---- MARCH ----
-    addEv(2, 8, "Holy Communion", "general");
-    addEv(2, 14, "National Ladies Leadership Meeting", "national");
-    addEv(2, 22, "Holy Communion", "general");
-    addEv(2, 29, "Sunday School Special Sunday", "sunday-school");
-    addEv(2, 29, "Holy Communion", "general");
-
-    // ---- APRIL ----
-    addEv(3, 2, "Easter Conference", "general", 5);
-    addEv(3, 5, "Holy Communion", "general");
-    addEv(3, 18, "National Ladies Leadership Meeting", "national");
-    addEv(3, 25, "Leadership Meeting", "general");
-    addEv(3, 26, "Men's Special Sunday", "men");
-    addEv(3, 26, "Holy Communion", "general");
-
-    // ---- MAY ----
-    addEv(4, 2, "National Ladies Leadership Meeting", "national");
-    addEv(4, 10, "Holy Communion", "general");
-    addEv(4, 24, "Ladies Special Sunday", "ladies");
-    addEv(4, 24, "Holy Communion", "general");
-    addEv(4, 31, "Holy Communion", "general");
-
-    // ---- JUNE ----
-    addEv(5, 1, "Prayer and Fasting (10 Days)", "general", 10);
-    addEv(5, 14, "Holy Communion", "general");
-    addEv(5, 27, "National Youth Camp Revival", "national", 28);
-    addEv(5, 28, "Holy Communion", "general");
-
-    // ---- JULY ----
-    addEv(6, 4, "National Ladies Mentoring BBQ", "national");
-    addEv(6, 5, "Holy Communion", "general");
-    addEv(6, 19, "Youth Special Sunday", "youth");
-    addEv(6, 19, "Holy Communion", "general");
-    addEv(6, 20, "Leadership Meeting", "general");
-    addEv(6, 24, "National Annual General Conference", "national", 26);
-    addEv(6, 25, "Men's Breakfast Meeting", "men");
-    addEv(6, 26, "Holy Communion", "general");
-
-    // ---- AUGUST ----
-    addEv(7, 8, "National Ladies Leadership Meeting", "national");
-    addEv(7, 9, "Holy Communion", "general");
-    addEv(7, 23, "Ladies Special Sunday", "ladies");
-    addEv(7, 23, "Holy Communion", "general");
-    addEv(7, 30, "Holy Communion", "general");
-
-    // ---- SEPTEMBER ----
-    addEv(8, 12, "National Ladies Leadership Meeting", "national");
-    addEv(8, 13, "Holy Communion", "general");
-    addEv(8, 25, "National Annual Youth Conference", "national", 27);
-    addEv(8, 27, "Holy Communion", "general");
-
-    // ---- OCTOBER ----
-    addEv(9, 9, "National Ladies Conference", "national", 11);
-    addEv(9, 11, "Holy Communion", "general");
-    addEv(9, 25, "Men's Special Sunday", "men");
-    addEv(9, 25, "Holy Communion", "general");
-    addEv(9, 25, "Leadership Meeting", "general");
-
-    // ---- NOVEMBER ----
-    addEv(10, 1, "Holy Communion", "general");
-    addEv(10, 7, "National Ladies Mentoring BBQ", "national");
-    addEv(10, 8, "Holy Communion", "general");
-    addEv(10, 21, "Ladies Conference Galway", "ladies", 23);
-    addEv(10, 22, "Ladies Special Sunday", "ladies");
-    addEv(10, 22, "Holy Communion", "general");
-    addEv(10, 29, "Holy Communion", "general");
-    addEv(10, 30, "Leadership Meeting", "general");
-
-    // ---- DECEMBER ----
-    addEv(11, 5, "National Ladies Leadership Meeting", "national");
-    addEv(11, 6, "Holy Communion", "general");
-    addEv(11, 13, "Holy Communion", "general");
-    addEv(11, 27, "Youth Special Sunday", "youth");
-    addEv(11, 27, "Holy Communion", "general");
-    addEv(11, 27, "Men's Breakfast Meeting", "men");
-
-    // ---- PRAYER AND FASTING: Every Monday throughout 2026 ----
-    for (let m = 0; m < 12; m++) {
-        const daysInMonth = new Date(2026, m + 1, 0).getDate();
-        for (let d = 1; d <= daysInMonth; d++) {
-            const dow = new Date(2026, m, d).getDay(); // 0=Sun, 1=Mon
-            if (dow === 1) {
-                // Skip if within Jan 1-10 or Jun 1-10 extended periods
-                if ((m === 0 && d <= 10) || (m === 5 && d <= 10)) continue;
-                addEv(m, d, "Prayer and Fasting", "prayer");
-            }
-        }
-    }
-
-    return events;
-}
-
-const EVENTS = generate2026Events();
-
-// ============================================================
-//  DATA: SUNDAY ASSIGNMENTS (Facilitator + Preacher)
-// ============================================================
-function getAllSundays2026() {
-    const sundays = [];
-    for (let m = 0; m < 12; m++) {
-        const daysInMonth = new Date(2026, m + 1, 0).getDate();
-        for (let d = 1; d <= daysInMonth; d++) {
-            if (new Date(2026, m, d).getDay() === 0) {
-                sundays.push({ month: m, day: d });
-            }
-        }
-    }
-    return sundays;
-}
-
-// Check if Panayote is available (college breaks only)
-function isPanayoteAvailable(month) {
-    // Available: mid-Dec to late Jan (Christmas break), June-August (summer)
-    // At college: Feb-May, Sep-Nov
-    return month === 0 || month === 5 || month === 6 || month === 7 || month === 11;
-}
-
-function generateInitialAssignments() {
-    const sundays = getAllSundays2026();
-    const saved = localStorage.getItem('afm_assignments');
-    if (saved) return JSON.parse(saved);
-
-    // Preacher rotation pool (weighted)
-    const preacherPool = [
-        { id: 1, weight: 4 },   // Pastor - most frequent
-        { id: 5, weight: 2 },   // Mr Dube
-        { id: 12, weight: 2 },  // Mr V Gill
-        { id: 14, weight: 2 },  // Mr T Ncube
-        { id: 2, weight: 1.5 }, // Mrs Pastor L Mudada
-        { id: 10, weight: 1 },  // Sister Eve
-        { id: 11, weight: 1 },  // Sister Emily
-        { id: 6, weight: 0.7 }, // Mrs V Dube
-        { id: 13, weight: 0.7 },// Mrs S Gill
-        { id: 15, weight: 0.7 },// Mrs F Ncube
-        { id: 7, weight: 0.5 }, // Dube Daughter 1
-        { id: 16, weight: 0.5 },// Sister Thandiwe Ncube
-        { id: 4, weight: 0.3 }, // Brother Panayote (limited)
-    ];
-
-    // Facilitator rotation pool
-    const facilitatorPool = [
-        { id: 14, weight: 2 },  // Mr T Ncube
-        { id: 5, weight: 2 },   // Mr Dube
-        { id: 12, weight: 2 },  // Mr V Gill
-        { id: 15, weight: 1.5 },// Mrs F Ncube
-        { id: 13, weight: 1.5 },// Mrs S Gill
-        { id: 6, weight: 1 },   // Mrs V Dube
-        { id: 2, weight: 1 },   // Mrs Pastor L Mudada
-        { id: 10, weight: 1 },  // Sister Eve
-        { id: 11, weight: 1 },  // Sister Emily
-        { id: 16, weight: 1 },  // Sister Thandiwe Ncube
-        { id: 7, weight: 0.8 }, // Dube Daughter 1
-        { id: 3, weight: 0.5 }, // Sister Makanaka Mudada (14)
-        { id: 8, weight: 0.5 }, // Dube Daughter 2 (16)
-        { id: 17, weight: 0.5 },// Brother Imanathi Ncube (16.5)
-        { id: 4, weight: 0.3 }, // Brother Panayote (limited)
-    ];
-
-    // Build weighted lists
-    function buildWeightedList(pool) {
-        const list = [];
-        pool.forEach(p => {
-            const count = Math.round(p.weight * 3);
-            for (let i = 0; i < count; i++) list.push(p.id);
-        });
-        return list;
-    }
-
-    const pList = buildWeightedList(preacherPool);
-    const fList = buildWeightedList(facilitatorPool);
-    let pi = 0, fi = 0;
-
-    const assignments = {};
-    sundays.forEach(s => {
-        const key = `${s.month}-${s.day}`;
-        
-        // Get preacher (avoid same person as facilitator, check Panayote availability)
-        let preacherId, facilitatorId;
-        let attempts = 0;
-        
-        do {
-            preacherId = pList[pi % pList.length];
-            pi++;
-            attempts++;
-        } while (preacherId === 4 && !isPanayoteAvailable(s.month) && attempts < 50);
-        
-        attempts = 0;
-        do {
-            facilitatorId = fList[fi % fList.length];
-            fi++;
-            attempts++;
-        } while ((facilitatorId === preacherId || (facilitatorId === 4 && !isPanayoteAvailable(s.month))) && attempts < 50);
-
-        assignments[key] = {
-            preacher: { memberId: preacherId, status: "pending", rescheduleCount: 0 },
-            facilitator: { memberId: facilitatorId, status: "pending", rescheduleCount: 0 }
+        // ============================================================
+        //  DATA: ACTIVITY DESCRIPTIONS (for pop-ups)
+        // ============================================================
+        const ACTIVITY_INFO = {
+            "Prayer and Fasting": "A dedicated time of seeking God through prayer and abstaining from food. Members are encouraged to participate individually or as families.",
+            "Holy Communion": "The Lord's Supper — a sacred ordinance where believers partake of bread and wine/juice in remembrance of Christ's sacrifice (1 Corinthians 11:23-26).",
+            "Theme Unveiling": "The annual event where the church's spiritual theme and focus for the year is revealed by the Pastor. This theme guides all activities and teachings for the year.",
+            "Leadership Meeting": "A quarterly gathering of church leaders (Pastor, Administrator, Secretary, Department Heads) to discuss church direction, planning, and operational matters.",
+            "National Ladies Leadership Meeting": "A national gathering organised by AFM Ireland for all ladies' leaders across assemblies to strategise, plan, and fellowship.",
+            "Men's Breakfast Meeting": "A fellowship breakfast for men in the church — a time for bonding, mentorship, Bible discussion, and planning men's department activities.",
+            "Couples Meeting": "A special gathering for married couples focusing on strengthening marriages through Biblical teaching, sharing, and prayer.",
+            "Special Sunday Service": "A department-led service where the assigned department (Ladies, Men, Youth, or Sunday School) takes charge of the entire service — from worship to preaching.",
+            "Easter Conference": "A multi-day conference over the Easter weekend featuring special teachings, worship, and celebration of Christ's resurrection.",
+            "National Annual General Conference": "The annual AGM for all AFM Ireland assemblies. Includes reports, elections, national planning, and fellowship.",
+            "National Youth Camp Revival": "A national youth retreat/camp featuring worship, teaching, recreation, and spiritual revival for young people across AFM Ireland.",
+            "National Annual Youth Conference": "The annual national conference specifically for youth across AFM Ireland, featuring workshops, worship, and leadership development.",
+            "National Ladies Conference": "A multi-day national conference for ladies across AFM Ireland, featuring teachings, workshops, and fellowship.",
+            "Ladies Conference Galway": "A ladies' conference hosted locally by the Galway Assembly — a time of teaching, fellowship, and empowerment for women.",
+            "National Ladies Mentoring BBQ": "An informal national mentoring event for ladies combining food, fellowship, and intergenerational mentorship.",
+            "Ladies Special Sunday": "The Ladies Department leads the entire Sunday service — selecting songs, the facilitator/chairperson, the preacher, and managing all aspects of worship.",
+            "Men's Special Sunday": "The Men's Department leads the entire Sunday service — they choose the worship, facilitator, preacher, and run all service elements.",
+            "Youth Special Sunday": "The Youth Department leads the entire Sunday service — a chance for young people to showcase their gifts in worship, preaching, and service leadership.",
+            "Sunday School Special Sunday": "The Sunday School Department leads the service — children and teachers participate in worship, presentations, and ministry, showcasing what they've learned."
         };
-    });
 
-    localStorage.setItem('afm_assignments', JSON.stringify(assignments));
-    return assignments;
-}
+        // ============================================================
+        //  DATA: 2026 EVENTS
+        // ============================================================
+        function generate2026Events() {
+            const events = [];
+            const addEv = (m, d, title, dept, endDay) => {
+                events.push({ month: m, day: d, endDay: endDay || d, title, dept, key: `${m}-${d}-${title}` });
+            };
 
-// ============================================================
-//  STATE
-// ============================================================
-let currentMonth = new Date().getMonth();
-let currentYear = 2026;
-let activeFilter = 'all';
-let assignments = generateInitialAssignments();
+            // ---- JANUARY ----
+            addEv(0, 1, "Prayer and Fasting (10 Days)", "general", 10);
+            addEv(0, 4, "Theme Unveiling", "general");
+            addEv(0, 4, "Leadership Meeting", "general");
+            addEv(0, 11, "Holy Communion", "general");
+            addEv(0, 17, "National Ladies Leadership Meeting", "national");
+            addEv(0, 25, "Holy Communion", "general");
 
-const MONTH_NAMES = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-const DAY_NAMES = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-let currentView = 'month';
+            // ---- FEBRUARY ----
+            addEv(1, 8, "Holy Communion", "general");
+            addEv(1, 14, "National Ladies Leadership Meeting", "national");
+            addEv(1, 21, "Men's Breakfast Meeting", "men");
+            addEv(1, 22, "Ladies Special Sunday", "ladies");
+            addEv(1, 22, "Holy Communion", "general");
+            addEv(1, 28, "Couples Meeting", "general");
 
-// Monthly devotional themes and Bible verses
-const MONTHLY_THEMES = [
-    { theme: "New Beginnings", verse: "Behold, I am doing a new thing; now it springs forth, do you not perceive it?", ref: "Isaiah 43:19" },
-    { theme: "Love & Unity", verse: "Above all, clothe yourselves with love, which binds us all together in perfect harmony.", ref: "Colossians 3:14" },
-    { theme: "Faith & Endurance", verse: "Let us run with endurance the race that is set before us, looking unto Jesus.", ref: "Hebrews 12:1-2" },
-    { theme: "Resurrection Power", verse: "I want to know Christ and the power of His resurrection and the fellowship of sharing in His sufferings.", ref: "Philippians 3:10" },
-    { theme: "Growth & Fruitfulness", verse: "But the fruit of the Spirit is love, joy, peace, forbearance, kindness, goodness, faithfulness.", ref: "Galatians 5:22" },
-    { theme: "Prayer & Intercession", verse: "The earnest prayer of a righteous person has great power and produces wonderful results.", ref: "James 5:16" },
-    { theme: "God's Faithfulness", verse: "Great is Thy faithfulness, O God my Father; morning by morning new mercies I see.", ref: "Lamentations 3:23" },
-    { theme: "Strength & Courage", verse: "Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you.", ref: "Joshua 1:9" },
-    { theme: "Wisdom & Understanding", verse: "If any of you lacks wisdom, let him ask God, who gives generously to all without reproach.", ref: "James 1:5" },
-    { theme: "Harvest & Thanksgiving", verse: "Let us not become weary in doing good, for at the proper time we will reap a harvest if we do not give up.", ref: "Galatians 6:9" },
-    { theme: "Hope & Restoration", verse: "For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you.", ref: "Jeremiah 29:11" },
-    { theme: "Joy & Celebration", verse: "For unto us a Child is born, unto us a Son is given, and the government shall be upon His shoulder.", ref: "Isaiah 9:6" }
-];
+            // ---- MARCH ----
+            addEv(2, 8, "Holy Communion", "general");
+            addEv(2, 14, "National Ladies Leadership Meeting", "national");
+            addEv(2, 22, "Holy Communion", "general");
+            addEv(2, 29, "Sunday School Special Sunday", "sunday-school");
+            addEv(2, 29, "Holy Communion", "general");
 
-// ============================================================
-//  RENDER CALENDAR
-// ============================================================
-function renderCalendar() {
-    const grid = document.getElementById('calGrid');
-    const firstDay = new Date(2026, currentMonth, 1).getDay();
-    const daysInMonth = new Date(2026, currentMonth + 1, 0).getDate();
-    const today = new Date();
+            // ---- APRIL ----
+            addEv(3, 2, "Easter Conference", "general", 5);
+            addEv(3, 5, "Holy Communion", "general");
+            addEv(3, 18, "National Ladies Leadership Meeting", "national");
+            addEv(3, 25, "Leadership Meeting", "general");
+            addEv(3, 26, "Men's Special Sunday", "men");
+            addEv(3, 26, "Holy Communion", "general");
 
-    // Adjust first day (Mon=0 format)
-    const startOffset = firstDay === 0 ? 6 : firstDay - 1;
+            // ---- MAY ----
+            addEv(4, 2, "National Ladies Leadership Meeting", "national");
+            addEv(4, 10, "Holy Communion", "general");
+            addEv(4, 24, "Ladies Special Sunday", "ladies");
+            addEv(4, 24, "Holy Communion", "general");
+            addEv(4, 31, "Holy Communion", "general");
 
-    let html = '';
-    // Empty cells before month starts
-    for (let i = 0; i < startOffset; i++) {
-        html += '<div class="cal-cell empty"></div>';
-    }
+            // ---- JUNE ----
+            addEv(5, 1, "Prayer and Fasting (10 Days)", "general", 10);
+            addEv(5, 14, "Holy Communion", "general");
+            addEv(5, 27, "National Youth Camp Revival", "national", 28);
+            addEv(5, 28, "Holy Communion", "general");
 
-    for (let d = 1; d <= daysInMonth; d++) {
-        const date = new Date(2026, currentMonth, d);
-        const isSunday = date.getDay() === 0;
-        const isToday = date.toDateString() === today.toDateString();
-        const isPast = date < new Date(today.getFullYear(), today.getMonth(), today.getDate());
+            // ---- JULY ----
+            addEv(6, 4, "National Ladies Mentoring BBQ", "national");
+            addEv(6, 5, "Holy Communion", "general");
+            addEv(6, 19, "Youth Special Sunday", "youth");
+            addEv(6, 19, "Holy Communion", "general");
+            addEv(6, 20, "Leadership Meeting", "general");
+            addEv(6, 24, "National Annual General Conference", "national", 26);
+            addEv(6, 25, "Men's Breakfast Meeting", "men");
+            addEv(6, 26, "Holy Communion", "general");
 
-        const dayEvents = getEventsForDate(currentMonth, d);
-        const filteredEvents = filterEvents(dayEvents);
+            // ---- AUGUST ----
+            addEv(7, 8, "National Ladies Leadership Meeting", "national");
+            addEv(7, 9, "Holy Communion", "general");
+            addEv(7, 23, "Ladies Special Sunday", "ladies");
+            addEv(7, 23, "Holy Communion", "general");
+            addEv(7, 30, "Holy Communion", "general");
 
-        let classes = 'cal-cell';
-        if (isSunday) classes += ' sunday';
-        if (isToday) classes += ' today';
-        if (isPast && currentYear === 2026) classes += ' past';
+            // ---- SEPTEMBER ----
+            addEv(8, 12, "National Ladies Leadership Meeting", "national");
+            addEv(8, 13, "Holy Communion", "general");
+            addEv(8, 25, "National Annual Youth Conference", "national", 27);
+            addEv(8, 27, "Holy Communion", "general");
 
-        let dots = '';
-        if (filteredEvents.length > 0) {
-            dots = '<div class="event-dots">';
-            const deptsSeen = new Set();
-            filteredEvents.forEach(ev => {
-                const deptClass = ev.dept === 'prayer' ? 'dot-prayer' : `dot-${ev.dept}`;
-                if (!deptsSeen.has(deptClass)) {
-                    dots += `<span class="event-dot ${deptClass}"></span>`;
-                    deptsSeen.add(deptClass);
+            // ---- OCTOBER ----
+            addEv(9, 9, "National Ladies Conference", "national", 11);
+            addEv(9, 11, "Holy Communion", "general");
+            addEv(9, 25, "Men's Special Sunday", "men");
+            addEv(9, 25, "Holy Communion", "general");
+            addEv(9, 25, "Leadership Meeting", "general");
+
+            // ---- NOVEMBER ----
+            addEv(10, 1, "Holy Communion", "general");
+            addEv(10, 7, "National Ladies Mentoring BBQ", "national");
+            addEv(10, 8, "Holy Communion", "general");
+            addEv(10, 21, "Ladies Conference Galway", "ladies", 23);
+            addEv(10, 22, "Ladies Special Sunday", "ladies");
+            addEv(10, 22, "Holy Communion", "general");
+            addEv(10, 29, "Holy Communion", "general");
+            addEv(10, 30, "Leadership Meeting", "general");
+
+            // ---- DECEMBER ----
+            addEv(11, 5, "National Ladies Leadership Meeting", "national");
+            addEv(11, 6, "Holy Communion", "general");
+            addEv(11, 13, "Holy Communion", "general");
+            addEv(11, 27, "Youth Special Sunday", "youth");
+            addEv(11, 27, "Holy Communion", "general");
+            addEv(11, 27, "Men's Breakfast Meeting", "men");
+
+            // ---- PRAYER AND FASTING: Every Monday throughout 2026 ----
+            for (let m = 0; m < 12; m++) {
+                const daysInMonth = new Date(2026, m + 1, 0).getDate();
+                for (let d = 1; d <= daysInMonth; d++) {
+                    const dow = new Date(2026, m, d).getDay(); // 0=Sun, 1=Mon
+                    if (dow === 1) {
+                        // Skip if within Jan 1-10 or Jun 1-10 extended periods
+                        if ((m === 0 && d <= 10) || (m === 5 && d <= 10)) continue;
+                        addEv(m, d, "Prayer and Fasting", "prayer");
+                    }
                 }
-            });
-            dots += '</div>';
+            }
+
+            return events;
         }
 
-        html += `<div class="${classes}" onclick="openDayModal(${currentMonth}, ${d})">
+        const EVENTS = generate2026Events();
+
+        // ============================================================
+        //  DATA: SUNDAY ASSIGNMENTS (Facilitator + Preacher)
+        // ============================================================
+        function getAllSundays2026() {
+            const sundays = [];
+            for (let m = 0; m < 12; m++) {
+                const daysInMonth = new Date(2026, m + 1, 0).getDate();
+                for (let d = 1; d <= daysInMonth; d++) {
+                    if (new Date(2026, m, d).getDay() === 0) {
+                        sundays.push({ month: m, day: d });
+                    }
+                }
+            }
+            return sundays;
+        }
+
+        // Check if Panayote is available (college breaks only)
+        function isPanayoteAvailable(month) {
+            // Available: mid-Dec to late Jan (Christmas break), June-August (summer)
+            // At college: Feb-May, Sep-Nov
+            return month === 0 || month === 5 || month === 6 || month === 7 || month === 11;
+        }
+
+        function generateInitialAssignments() {
+            const sundays = getAllSundays2026();
+            const saved = localStorage.getItem('afm_assignments');
+            if (saved) return JSON.parse(saved);
+
+            // Preacher rotation pool (weighted)
+            const preacherPool = [
+                { id: 1, weight: 4 },   // Pastor - most frequent
+                { id: 5, weight: 2 },   // Mr Dube
+                { id: 12, weight: 2 },  // Mr V Gill
+                { id: 14, weight: 2 },  // Mr T Ncube
+                { id: 2, weight: 1.5 }, // Mrs Pastor L Mudada
+                { id: 10, weight: 1 },  // Sister Eve
+                { id: 11, weight: 1 },  // Sister Emily
+                { id: 6, weight: 0.7 }, // Mrs V Dube
+                { id: 13, weight: 0.7 },// Mrs S Gill
+                { id: 15, weight: 0.7 },// Mrs F Ncube
+                { id: 7, weight: 0.5 }, // Dube Daughter 1
+                { id: 16, weight: 0.5 },// Sister Thandiwe Ncube
+                { id: 4, weight: 0.3 }, // Brother Panayote (limited)
+            ];
+
+            // Facilitator rotation pool
+            const facilitatorPool = [
+                { id: 14, weight: 2 },  // Mr T Ncube
+                { id: 5, weight: 2 },   // Mr Dube
+                { id: 12, weight: 2 },  // Mr V Gill
+                { id: 15, weight: 1.5 },// Mrs F Ncube
+                { id: 13, weight: 1.5 },// Mrs S Gill
+                { id: 6, weight: 1 },   // Mrs V Dube
+                { id: 2, weight: 1 },   // Mrs Pastor L Mudada
+                { id: 10, weight: 1 },  // Sister Eve
+                { id: 11, weight: 1 },  // Sister Emily
+                { id: 16, weight: 1 },  // Sister Thandiwe Ncube
+                { id: 7, weight: 0.8 }, // Dube Daughter 1
+                { id: 3, weight: 0.5 }, // Sister Makanaka Mudada (14)
+                { id: 8, weight: 0.5 }, // Dube Daughter 2 (16)
+                { id: 17, weight: 0.5 },// Brother Imanathi Ncube (16.5)
+                { id: 4, weight: 0.3 }, // Brother Panayote (limited)
+            ];
+
+            // Build weighted lists
+            function buildWeightedList(pool) {
+                const list = [];
+                pool.forEach(p => {
+                    const count = Math.round(p.weight * 3);
+                    for (let i = 0; i < count; i++) list.push(p.id);
+                });
+                return list;
+            }
+
+            const pList = buildWeightedList(preacherPool);
+            const fList = buildWeightedList(facilitatorPool);
+            let pi = 0, fi = 0;
+
+            const assignments = {};
+            sundays.forEach(s => {
+                const key = `${s.month}-${s.day}`;
+
+                // Get preacher (avoid same person as facilitator, check Panayote availability)
+                let preacherId, facilitatorId;
+                let attempts = 0;
+
+                do {
+                    preacherId = pList[pi % pList.length];
+                    pi++;
+                    attempts++;
+                } while (preacherId === 4 && !isPanayoteAvailable(s.month) && attempts < 50);
+
+                attempts = 0;
+                do {
+                    facilitatorId = fList[fi % fList.length];
+                    fi++;
+                    attempts++;
+                } while ((facilitatorId === preacherId || (facilitatorId === 4 && !isPanayoteAvailable(s.month))) && attempts < 50);
+
+                assignments[key] = {
+                    preacher: { memberId: preacherId, status: "pending", rescheduleCount: 0 },
+                    facilitator: { memberId: facilitatorId, status: "pending", rescheduleCount: 0 }
+                };
+            });
+
+            localStorage.setItem('afm_assignments', JSON.stringify(assignments));
+            return assignments;
+        }
+
+        // ============================================================
+        //  STATE
+        // ============================================================
+        let currentMonth = new Date().getMonth();
+        let currentYear = 2026;
+        let activeFilter = 'all';
+        let assignments = generateInitialAssignments();
+
+        const MONTH_NAMES = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        const DAY_NAMES = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        let currentView = 'month';
+
+        // Monthly devotional themes and Bible verses
+        const MONTHLY_THEMES = [
+            { theme: "New Beginnings", verse: "Behold, I am doing a new thing; now it springs forth, do you not perceive it?", ref: "Isaiah 43:19" },
+            { theme: "Love & Unity", verse: "Above all, clothe yourselves with love, which binds us all together in perfect harmony.", ref: "Colossians 3:14" },
+            { theme: "Faith & Endurance", verse: "Let us run with endurance the race that is set before us, looking unto Jesus.", ref: "Hebrews 12:1-2" },
+            { theme: "Resurrection Power", verse: "I want to know Christ and the power of His resurrection and the fellowship of sharing in His sufferings.", ref: "Philippians 3:10" },
+            { theme: "Growth & Fruitfulness", verse: "But the fruit of the Spirit is love, joy, peace, forbearance, kindness, goodness, faithfulness.", ref: "Galatians 5:22" },
+            { theme: "Prayer & Intercession", verse: "The earnest prayer of a righteous person has great power and produces wonderful results.", ref: "James 5:16" },
+            { theme: "God's Faithfulness", verse: "Great is Thy faithfulness, O God my Father; morning by morning new mercies I see.", ref: "Lamentations 3:23" },
+            { theme: "Strength & Courage", verse: "Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you.", ref: "Joshua 1:9" },
+            { theme: "Wisdom & Understanding", verse: "If any of you lacks wisdom, let him ask God, who gives generously to all without reproach.", ref: "James 1:5" },
+            { theme: "Harvest & Thanksgiving", verse: "Let us not become weary in doing good, for at the proper time we will reap a harvest if we do not give up.", ref: "Galatians 6:9" },
+            { theme: "Hope & Restoration", verse: "For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you.", ref: "Jeremiah 29:11" },
+            { theme: "Joy & Celebration", verse: "For unto us a Child is born, unto us a Son is given, and the government shall be upon His shoulder.", ref: "Isaiah 9:6" }
+        ];
+
+        // ============================================================
+        //  RENDER CALENDAR
+        // ============================================================
+        function renderCalendar() {
+            const grid = document.getElementById('calGrid');
+            const firstDay = new Date(2026, currentMonth, 1).getDay();
+            const daysInMonth = new Date(2026, currentMonth + 1, 0).getDate();
+            const today = new Date();
+
+            // Adjust first day (Mon=0 format)
+            const startOffset = firstDay === 0 ? 6 : firstDay - 1;
+
+            let html = '';
+            // Empty cells before month starts
+            for (let i = 0; i < startOffset; i++) {
+                html += '<div class="cal-cell empty"></div>';
+            }
+
+            for (let d = 1; d <= daysInMonth; d++) {
+                const date = new Date(2026, currentMonth, d);
+                const isSunday = date.getDay() === 0;
+                const isToday = date.toDateString() === today.toDateString();
+                const isPast = date < new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+                const dayEvents = getEventsForDate(currentMonth, d);
+                const filteredEvents = filterEvents(dayEvents);
+
+                let classes = 'cal-cell';
+                if (isSunday) classes += ' sunday';
+                if (isToday) classes += ' today';
+                if (isPast && currentYear === 2026) classes += ' past';
+
+                let dots = '';
+                if (filteredEvents.length > 0) {
+                    dots = '<div class="event-dots">';
+                    const deptsSeen = new Set();
+                    filteredEvents.forEach(ev => {
+                        const deptClass = ev.dept === 'prayer' ? 'dot-prayer' : `dot-${ev.dept}`;
+                        if (!deptsSeen.has(deptClass)) {
+                            dots += `<span class="event-dot ${deptClass}"></span>`;
+                            deptsSeen.add(deptClass);
+                        }
+                    });
+                    dots += '</div>';
+                }
+
+                html += `<div class="${classes}" onclick="openDayModal(${currentMonth}, ${d})">
             <span class="day-num">${d}</span>
             ${dots}
         </div>`;
-    }
+            }
 
-    grid.innerHTML = html;
-    document.getElementById('monthYear').textContent = `${MONTH_NAMES[currentMonth]} 2026`;
-    renderMonthVerse();
-    renderEventList();
-}
+            grid.innerHTML = html;
+            document.getElementById('monthYear').textContent = `${MONTH_NAMES[currentMonth]} 2026`;
+            renderMonthVerse();
+            renderEventList();
+        }
 
-function renderMonthVerse() {
-    const container = document.getElementById('monthVerse');
-    const t = MONTHLY_THEMES[currentMonth];
-    container.innerHTML = `
+        function renderMonthVerse() {
+            const container = document.getElementById('monthVerse');
+            const t = MONTHLY_THEMES[currentMonth];
+            container.innerHTML = `
         <div class="theme-label">${t.theme}</div>
         <div class="verse-text">"${t.verse}"</div>
         <div class="verse-ref">— ${t.ref}</div>
     `;
-}
-
-function getEventsForDate(month, day) {
-    return EVENTS.filter(ev => {
-        if (ev.month !== month) return false;
-        if (ev.endDay && ev.endDay !== ev.day) {
-            return day >= ev.day && day <= ev.endDay;
         }
-        return ev.day === day;
-    });
-}
 
-function filterEvents(events) {
-    if (activeFilter === 'all') return events;
-    return events.filter(ev => ev.dept === activeFilter);
-}
-
-function renderEventList() {
-    const container = document.getElementById('monthEvents');
-    const monthEvents = EVENTS.filter(ev => ev.month === currentMonth);
-    const filtered = filterEvents(monthEvents);
-
-    // Sort by day
-    filtered.sort((a, b) => a.day - b.day);
-
-    // Remove duplicate prayer entries for cleaner display, group them
-    const displayed = [];
-    const prayerDays = [];
-    filtered.forEach(ev => {
-        if (ev.title === "Prayer and Fasting" && !ev.title.includes("10 Days")) {
-            prayerDays.push(ev.day);
-        } else {
-            displayed.push(ev);
+        function getEventsForDate(month, day) {
+            return EVENTS.filter(ev => {
+                if (ev.month !== month) return false;
+                if (ev.endDay && ev.endDay !== ev.day) {
+                    return day >= ev.day && day <= ev.endDay;
+                }
+                return ev.day === day;
+            });
         }
-    });
 
-    let html = `<h3>${MONTH_NAMES[currentMonth]} 2026 — Events</h3>`;
+        function filterEvents(events) {
+            if (activeFilter === 'all') return events;
+            return events.filter(ev => ev.dept === activeFilter);
+        }
 
-    if (prayerDays.length > 0 && (activeFilter === 'all' || activeFilter === 'prayer')) {
-        html += `<div class="event-item" onclick="showActivityInfo('Prayer and Fasting')">
+        function renderEventList() {
+            const container = document.getElementById('monthEvents');
+            const monthEvents = EVENTS.filter(ev => ev.month === currentMonth);
+            const filtered = filterEvents(monthEvents);
+
+            // Sort by day
+            filtered.sort((a, b) => a.day - b.day);
+
+            // Remove duplicate prayer entries for cleaner display, group them
+            const displayed = [];
+            const prayerDays = [];
+            filtered.forEach(ev => {
+                if (ev.title === "Prayer and Fasting" && !ev.title.includes("10 Days")) {
+                    prayerDays.push(ev.day);
+                } else {
+                    displayed.push(ev);
+                }
+            });
+
+            let html = `<h3>${MONTH_NAMES[currentMonth]} 2026 — Events</h3>`;
+
+            if (prayerDays.length > 0 && (activeFilter === 'all' || activeFilter === 'prayer')) {
+                html += `<div class="event-item" onclick="showActivityInfo('Prayer and Fasting')">
             <div class="event-date-badge bg-prayer">MON</div>
             <div class="event-info">
                 <div class="event-title">Prayer & Fasting (Every Monday)</div>
@@ -1219,31 +1748,31 @@ function renderEventList() {
             </div>
             <div class="info-icon" title="What is this?">?</div>
         </div>`;
-    }
+            }
 
-    displayed.forEach(ev => {
-        const bgClass = ev.dept === 'prayer' ? 'bg-prayer' : `bg-${ev.dept}`;
-        const dateLabel = ev.endDay && ev.endDay !== ev.day ? `${ev.day}-${ev.endDay}` : ev.day;
-        const dow = new Date(2026, ev.month, ev.day).getDay();
-        const isSunday = dow === 0;
+            displayed.forEach(ev => {
+                const bgClass = ev.dept === 'prayer' ? 'bg-prayer' : `bg-${ev.dept}`;
+                const dateLabel = ev.endDay && ev.endDay !== ev.day ? `${ev.day}-${ev.endDay}` : ev.day;
+                const dow = new Date(2026, ev.month, ev.day).getDay();
+                const isSunday = dow === 0;
 
-        // Check for Sunday assignment
-        let serviceHtml = '';
-        if (isSunday && ev.title !== "Prayer and Fasting") {
-            const aKey = `${ev.month}-${ev.day}`;
-            const assign = assignments[aKey];
-            if (assign) {
-                const preacher = MEMBERS.find(m => m.id === assign.preacher.memberId);
-                const facilitator = MEMBERS.find(m => m.id === assign.facilitator.memberId);
-                serviceHtml = `<div class="event-service">
+                // Check for Sunday assignment
+                let serviceHtml = '';
+                if (isSunday && ev.title !== "Prayer and Fasting") {
+                    const aKey = `${ev.month}-${ev.day}`;
+                    const assign = assignments[aKey];
+                    if (assign) {
+                        const preacher = MEMBERS.find(m => m.id === assign.preacher.memberId);
+                        const facilitator = MEMBERS.find(m => m.id === assign.facilitator.memberId);
+                        serviceHtml = `<div class="event-service">
                     🎤 ${facilitator ? facilitator.name : 'TBA'} · 📖 ${preacher ? preacher.name : 'TBA'}
                 </div>`;
-            }
-        }
+                    }
+                }
 
-        const deptLabel = ev.dept === 'prayer' ? 'Prayer' : (ev.dept === 'sunday-school' ? 'Sunday School' : ev.dept.charAt(0).toUpperCase() + ev.dept.slice(1));
+                const deptLabel = ev.dept === 'prayer' ? 'Prayer' : (ev.dept === 'sunday-school' ? 'Sunday School' : ev.dept.charAt(0).toUpperCase() + ev.dept.slice(1));
 
-        html += `<div class="event-item" onclick="openDayModal(${ev.month}, ${ev.day})">
+                html += `<div class="event-item" onclick="openDayModal(${ev.month}, ${ev.day})">
             <div class="event-date-badge ${bgClass}">${dateLabel}</div>
             <div class="event-info">
                 <div class="event-title">${ev.title}</div>
@@ -1252,737 +1781,734 @@ function renderEventList() {
             </div>
             ${ACTIVITY_INFO[ev.title] || ACTIVITY_INFO[ev.title.replace(/ \(.*\)/, '')] ? '<div class="info-icon" onclick="event.stopPropagation();showActivityInfo(\'' + ev.title.replace(/'/g, "\\'") + '\')">?</div>' : ''}
         </div>`;
-    });
-
-    if (displayed.length === 0 && prayerDays.length === 0) {
-        html += '<p style="text-align:center;color:#aaa;font-size:0.8rem;padding:20px;">No events for this filter.</p>';
-    }
-
-    container.innerHTML = html;
-}
-
-// ============================================================
-//  NAVIGATION & FILTERS
-// ============================================================
-function changeMonth(dir) {
-    currentMonth += dir;
-    if (currentMonth < 0) currentMonth = 0;
-    if (currentMonth > 11) currentMonth = 11;
-    if (currentView === 'month') {
-        renderCalendar();
-    } else {
-        renderMultiMonth();
-    }
-}
-
-// ============================================================
-//  VIEW MODE SWITCHING
-// ============================================================
-function setView(view) {
-    currentView = view;
-    document.querySelectorAll('.view-tab').forEach(t => t.classList.toggle('active', t.dataset.view === view));
-    
-    const single = document.getElementById('singleMonthContainer');
-    const multi = document.getElementById('multiMonthContainer');
-    const verse = document.getElementById('monthVerse');
-    const nav = document.querySelector('.nav');
-    const filters = document.querySelector('.filters');
-    
-    if (view === 'month') {
-        single.style.display = '';
-        multi.style.display = 'none';
-        verse.style.display = '';
-        nav.style.display = '';
-        filters.style.display = '';
-        renderCalendar();
-    } else {
-        single.style.display = 'none';
-        multi.style.display = 'block';
-        verse.style.display = 'none';
-        nav.style.display = 'none';
-        filters.style.display = 'none';
-        renderMultiMonth();
-    }
-}
-
-function renderMultiMonth() {
-    const container = document.getElementById('multiMonthContainer');
-    let months = [];
-    
-    if (currentView === 'quarter') {
-        // Current quarter (3 months)
-        const qStart = Math.floor(currentMonth / 3) * 3;
-        months = [qStart, qStart + 1, qStart + 2];
-    } else if (currentView === 'half') {
-        const hStart = currentMonth < 6 ? 0 : 6;
-        months = [hStart, hStart+1, hStart+2, hStart+3, hStart+4, hStart+5];
-    } else {
-        months = [0,1,2,3,4,5,6,7,8,9,10,11];
-    }
-    
-    let html = `<div class="multi-month-grid ${currentView}">`;
-    const today = new Date();
-    
-    months.forEach(m => {
-        const daysInMonth = new Date(2026, m + 1, 0).getDate();
-        const firstDay = new Date(2026, m, 1).getDay();
-        const startOffset = firstDay === 0 ? 6 : firstDay - 1;
-        const t = MONTHLY_THEMES[m];
-        const monthEvents = EVENTS.filter(ev => ev.month === m && ev.title !== 'Prayer and Fasting');
-        
-        html += `<div class="mini-month" onclick="currentMonth=${m};setView('month');">`;
-        html += `<h4>${MONTH_NAMES[m]}</h4>`;
-        html += `<div style="text-align:center;font-style:italic;font-size:0.55rem;color:#999;margin-bottom:6px;font-family:Georgia,serif;">"${t.verse.substring(0,60)}..." — ${t.ref}</div>`;
-        html += '<div class="mini-cal-grid">';
-        html += '<span class="mini-hdr">M</span><span class="mini-hdr">T</span><span class="mini-hdr">W</span><span class="mini-hdr">T</span><span class="mini-hdr">F</span><span class="mini-hdr">S</span><span class="mini-hdr" style="color:#c62828">S</span>';
-        
-        for (let i = 0; i < startOffset; i++) html += '<span class="mini-empty"></span>';
-        
-        for (let d = 1; d <= daysInMonth; d++) {
-            const dt = new Date(2026, m, d);
-            const isSun = dt.getDay() === 0;
-            const isToday = dt.toDateString() === today.toDateString();
-            const hasEvent = monthEvents.some(ev => d >= ev.day && d <= (ev.endDay || ev.day));
-            let cls = 'mini-day';
-            if (isSun) cls += ' mini-sunday';
-            if (isToday) cls += ' mini-today';
-            if (hasEvent) cls += ' mini-has-event';
-            html += `<span class="${cls}">${d}</span>`;
-        }
-        html += '</div>';
-        
-        // Key events summary
-        const keyEvents = monthEvents.filter(ev => ev.title !== 'Prayer and Fasting').slice(0, 5);
-        if (keyEvents.length > 0) {
-            html += '<div class="mini-events">';
-            keyEvents.forEach(ev => {
-                const dateLabel = ev.endDay && ev.endDay !== ev.day ? `${ev.day}-${ev.endDay}` : ev.day;
-                html += `<div class="mini-ev">📌 ${dateLabel}: ${ev.title}</div>`;
             });
-            html += '</div>';
+
+            if (displayed.length === 0 && prayerDays.length === 0) {
+                html += '<p style="text-align:center;color:#aaa;font-size:0.8rem;padding:20px;">No events for this filter.</p>';
+            }
+
+            container.innerHTML = html;
         }
-        html += '</div>';
-    });
-    
-    html += '</div>';
-    container.innerHTML = html;
-}
 
-function setFilter(dept) {
-    activeFilter = dept;
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.dept === dept);
-    });
-    renderCalendar();
-}
+        // ============================================================
+        //  NAVIGATION & FILTERS
+        // ============================================================
+        function changeMonth(dir) {
+            currentMonth += dir;
+            if (currentMonth < 0) currentMonth = 0;
+            if (currentMonth > 11) currentMonth = 11;
+            if (currentView === 'month') {
+                renderCalendar();
+            } else {
+                renderMultiMonth();
+            }
+        }
 
-// ============================================================
-//  MODAL: Day Details
-// ============================================================
-function openDayModal(month, day) {
-    const date = new Date(2026, month, day);
-    const dayEvents = getEventsForDate(month, day);
-    const isSunday = date.getDay() === 0;
-    const aKey = `${month}-${day}`;
+        // ============================================================
+        //  VIEW MODE SWITCHING
+        // ============================================================
+        function setView(view) {
+            currentView = view;
+            document.querySelectorAll('.view-tab').forEach(t => t.classList.toggle('active', t.dataset.view === view));
 
-    let html = '<div class="modal-handle"></div>';
-    html += `<h2>${DAY_NAMES[date.getDay()]}, ${day} ${MONTH_NAMES[month]} 2026</h2>`;
+            const single = document.getElementById('singleMonthContainer');
+            const multi = document.getElementById('multiMonthContainer');
+            const verse = document.getElementById('monthVerse');
+            const nav = document.querySelector('.nav');
+            const filters = document.querySelector('.filters');
 
-    // Sunday Service Details
-    if (isSunday) {
-        const assign = assignments[aKey];
-        html += '<div class="section-label">Sunday Service — 10:00 AM</div>';
+            if (view === 'month') {
+                single.style.display = '';
+                multi.style.display = 'none';
+                verse.style.display = '';
+                nav.style.display = '';
+                filters.style.display = '';
+                renderCalendar();
+            } else {
+                single.style.display = 'none';
+                multi.style.display = 'block';
+                verse.style.display = 'none';
+                nav.style.display = 'none';
+                filters.style.display = 'none';
+                renderMultiMonth();
+            }
+        }
 
-        if (assign) {
-            const preacher = MEMBERS.find(m => m.id === assign.preacher.memberId);
-            const facilitator = MEMBERS.find(m => m.id === assign.facilitator.memberId);
+        function renderMultiMonth() {
+            const container = document.getElementById('multiMonthContainer');
+            let months = [];
 
-            html += `<div class="detail-card">
+            if (currentView === 'quarter') {
+                // Current quarter (3 months)
+                const qStart = Math.floor(currentMonth / 3) * 3;
+                months = [qStart, qStart + 1, qStart + 2];
+            } else if (currentView === 'half') {
+                const hStart = currentMonth < 6 ? 0 : 6;
+                months = [hStart, hStart + 1, hStart + 2, hStart + 3, hStart + 4, hStart + 5];
+            } else {
+                months = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+            }
+
+            let html = `<div class="multi-month-grid ${currentView}">`;
+            const today = new Date();
+
+            months.forEach(m => {
+                const daysInMonth = new Date(2026, m + 1, 0).getDate();
+                const firstDay = new Date(2026, m, 1).getDay();
+                const startOffset = firstDay === 0 ? 6 : firstDay - 1;
+                const t = MONTHLY_THEMES[m];
+                const monthEvents = EVENTS.filter(ev => ev.month === m && ev.title !== 'Prayer and Fasting');
+
+                html += `<div class="mini-month" onclick="currentMonth=${m};setView('month');">`;
+                html += `<h4>${MONTH_NAMES[m]}</h4>`;
+                html += `<div style="text-align:center;font-style:italic;font-size:0.55rem;color:#999;margin-bottom:6px;font-family:Georgia,serif;">"${t.verse.substring(0, 60)}..." — ${t.ref}</div>`;
+                html += '<div class="mini-cal-grid">';
+                html += '<span class="mini-hdr">M</span><span class="mini-hdr">T</span><span class="mini-hdr">W</span><span class="mini-hdr">T</span><span class="mini-hdr">F</span><span class="mini-hdr">S</span><span class="mini-hdr" style="color:#c62828">S</span>';
+
+                for (let i = 0; i < startOffset; i++) html += '<span class="mini-empty"></span>';
+
+                for (let d = 1; d <= daysInMonth; d++) {
+                    const dt = new Date(2026, m, d);
+                    const isSun = dt.getDay() === 0;
+                    const isToday = dt.toDateString() === today.toDateString();
+                    const hasEvent = monthEvents.some(ev => d >= ev.day && d <= (ev.endDay || ev.day));
+                    let cls = 'mini-day';
+                    if (isSun) cls += ' mini-sunday';
+                    if (isToday) cls += ' mini-today';
+                    if (hasEvent) cls += ' mini-has-event';
+                    html += `<span class="${cls}">${d}</span>`;
+                }
+                html += '</div>';
+
+                // Key events summary
+                const keyEvents = monthEvents.filter(ev => ev.title !== 'Prayer and Fasting').slice(0, 5);
+                if (keyEvents.length > 0) {
+                    html += '<div class="mini-events">';
+                    keyEvents.forEach(ev => {
+                        const dateLabel = ev.endDay && ev.endDay !== ev.day ? `${ev.day}-${ev.endDay}` : ev.day;
+                        html += `<div class="mini-ev">📌 ${dateLabel}: ${ev.title}</div>`;
+                    });
+                    html += '</div>';
+                }
+                html += '</div>';
+            });
+
+            html += '</div>';
+            container.innerHTML = html;
+        }
+
+        function setFilter(dept) {
+            activeFilter = dept;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.dept === dept);
+            });
+            renderCalendar();
+        }
+
+        // ============================================================
+        //  MODAL: Day Details
+        // ============================================================
+        function openDayModal(month, day) {
+            const date = new Date(2026, month, day);
+            const dayEvents = getEventsForDate(month, day);
+            const isSunday = date.getDay() === 0;
+            const aKey = `${month}-${day}`;
+
+            let html = '<div class="modal-handle"></div>';
+            html += `<h2>${DAY_NAMES[date.getDay()]}, ${day} ${MONTH_NAMES[month]} 2026</h2>`;
+
+            // Sunday Service Details
+            if (isSunday) {
+                const assign = assignments[aKey];
+                html += '<div class="section-label">Sunday Service — 10:00 AM</div>';
+
+                if (assign) {
+                    const preacher = MEMBERS.find(m => m.id === assign.preacher.memberId);
+                    const facilitator = MEMBERS.find(m => m.id === assign.facilitator.memberId);
+
+                    html += `<div class="detail-card">
                 <div class="label">Facilitator / Chairperson</div>
                 <div class="value">${facilitator ? facilitator.name : 'TBA'} 
                     <span class="status-badge status-${assign.facilitator.status}">${assign.facilitator.status.toUpperCase()}</span>
                 </div>
             </div>`;
 
-            html += `<div class="detail-card">
+                    html += `<div class="detail-card">
                 <div class="label">Preacher</div>
                 <div class="value">${preacher ? preacher.name : 'TBA'} 
                     <span class="status-badge status-${assign.preacher.status}">${assign.preacher.status.toUpperCase()}</span>
                 </div>
             </div>`;
 
-            // Confirmation actions
-            html += buildConfirmationUI(aKey, assign, month, day);
-        }
-    }
+                    // Confirmation actions
+                    html += buildConfirmationUI(aKey, assign, month, day);
+                }
+            }
 
-    // Events for this day
-    if (dayEvents.length > 0) {
-        html += '<div class="section-label">Events</div>';
-        dayEvents.forEach(ev => {
-            const infoText = ACTIVITY_INFO[ev.title] || ACTIVITY_INFO[ev.title.replace(/ \(.*\)/, '')] || '';
-            const deptColor = ev.dept === 'prayer' ? '#78909C' : (ev.dept === 'general' ? '#e94560' : (ev.dept === 'ladies' ? '#E91E63' : (ev.dept === 'men' ? '#1565C0' : (ev.dept === 'youth' ? '#FF9800' : (ev.dept === 'sunday-school' ? '#4CAF50' : '#7B1FA2')))));
+            // Events for this day
+            if (dayEvents.length > 0) {
+                html += '<div class="section-label">Events</div>';
+                dayEvents.forEach(ev => {
+                    const infoText = ACTIVITY_INFO[ev.title] || ACTIVITY_INFO[ev.title.replace(/ \(.*\)/, '')] || '';
+                    const deptColor = ev.dept === 'prayer' ? '#78909C' : (ev.dept === 'general' ? '#e94560' : (ev.dept === 'ladies' ? '#E91E63' : (ev.dept === 'men' ? '#1565C0' : (ev.dept === 'youth' ? '#FF9800' : (ev.dept === 'sunday-school' ? '#4CAF50' : '#7B1FA2')))));
 
-            html += `<div class="detail-card" style="border-left: 3px solid ${deptColor};">
+                    html += `<div class="detail-card" style="border-left: 3px solid ${deptColor};">
                 <div class="value">${ev.title}</div>
                 <div class="label">${ev.dept === 'sunday-school' ? 'Sunday School' : ev.dept.charAt(0).toUpperCase() + ev.dept.slice(1)} Department</div>
                 ${ev.endDay && ev.endDay !== ev.day ? `<div class="label" style="margin-top:4px;">📅 ${ev.day} — ${ev.endDay} ${MONTH_NAMES[month]}</div>` : ''}
             </div>`;
 
-            if (infoText) {
-                html += `<div class="description-box">ℹ️ ${infoText}</div>`;
+                    if (infoText) {
+                        html += `<div class="description-box">ℹ️ ${infoText}</div>`;
+                    }
+                });
             }
-        });
-    }
 
-    // WhatsApp share for this day
-    if (isSunday || dayEvents.length > 0) {
-        const shareText = buildDayShareText(month, day, dayEvents, isSunday);
-        const waUrl = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
-        html += `<div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;">
+            // WhatsApp share for this day
+            if (isSunday || dayEvents.length > 0) {
+                const shareText = buildDayShareText(month, day, dayEvents, isSunday);
+                const waUrl = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
+                html += `<div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;">
             <a href="${waUrl}" target="_blank" class="btn btn-whatsapp" style="text-decoration:none;">📱 Share on WhatsApp</a>
             <button class="btn btn-close" onclick="closeModal()">Close</button>
         </div>`;
-    } else {
-        html += `<div style="margin-top:16px;">
+            } else {
+                html += `<div style="margin-top:16px;">
             <button class="btn btn-close" onclick="closeModal()">Close</button>
         </div>`;
-    }
+            }
 
-    document.getElementById('modalContent').innerHTML = html;
-    document.getElementById('modalOverlay').classList.add('active');
-}
+            document.getElementById('modalContent').innerHTML = html;
+            document.getElementById('modalOverlay').classList.add('active');
+        }
 
-// ============================================================
-//  CONFIRMATION WORKFLOW UI
-// ============================================================
-function buildConfirmationUI(aKey, assign, month, day) {
-    let html = '<div class="confirm-section">';
-    html += '<div class="section-label">Availability Management</div>';
+        // ============================================================
+        //  CONFIRMATION WORKFLOW UI
+        // ============================================================
+        function buildConfirmationUI(aKey, assign, month, day) {
+            let html = '<div class="confirm-section">';
+            html += '<div class="section-label">Availability Management</div>';
 
-    ['facilitator', 'preacher'].forEach(role => {
-        const data = assign[role];
-        const member = MEMBERS.find(m => m.id === data.memberId);
-        const roleLabel = role === 'facilitator' ? '🎤 Facilitator' : '📖 Preacher';
+            ['facilitator', 'preacher'].forEach(role => {
+                const data = assign[role];
+                const member = MEMBERS.find(m => m.id === data.memberId);
+                const roleLabel = role === 'facilitator' ? '🎤 Facilitator' : '📖 Preacher';
 
-        if (data.status === 'confirmed' || data.status === 'locked') {
-            html += `<div class="detail-card" style="border-left:3px solid #4CAF50;">
+                if (data.status === 'confirmed' || data.status === 'locked') {
+                    html += `<div class="detail-card" style="border-left:3px solid #4CAF50;">
                 <div class="label">${roleLabel}: ${member ? member.name : 'TBA'}</div>
                 <div class="value" style="color:#2E7D32;">✅ Confirmed & Locked</div>
             </div>`;
-        } else if (data.status === 'declined') {
-            html += `<div class="detail-card" style="border-left:3px solid #f44336;">
+                } else if (data.status === 'declined') {
+                    html += `<div class="detail-card" style="border-left:3px solid #f44336;">
                 <div class="label">${roleLabel}: ${member ? member.name : 'TBA'}</div>
                 <div class="value" style="color:#C62828;">❌ Declined</div>
                 <div style="margin-top:8px;">
                     <button class="btn btn-edit" onclick="showAlternatives('${aKey}','${role}',${month},${day})">Find Alternative</button>
                 </div>
             </div>`;
-        } else {
-            // Pending
-            html += `<div class="detail-card">
+                } else {
+                    // Pending
+                    html += `<div class="detail-card">
                 <div class="label">${roleLabel}: ${member ? member.name : 'TBA'}</div>
                 <div class="reschedule-count">Reschedule attempts: ${data.rescheduleCount} / 2</div>
                 <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:4px;">
                     <button class="btn btn-confirm" onclick="confirmAssignment('${aKey}','${role}')">✅ Confirm</button>
                     ${data.rescheduleCount < 2 ?
-                        `<button class="btn btn-reschedule" onclick="rescheduleAssignment('${aKey}','${role}',${month},${day})">🔄 Reschedule</button>` : ''}
+                            `<button class="btn btn-reschedule" onclick="rescheduleAssignment('${aKey}','${role}',${month},${day})">🔄 Reschedule</button>` : ''}
                     <button class="btn btn-decline" onclick="declineAssignment('${aKey}','${role}',${month},${day})">❌ Decline</button>
                     <button class="btn btn-whatsapp" onclick="sendConfirmationRequest('${aKey}','${role}',${month},${day})">📱 Ask via WhatsApp</button>
                 </div>
             </div>`;
+                }
+            });
+
+            html += '</div>';
+            return html;
         }
-    });
 
-    html += '</div>';
-    return html;
-}
+        // ============================================================
+        //  CONFIRMATION ACTIONS
+        // ============================================================
+        function confirmAssignment(aKey, role) {
+            assignments[aKey][role].status = 'confirmed';
+            saveAssignments();
 
-// ============================================================
-//  CONFIRMATION ACTIONS
-// ============================================================
-function confirmAssignment(aKey, role) {
-    assignments[aKey][role].status = 'confirmed';
-    saveAssignments();
+            const member = MEMBERS.find(m => m.id === assignments[aKey][role].memberId);
+            showToast(`✅ ${member.name} confirmed as ${role}!`);
 
-    const member = MEMBERS.find(m => m.id === assignments[aKey][role].memberId);
-    showToast(`✅ ${member.name} confirmed as ${role}!`);
+            // Notify Pastor and Secretary via WhatsApp
+            const [month, day] = aKey.split('-').map(Number);
+            const dateStr = `${day} ${MONTH_NAMES[month]} 2026`;
+            const msg = `✅ CONFIRMATION: ${member.name} has confirmed as ${role} for Sunday ${dateStr} at AFM Galway Assembly.`;
 
-    // Notify Pastor and Secretary via WhatsApp
-    const [month, day] = aKey.split('-').map(Number);
-    const dateStr = `${day} ${MONTH_NAMES[month]} 2026`;
-    const msg = `✅ CONFIRMATION: ${member.name} has confirmed as ${role} for Sunday ${dateStr} at AFM Galway Assembly.`;
-    
-    setTimeout(() => {
-        if (confirm(`Notify Pastor & Secretary via WhatsApp?\n\n${msg}`)) {
-            window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
+            setTimeout(() => {
+                if (confirm(`Notify Pastor & Secretary via WhatsApp?\n\n${msg}`)) {
+                    window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
+                }
+            }, 500);
+
+            openDayModal(month, day);
         }
-    }, 500);
 
-    openDayModal(month, day);
-}
-
-function rescheduleAssignment(aKey, role, month, day) {
-    const data = assignments[aKey][role];
-    if (data.rescheduleCount >= 2) {
-        showToast('❌ Maximum reschedules reached. Can only decline.');
-        return;
-    }
-
-    // Show available Sundays for rescheduling
-    const sundays = getAllSundays2026().filter(s => {
-        const sKey = `${s.month}-${s.day}`;
-        const sDate = new Date(2026, s.month, s.day);
-        return sDate > new Date() && sKey !== aKey;
-    });
-
-    let options = sundays.slice(0, 12).map(s => 
-        `${s.day} ${MONTH_NAMES[s.month]} 2026`
-    ).join('\n');
-
-    const newDate = prompt(`Current: ${day} ${MONTH_NAMES[month]} 2026\n\nPropose a new Sunday (enter day month, e.g. "15 March"):\n\nAvailable Sundays:\n${options}`);
-    
-    if (!newDate) return;
-
-    data.rescheduleCount++;
-    
-    // Parse proposed date and try to swap
-    const parts = newDate.trim().split(/\s+/);
-    if (parts.length >= 2) {
-        const newDay = parseInt(parts[0]);
-        const newMonthIdx = MONTH_NAMES.findIndex(m => m.toLowerCase().startsWith(parts[1].toLowerCase()));
-        
-        if (newMonthIdx >= 0 && newDay > 0) {
-            const newKey = `${newMonthIdx}-${newDay}`;
-            if (assignments[newKey]) {
-                // Swap the member to the new date
-                const memberId = data.memberId;
-                const otherMemberId = assignments[newKey][role].memberId;
-                
-                assignments[newKey][role].memberId = memberId;
-                assignments[newKey][role].status = 'pending';
-                data.memberId = otherMemberId;
-                data.status = 'pending';
-                
-                saveAssignments();
-                showToast(`🔄 Rescheduled! ${MEMBERS.find(m=>m.id===memberId).name} moved to ${newDay} ${MONTH_NAMES[newMonthIdx]}`);
-                
-                // Notify
-                const member = MEMBERS.find(m => m.id === memberId);
-                const msg = `🔄 RESCHEDULE: ${member.name} (${role}) rescheduled from ${day} ${MONTH_NAMES[month]} to ${newDay} ${MONTH_NAMES[newMonthIdx]} 2026. (Attempt ${data.rescheduleCount}/2)`;
-                setTimeout(() => {
-                    if (confirm(`Notify via WhatsApp?\n\n${msg}`)) {
-                        window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
-                    }
-                }, 500);
-                
-                openDayModal(month, day);
+        function rescheduleAssignment(aKey, role, month, day) {
+            const data = assignments[aKey][role];
+            if (data.rescheduleCount >= 2) {
+                showToast('❌ Maximum reschedules reached. Can only decline.');
                 return;
             }
+
+            // Show available Sundays for rescheduling
+            const sundays = getAllSundays2026().filter(s => {
+                const sKey = `${s.month}-${s.day}`;
+                const sDate = new Date(2026, s.month, s.day);
+                return sDate > new Date() && sKey !== aKey;
+            });
+
+            let options = sundays.slice(0, 12).map(s =>
+                `${s.day} ${MONTH_NAMES[s.month]} 2026`
+            ).join('\n');
+
+            const newDate = prompt(`Current: ${day} ${MONTH_NAMES[month]} 2026\n\nPropose a new Sunday (enter day month, e.g. "15 March"):\n\nAvailable Sundays:\n${options}`);
+
+            if (!newDate) return;
+
+            data.rescheduleCount++;
+
+            // Parse proposed date and try to swap
+            const parts = newDate.trim().split(/\s+/);
+            if (parts.length >= 2) {
+                const newDay = parseInt(parts[0]);
+                const newMonthIdx = MONTH_NAMES.findIndex(m => m.toLowerCase().startsWith(parts[1].toLowerCase()));
+
+                if (newMonthIdx >= 0 && newDay > 0) {
+                    const newKey = `${newMonthIdx}-${newDay}`;
+                    if (assignments[newKey]) {
+                        // Swap the member to the new date
+                        const memberId = data.memberId;
+                        const otherMemberId = assignments[newKey][role].memberId;
+
+                        assignments[newKey][role].memberId = memberId;
+                        assignments[newKey][role].status = 'pending';
+                        data.memberId = otherMemberId;
+                        data.status = 'pending';
+
+                        saveAssignments();
+                        showToast(`🔄 Rescheduled! ${MEMBERS.find(m => m.id === memberId).name} moved to ${newDay} ${MONTH_NAMES[newMonthIdx]}`);
+
+                        // Notify
+                        const member = MEMBERS.find(m => m.id === memberId);
+                        const msg = `🔄 RESCHEDULE: ${member.name} (${role}) rescheduled from ${day} ${MONTH_NAMES[month]} to ${newDay} ${MONTH_NAMES[newMonthIdx]} 2026. (Attempt ${data.rescheduleCount}/2)`;
+                        setTimeout(() => {
+                            if (confirm(`Notify via WhatsApp?\n\n${msg}`)) {
+                                window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
+                            }
+                        }, 500);
+
+                        openDayModal(month, day);
+                        return;
+                    }
+                }
+            }
+
+            showToast('⚠️ Could not process reschedule. Please try again.');
+            openDayModal(month, day);
         }
-    }
-    
-    showToast('⚠️ Could not process reschedule. Please try again.');
-    openDayModal(month, day);
-}
 
-function declineAssignment(aKey, role, month, day) {
-    const member = MEMBERS.find(m => m.id === assignments[aKey][role].memberId);
-    if (confirm(`${member.name} declines ${role} for ${day} ${MONTH_NAMES[month]}?`)) {
-        assignments[aKey][role].status = 'declined';
-        saveAssignments();
-        showToast(`❌ ${member.name} declined. Please find an alternative.`);
-        openDayModal(month, day);
-    }
-}
+        function declineAssignment(aKey, role, month, day) {
+            const member = MEMBERS.find(m => m.id === assignments[aKey][role].memberId);
+            if (confirm(`${member.name} declines ${role} for ${day} ${MONTH_NAMES[month]}?`)) {
+                assignments[aKey][role].status = 'declined';
+                saveAssignments();
+                showToast(`❌ ${member.name} declined. Please find an alternative.`);
+                openDayModal(month, day);
+            }
+        }
 
-function showAlternatives(aKey, role, month, day) {
-    const isPreach = role === 'preacher';
-    const currentId = assignments[aKey][role].memberId;
-    
-    // Get eligible alternatives
-    const alternatives = MEMBERS.filter(m => {
-        if (m.id === currentId) return false;
-        if (isPreach && !m.canPreach) return false;
-        if (!isPreach && !m.canFacilitate) return false;
-        if (m.id === 4 && !isPanayoteAvailable(month)) return false;
-        // Don't suggest someone already assigned to another role this Sunday
-        const otherRole = role === 'preacher' ? 'facilitator' : 'preacher';
-        if (assignments[aKey][otherRole].memberId === m.id) return false;
-        return true;
-    });
+        function showAlternatives(aKey, role, month, day) {
+            const isPreach = role === 'preacher';
+            const currentId = assignments[aKey][role].memberId;
 
-    let html = '<div class="modal-handle"></div>';
-    html += `<h2>Find Alternative ${role === 'preacher' ? 'Preacher' : 'Facilitator'}</h2>`;
-    html += `<div class="modal-date">${day} ${MONTH_NAMES[month]} 2026</div>`;
-    html += '<div class="section-label">Available Members</div>';
-    html += '<div class="alternative-list">';
+            // Get eligible alternatives
+            const alternatives = MEMBERS.filter(m => {
+                if (m.id === currentId) return false;
+                if (isPreach && !m.canPreach) return false;
+                if (!isPreach && !m.canFacilitate) return false;
+                if (m.id === 4 && !isPanayoteAvailable(month)) return false;
+                // Don't suggest someone already assigned to another role this Sunday
+                const otherRole = role === 'preacher' ? 'facilitator' : 'preacher';
+                if (assignments[aKey][otherRole].memberId === m.id) return false;
+                return true;
+            });
 
-    alternatives.forEach(m => {
-        html += `<div class="alt-member">
+            let html = '<div class="modal-handle"></div>';
+            html += `<h2>Find Alternative ${role === 'preacher' ? 'Preacher' : 'Facilitator'}</h2>`;
+            html += `<div class="modal-date">${day} ${MONTH_NAMES[month]} 2026</div>`;
+            html += '<div class="section-label">Available Members</div>';
+            html += '<div class="alternative-list">';
+
+            alternatives.forEach(m => {
+                html += `<div class="alt-member">
             <span>${m.name} <small style="color:#888">(${m.role})</small></span>
             <button onclick="assignAlternative('${aKey}','${role}',${m.id},${month},${day})">Assign</button>
         </div>`;
-    });
+            });
 
-    html += '</div>';
-    html += `<div style="margin-top:16px;">
+            html += '</div>';
+            html += `<div style="margin-top:16px;">
         <button class="btn btn-close" onclick="openDayModal(${month},${day})">← Back</button>
     </div>`;
 
-    document.getElementById('modalContent').innerHTML = html;
-}
-
-function assignAlternative(aKey, role, memberId, month, day) {
-    assignments[aKey][role].memberId = memberId;
-    assignments[aKey][role].status = 'pending';
-    assignments[aKey][role].rescheduleCount = 0;
-    saveAssignments();
-
-    const member = MEMBERS.find(m => m.id === memberId);
-    showToast(`✅ ${member.name} assigned as ${role}. Awaiting confirmation.`);
-
-    // Offer to send WhatsApp
-    const dateStr = `${day} ${MONTH_NAMES[month]} 2026`;
-    const msg = `🙏 Dear ${member.name}, you have been assigned as ${role.toUpperCase()} for the Sunday Service on ${dateStr} at AFM Galway Assembly (10:00 AM). Please confirm your availability. Reply CONFIRM, RESCHEDULE, or DECLINE. Thank you!`;
-    
-    setTimeout(() => {
-        if (confirm(`Send assignment request to ${member.name} via WhatsApp?`)) {
-            window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
-        }
-    }, 500);
-
-    openDayModal(month, day);
-}
-
-function sendConfirmationRequest(aKey, role, month, day) {
-    const member = MEMBERS.find(m => m.id === assignments[aKey][role].memberId);
-    const dateStr = `${day} ${MONTH_NAMES[month]} 2026`;
-    const roleLabel = role === 'facilitator' ? 'FACILITATOR/CHAIRPERSON' : 'PREACHER';
-    
-    const msg = `🙏 Dear ${member.name},\n\nYou have been assigned as *${roleLabel}* for the Sunday Service on *${dateStr}* at AFM Galway Assembly (10:00 AM, Galway Westside Community Hall).\n\nPlease confirm your availability:\n✅ CONFIRM — I will be there\n🔄 RESCHEDULE — Propose different date\n❌ DECLINE — Unable to attend\n\n_Note: You may reschedule a maximum of 2 times._\n\nThank you! God bless.\n— Church Secretary`;
-
-    window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
-}
-
-// ============================================================
-//  DATA PERSISTENCE
-// ============================================================
-function saveAssignments() {
-    localStorage.setItem('afm_assignments', JSON.stringify(assignments));
-    renderCalendar();
-}
-
-function exportData() {
-    const data = JSON.stringify(assignments, null, 2);
-    const blob = new Blob([data], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'AFM_Galway_2026_CalendarData.json';
-    a.click();
-    URL.revokeObjectURL(url);
-    showToast('💾 Data exported!');
-}
-
-function generatePublicWebsite() {
-    // 1. Get current HTML
-    let htmlContent = document.documentElement.outerHTML;
-    
-    // 2. Inject current assignments directly into JS to bypass localStorage
-    const dataString = JSON.stringify(assignments);
-    const injection = `let assignments = ${dataString}; // INJECTED DATA`;
-    
-    // Replace the specific initialization line
-    // Look for: let assignments = {"0-4":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":14,"status":"pending","rescheduleCount":0}},"0-11":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":14,"status":"pending","rescheduleCount":0}},"0-18":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":14,"status":"pending","rescheduleCount":0}},"0-25":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":14,"status":"pending","rescheduleCount":0}},"1-1":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":14,"status":"pending","rescheduleCount":0}},"1-8":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":14,"status":"pending","rescheduleCount":0}},"1-15":{"preacher":{"memberId":1,"status":"confirmed","rescheduleCount":0},"facilitator":{"memberId":5,"status":"confirmed","rescheduleCount":0}},"1-22":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":5,"status":"pending","rescheduleCount":0}},"2-1":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":5,"status":"pending","rescheduleCount":0}},"2-8":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":5,"status":"pending","rescheduleCount":0}},"2-15":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":5,"status":"pending","rescheduleCount":0}},"2-22":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":5,"status":"pending","rescheduleCount":0}},"2-29":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":12,"status":"pending","rescheduleCount":0}},"3-5":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":12,"status":"pending","rescheduleCount":0}},"3-12":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":12,"status":"pending","rescheduleCount":0}},"3-19":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":12,"status":"pending","rescheduleCount":0}},"3-26":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":12,"status":"pending","rescheduleCount":0}},"4-3":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":12,"status":"pending","rescheduleCount":0}},"4-10":{"preacher":{"memberId":12,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":15,"status":"pending","rescheduleCount":0}},"4-17":{"preacher":{"memberId":12,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":15,"status":"pending","rescheduleCount":0}},"4-24":{"preacher":{"memberId":12,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":15,"status":"pending","rescheduleCount":0}},"4-31":{"preacher":{"memberId":12,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":15,"status":"pending","rescheduleCount":0}},"5-7":{"preacher":{"memberId":12,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":15,"status":"pending","rescheduleCount":0}},"5-14":{"preacher":{"memberId":12,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":13,"status":"pending","rescheduleCount":0}},"5-21":{"preacher":{"memberId":14,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":13,"status":"pending","rescheduleCount":0}},"5-28":{"preacher":{"memberId":14,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":13,"status":"pending","rescheduleCount":0}},"6-5":{"preacher":{"memberId":14,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":13,"status":"pending","rescheduleCount":0}},"6-12":{"preacher":{"memberId":14,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":13,"status":"pending","rescheduleCount":0}},"6-19":{"preacher":{"memberId":14,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":6,"status":"pending","rescheduleCount":0}},"6-26":{"preacher":{"memberId":14,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":6,"status":"pending","rescheduleCount":0}},"7-2":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":6,"status":"pending","rescheduleCount":0}},"7-9":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":10,"status":"pending","rescheduleCount":0}},"7-16":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":10,"status":"pending","rescheduleCount":0}},"7-23":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":10,"status":"pending","rescheduleCount":0}},"7-30":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":11,"status":"pending","rescheduleCount":0}},"8-6":{"preacher":{"memberId":10,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":11,"status":"pending","rescheduleCount":0}},"8-13":{"preacher":{"memberId":10,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":11,"status":"pending","rescheduleCount":0}},"8-20":{"preacher":{"memberId":10,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":16,"status":"pending","rescheduleCount":0}},"8-27":{"preacher":{"memberId":11,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":16,"status":"pending","rescheduleCount":0}},"9-4":{"preacher":{"memberId":11,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":16,"status":"pending","rescheduleCount":0}},"9-11":{"preacher":{"memberId":11,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":7,"status":"pending","rescheduleCount":0}},"9-18":{"preacher":{"memberId":6,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":7,"status":"pending","rescheduleCount":0}},"9-25":{"preacher":{"memberId":6,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":3,"status":"pending","rescheduleCount":0}},"10-1":{"preacher":{"memberId":13,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":3,"status":"pending","rescheduleCount":0}},"10-8":{"preacher":{"memberId":13,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":8,"status":"pending","rescheduleCount":0}},"10-15":{"preacher":{"memberId":15,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":8,"status":"pending","rescheduleCount":0}},"10-22":{"preacher":{"memberId":15,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":17,"status":"pending","rescheduleCount":0}},"10-29":{"preacher":{"memberId":7,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":17,"status":"pending","rescheduleCount":0}},"11-6":{"preacher":{"memberId":7,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":4,"status":"pending","rescheduleCount":0}},"11-13":{"preacher":{"memberId":16,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":14,"status":"pending","rescheduleCount":0}},"11-20":{"preacher":{"memberId":16,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":14,"status":"pending","rescheduleCount":0}},"11-27":{"preacher":{"memberId":4,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":14,"status":"pending","rescheduleCount":0}}}; // INJECTED DATA
-    // We use a regex to be safe about whitespace
-    const regex = /let\s+assignments\s*=\s*JSON\.parse\(localStorage\.getItem\('afm_assignments'\)\)\s*\|\|\s*\{\};/;
-    
-    if (htmlContent.match(regex)) {
-        htmlContent = htmlContent.replace(regex, injection);
-    } else {
-        // Fallback for older variations or manual edits
-        htmlContent = htmlContent.replace("let assignments = JSON.parse(localStorage.getItem('afm_assignments')) || {};", injection);
-    }
-
-    // 3. Disable Admin features for public version (optional but good practice)
-    // We can hide the button by injecting a style block at the end of head
-    const styleInjection = `<style> .admin-toggle { display: none !important; } </style> </head>`;
-    htmlContent = htmlContent.replace('</head>', styleInjection);
-
-    // 4. Download file
-    const blob = new Blob(['<!DOCTYPE html>\n' + htmlContent], { type: 'text/html' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'index.html';
-    a.click();
-    URL.revokeObjectURL(url);
-    showToast('🌍 Public Website File Generated!');
-    alert('Public Website File (index.html) downloaded.\n\nYou can now upload this file to any hosting service (like Netlify Drop or GitHub Pages) to share with the church.');
-}
-
-function importDataPrompt() {
-    const input = document.createElement('input');
-    input.type = 'file';
-    input.accept = '.json';
-    input.onchange = (e) => {
-        const file = e.target.files[0];
-        if (!file) return;
-        const reader = new FileReader();
-        reader.onload = (ev) => {
-            try {
-                assignments = JSON.parse(ev.target.result);
-                saveAssignments();
-                showToast('📂 Data restored!');
-                renderCalendar();
-            } catch (err) {
-                showToast('❌ Invalid file format');
-            }
-        };
-        reader.readAsText(file);
-    };
-    input.click();
-}
-
-// ============================================================
-//  ADMIN: Show All Pending
-// ============================================================
-function showAllPendingModal() {
-    let html = '<div class="modal-handle"></div>';
-    html += '<h2>All Pending Confirmations</h2>';
-    html += '<div class="modal-date">Assignments awaiting response</div>';
-
-    const sundays = getAllSundays2026();
-    let hasPending = false;
-
-    sundays.forEach(s => {
-        const key = `${s.month}-${s.day}`;
-        const assign = assignments[key];
-        if (!assign) return;
-
-        const pending = [];
-        if (assign.preacher.status === 'pending' || assign.preacher.status === 'declined') {
-            const m = MEMBERS.find(mem => mem.id === assign.preacher.memberId);
-            pending.push({ role: 'Preacher', member: m, status: assign.preacher.status });
-        }
-        if (assign.facilitator.status === 'pending' || assign.facilitator.status === 'declined') {
-            const m = MEMBERS.find(mem => mem.id === assign.facilitator.memberId);
-            pending.push({ role: 'Facilitator', member: m, status: assign.facilitator.status });
+            document.getElementById('modalContent').innerHTML = html;
         }
 
-        if (pending.length > 0) {
-            hasPending = true;
-            html += `<div class="detail-card" style="cursor:pointer;" onclick="closeModal();currentMonth=${s.month};renderCalendar();setTimeout(()=>openDayModal(${s.month},${s.day}),300);">
-                <div class="value">${s.day} ${MONTH_NAMES[s.month]} 2026</div>`;
-            pending.forEach(p => {
-                html += `<div class="label">${p.role}: ${p.member ? p.member.name : 'TBA'} 
-                    <span class="status-badge status-${p.status}">${p.status.toUpperCase()}</span>
-                </div>`;
-            });
-            html += '</div>';
-        }
-    });
-
-    if (!hasPending) {
-        html += '<p style="text-align:center;padding:30px;color:#888;">🎉 All confirmations are up to date!</p>';
-    }
-
-    html += `<div style="margin-top:16px;">
-        <button class="btn btn-close" onclick="closeModal()">Close</button>
-    </div>`;
-
-    document.getElementById('modalContent').innerHTML = html;
-    document.getElementById('modalOverlay').classList.add('active');
-}
-
-// ============================================================
-//  ACTIVITY INFO POPUP
-// ============================================================
-function showActivityInfo(title) {
-    const cleanTitle = title.replace(/ \(.*\)/, '');
-    const info = ACTIVITY_INFO[title] || ACTIVITY_INFO[cleanTitle] || 'No additional information available for this activity.';
-
-    let html = '<div class="modal-handle"></div>';
-    html += `<h2>${title}</h2>`;
-    html += `<div class="description-box" style="margin-top:12px;">ℹ️ ${info}</div>`;
-    html += `<div style="margin-top:16px;">
-        <button class="btn btn-close" onclick="closeModal()">Close</button>
-    </div>`;
-
-    document.getElementById('modalContent').innerHTML = html;
-    document.getElementById('modalOverlay').classList.add('active');
-}
-
-// ============================================================
-//  WHATSAPP SHARING
-// ============================================================
-function buildDayShareText(month, day, events, isSunday) {
-    let text = `✝️ *AFM IRELAND — GALWAY ASSEMBLY*\n`;
-    text += `📅 *${DAY_NAMES[new Date(2026, month, day).getDay()]}, ${day} ${MONTH_NAMES[month]} 2026*\n\n`;
-
-    if (isSunday) {
-        text += `⛪ *Sunday Service — 10:00 AM*\n`;
-        text += `📍 Galway Westside Community Hall, H91 R853\n\n`;
-
-        const aKey = `${month}-${day}`;
-        const assign = assignments[aKey];
-        if (assign) {
-            const facilitator = MEMBERS.find(m => m.id === assign.facilitator.memberId);
-            const preacher = MEMBERS.find(m => m.id === assign.preacher.memberId);
-            text += `🎤 Facilitator: *${facilitator ? facilitator.name : 'TBA'}*\n`;
-            text += `📖 Preacher: *${preacher ? preacher.name : 'TBA'}*\n\n`;
-        }
-    }
-
-    events.forEach(ev => {
-        if (ev.title !== "Prayer and Fasting") {
-            text += `📌 ${ev.title}\n`;
-        }
-    });
-
-    text += `\n🙏 _Worship With Us!_`;
-    return text;
-}
-
-function shareMonthCalendar() {
-    let text = `✝️ *AFM IRELAND — GALWAY ASSEMBLY*\n`;
-    text += `📅 *${MONTH_NAMES[currentMonth]} 2026 — Calendar*\n\n`;
-    text += `⛪ Every Sunday · 10:00 AM\n`;
-    text += `📍 Galway Westside Community Hall\n\n`;
-
-    const monthEvents = EVENTS.filter(ev => ev.month === currentMonth && ev.title !== "Prayer and Fasting");
-    monthEvents.sort((a, b) => a.day - b.day);
-
-    const sundays = getAllSundays2026().filter(s => s.month === currentMonth);
-    
-    sundays.forEach(s => {
-        const aKey = `${s.month}-${s.day}`;
-        const assign = assignments[aKey];
-        const dayEvents = monthEvents.filter(ev => ev.day === s.day);
-        const dateStr = `${s.day} ${MONTH_NAMES[s.month]}`;
-        
-        text += `*📅 Sunday ${dateStr}*\n`;
-        if (assign) {
-            const f = MEMBERS.find(m => m.id === assign.facilitator.memberId);
-            const p = MEMBERS.find(m => m.id === assign.preacher.memberId);
-            text += `  🎤 ${f ? f.name : 'TBA'}\n`;
-            text += `  📖 ${p ? p.name : 'TBA'}\n`;
-        }
-        dayEvents.forEach(ev => {
-            text += `  📌 ${ev.title}\n`;
-        });
-        text += '\n';
-    });
-
-    // Non-Sunday events
-    const nonSundayEvents = monthEvents.filter(ev => new Date(2026, ev.month, ev.day).getDay() !== 0);
-    if (nonSundayEvents.length > 0) {
-        text += `*Other Events:*\n`;
-        nonSundayEvents.forEach(ev => {
-            const dow = DAY_NAMES[new Date(2026, ev.month, ev.day).getDay()];
-            const dateRange = ev.endDay && ev.endDay !== ev.day ? `${ev.day}-${ev.endDay}` : ev.day;
-            text += `  📌 ${dateRange} ${MONTH_NAMES[ev.month]} (${dow}) — ${ev.title}\n`;
-        });
-        text += '\n';
-    }
-
-    text += `🙏 _Prayer & Fasting every Monday_\n`;
-    text += `🙏 _Worship With Us!_`;
-
-    window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
-}
-
-// ============================================================
-//  MODAL HELPERS
-// ============================================================
-function closeModal() {
-    document.getElementById('modalOverlay').classList.remove('active');
-}
-
-function closeModalOutside(event) {
-    if (event.target === document.getElementById('modalOverlay')) {
-        closeModal();
-    }
-}
-
-function toggleAdmin() {
-    document.getElementById('adminPanel').classList.toggle('active');
-}
-
-// ============================================================
-//  TOAST
-// ============================================================
-function showToast(msg) {
-    const toast = document.getElementById('toast');
-    toast.textContent = msg;
-    toast.classList.add('active');
-    setTimeout(() => toast.classList.remove('active'), 3000);
-}
-
-// ============================================================
-//  EDIT ASSIGNMENT (inline from admin)
-// ============================================================
-function editAssignmentRole(aKey, role, month, day) {
-    const isPreach = role === 'preacher';
-    const eligible = MEMBERS.filter(m => {
-        if (isPreach && !m.canPreach) return false;
-        if (!isPreach && !m.canFacilitate) return false;
-        if (m.id === 4 && !isPanayoteAvailable(month)) return false;
-        return true;
-    });
-
-    const current = assignments[aKey][role].memberId;
-    const names = eligible.map(m => `${m.id}: ${m.name}`).join('\n');
-    const input = prompt(`Select new ${role} (enter number):\n\n${names}`);
-    
-    if (input) {
-        const newId = parseInt(input);
-        const member = MEMBERS.find(m => m.id === newId);
-        if (member) {
-            assignments[aKey][role].memberId = newId;
+        function assignAlternative(aKey, role, memberId, month, day) {
+            assignments[aKey][role].memberId = memberId;
             assignments[aKey][role].status = 'pending';
             assignments[aKey][role].rescheduleCount = 0;
             saveAssignments();
-            showToast(`Updated ${role} to ${member.name}`);
+
+            const member = MEMBERS.find(m => m.id === memberId);
+            showToast(`✅ ${member.name} assigned as ${role}. Awaiting confirmation.`);
+
+            // Offer to send WhatsApp
+            const dateStr = `${day} ${MONTH_NAMES[month]} 2026`;
+            const msg = `🙏 Dear ${member.name}, you have been assigned as ${role.toUpperCase()} for the Sunday Service on ${dateStr} at AFM Galway Assembly (10:00 AM). Please confirm your availability. Reply CONFIRM, RESCHEDULE, or DECLINE. Thank you!`;
+
+            setTimeout(() => {
+                if (confirm(`Send assignment request to ${member.name} via WhatsApp?`)) {
+                    window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
+                }
+            }, 500);
+
             openDayModal(month, day);
         }
-    }
-}
 
-// ============================================================
-//  INITIALIZE
-// ============================================================
-function init() {
-    // Set to current month if 2026
-    const now = new Date();
-    if (now.getFullYear() === 2026) {
-        currentMonth = now.getMonth();
-    } else {
-        currentMonth = 0;
-    }
-    renderCalendar();
-}
+        function sendConfirmationRequest(aKey, role, month, day) {
+            const member = MEMBERS.find(m => m.id === assignments[aKey][role].memberId);
+            const dateStr = `${day} ${MONTH_NAMES[month]} 2026`;
+            const roleLabel = role === 'facilitator' ? 'FACILITATOR/CHAIRPERSON' : 'PREACHER';
 
-// Keyboard navigation
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') changeMonth(-1);
-    if (e.key === 'ArrowRight') changeMonth(1);
-    if (e.key === 'Escape') closeModal();
-});
+            const msg = `🙏 Dear ${member.name},\n\nYou have been assigned as *${roleLabel}* for the Sunday Service on *${dateStr}* at AFM Galway Assembly (10:00 AM, Galway Westside Community Hall).\n\nPlease confirm your availability:\n✅ CONFIRM — I will be there\n🔄 RESCHEDULE — Propose different date\n❌ DECLINE — Unable to attend\n\n_Note: You may reschedule a maximum of 2 times._\n\nThank you! God bless.\n— Church Secretary`;
 
-// Touch swipe for month navigation
-let touchStartX = 0;
-document.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; });
-document.addEventListener('touchend', (e) => {
-    const diff = touchStartX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 80) {
-        changeMonth(diff > 0 ? 1 : -1);
-    }
-});
+            window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
+        }
 
-init();
-</script>
+        // ============================================================
+        //  DATA PERSISTENCE
+        // ============================================================
+        function saveAssignments() {
+            localStorage.setItem('afm_assignments', JSON.stringify(assignments));
+            renderCalendar();
+        }
 
+        function exportData() {
+            const data = JSON.stringify(assignments, null, 2);
+            const blob = new Blob([data], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'AFM_Galway_2026_CalendarData.json';
+            a.click();
+            URL.revokeObjectURL(url);
+            showToast('💾 Data exported!');
+        }
 
-</body></html>
+        function importDataPrompt() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            input.onchange = (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+                const reader = new FileReader();
+                reader.onload = (ev) => {
+                    try {
+                        assignments = JSON.parse(ev.target.result);
+                        saveAssignments();
+                        showToast('📂 Data restored!');
+                        renderCalendar();
+                    } catch (err) {
+                        showToast('❌ Invalid file format');
+                    }
+                };
+                reader.readAsText(file);
+            };
+            input.click();
+        }
+
+        // ============================================================
+        //  ADMIN: Show All Pending
+        // ============================================================
+        function showAllPendingModal() {
+            let html = '<div class="modal-handle"></div>';
+            html += '<h2>All Pending Confirmations</h2>';
+            html += '<div class="modal-date">Assignments awaiting response</div>';
+
+            const sundays = getAllSundays2026();
+            let hasPending = false;
+
+            sundays.forEach(s => {
+                const key = `${s.month}-${s.day}`;
+                const assign = assignments[key];
+                if (!assign) return;
+
+                const pending = [];
+                if (assign.preacher.status === 'pending' || assign.preacher.status === 'declined') {
+                    const m = MEMBERS.find(mem => mem.id === assign.preacher.memberId);
+                    pending.push({ role: 'Preacher', member: m, status: assign.preacher.status });
+                }
+                if (assign.facilitator.status === 'pending' || assign.facilitator.status === 'declined') {
+                    const m = MEMBERS.find(mem => mem.id === assign.facilitator.memberId);
+                    pending.push({ role: 'Facilitator', member: m, status: assign.facilitator.status });
+                }
+
+                if (pending.length > 0) {
+                    hasPending = true;
+                    html += `<div class="detail-card" style="cursor:pointer;" onclick="closeModal();currentMonth=${s.month};renderCalendar();setTimeout(()=>openDayModal(${s.month},${s.day}),300);">
+                <div class="value">${s.day} ${MONTH_NAMES[s.month]} 2026</div>`;
+                    pending.forEach(p => {
+                        html += `<div class="label">${p.role}: ${p.member ? p.member.name : 'TBA'} 
+                    <span class="status-badge status-${p.status}">${p.status.toUpperCase()}</span>
+                </div>`;
+                    });
+                    html += '</div>';
+                }
+            });
+
+            if (!hasPending) {
+                html += '<p style="text-align:center;padding:30px;color:#888;">🎉 All confirmations are up to date!</p>';
+            }
+
+            html += `<div style="margin-top:16px;">
+        <button class="btn btn-close" onclick="closeModal()">Close</button>
+    </div>`;
+
+            document.getElementById('modalContent').innerHTML = html;
+            document.getElementById('modalOverlay').classList.add('active');
+        }
+
+        // ============================================================
+        //  ACTIVITY INFO POPUP
+        // ============================================================
+        function showActivityInfo(title) {
+            const cleanTitle = title.replace(/ \(.*\)/, '');
+            const info = ACTIVITY_INFO[title] || ACTIVITY_INFO[cleanTitle] || 'No additional information available for this activity.';
+
+            let html = '<div class="modal-handle"></div>';
+            html += `<h2>${title}</h2>`;
+            html += `<div class="description-box" style="margin-top:12px;">ℹ️ ${info}</div>`;
+            html += `<div style="margin-top:16px;">
+        <button class="btn btn-close" onclick="closeModal()">Close</button>
+    </div>`;
+
+            document.getElementById('modalContent').innerHTML = html;
+            document.getElementById('modalOverlay').classList.add('active');
+        }
+
+        // ============================================================
+        //  WHATSAPP SHARING
+        // ============================================================
+        function buildDayShareText(month, day, events, isSunday) {
+            let text = `✝️ *AFM IRELAND — GALWAY ASSEMBLY*\n`;
+            text += `📅 *${DAY_NAMES[new Date(2026, month, day).getDay()]}, ${day} ${MONTH_NAMES[month]} 2026*\n\n`;
+
+            if (isSunday) {
+                text += `⛪ *Sunday Service — 10:00 AM*\n`;
+                text += `📍 Galway Westside Community Hall, H91 R853\n\n`;
+
+                const aKey = `${month}-${day}`;
+                const assign = assignments[aKey];
+                if (assign) {
+                    const facilitator = MEMBERS.find(m => m.id === assign.facilitator.memberId);
+                    const preacher = MEMBERS.find(m => m.id === assign.preacher.memberId);
+                    text += `🎤 Facilitator: *${facilitator ? facilitator.name : 'TBA'}*\n`;
+                    text += `📖 Preacher: *${preacher ? preacher.name : 'TBA'}*\n\n`;
+                }
+            }
+
+            events.forEach(ev => {
+                if (ev.title !== "Prayer and Fasting") {
+                    text += `📌 ${ev.title}\n`;
+                }
+            });
+
+            text += `\n🙏 _Worship With Us!_`;
+            return text;
+        }
+
+        function shareMonthCalendar() {
+            let text = `✝️ *AFM IRELAND — GALWAY ASSEMBLY*\n`;
+            text += `📅 *${MONTH_NAMES[currentMonth]} 2026 — Calendar*\n\n`;
+            text += `⛪ Every Sunday · 10:00 AM\n`;
+            text += `📍 Galway Westside Community Hall\n\n`;
+
+            const monthEvents = EVENTS.filter(ev => ev.month === currentMonth && ev.title !== "Prayer and Fasting");
+            monthEvents.sort((a, b) => a.day - b.day);
+
+            const sundays = getAllSundays2026().filter(s => s.month === currentMonth);
+
+            sundays.forEach(s => {
+                const aKey = `${s.month}-${s.day}`;
+                const assign = assignments[aKey];
+                const dayEvents = monthEvents.filter(ev => ev.day === s.day);
+                const dateStr = `${s.day} ${MONTH_NAMES[s.month]}`;
+
+                text += `*📅 Sunday ${dateStr}*\n`;
+                if (assign) {
+                    const f = MEMBERS.find(m => m.id === assign.facilitator.memberId);
+                    const p = MEMBERS.find(m => m.id === assign.preacher.memberId);
+                    text += `  🎤 ${f ? f.name : 'TBA'}\n`;
+                    text += `  📖 ${p ? p.name : 'TBA'}\n`;
+                }
+                dayEvents.forEach(ev => {
+                    text += `  📌 ${ev.title}\n`;
+                });
+                text += '\n';
+            });
+
+            // Non-Sunday events
+            const nonSundayEvents = monthEvents.filter(ev => new Date(2026, ev.month, ev.day).getDay() !== 0);
+            if (nonSundayEvents.length > 0) {
+                text += `*Other Events:*\n`;
+                nonSundayEvents.forEach(ev => {
+                    const dow = DAY_NAMES[new Date(2026, ev.month, ev.day).getDay()];
+                    const dateRange = ev.endDay && ev.endDay !== ev.day ? `${ev.day}-${ev.endDay}` : ev.day;
+                    text += `  📌 ${dateRange} ${MONTH_NAMES[ev.month]} (${dow}) — ${ev.title}\n`;
+                });
+                text += '\n';
+            }
+
+            text += `🙏 _Prayer & Fasting every Monday_\n`;
+            text += `🙏 _Worship With Us!_`;
+
+            window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+        }
+
+        // ============================================================
+        //  MODAL HELPERS
+        // ============================================================
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+        }
+
+        function closeModalOutside(event) {
+            if (event.target === document.getElementById('modalOverlay')) {
+                closeModal();
+            }
+        }
+
+        let isAdminLoggedIn = false;
+        let adminRole = ''; // 'pastor' or 'secretary'
+
+        function toggleAdmin() {
+            const p = document.getElementById('adminPanel');
+            if (p.classList.contains('active')) {
+                p.classList.remove('active');
+                return;
+            }
+
+            // If already logged in this session, just open
+            if (isAdminLoggedIn) {
+                p.classList.add('active');
+                return;
+            }
+
+            // Prompt for password
+            const pass = prompt("Enter Access Password (Pastor or Secretary):");
+            if (!pass) return;
+
+            // Password Logic
+            if (pass === "Shepherd26") {
+                isAdminLoggedIn = true;
+                adminRole = 'pastor';
+                showToast("🔓 Welcome, Pastor Mudada!");
+                p.classList.add('active');
+            }
+            else if (pass === "Galway26") {
+                isAdminLoggedIn = true;
+                adminRole = 'secretary';
+                showToast("🔓 Welcome, Secretary!");
+                p.classList.add('active');
+            }
+            else {
+                alert("❌ Incorrect Password. Access Denied.");
+            }
+        }
+
+        // ============================================================
+        //  TOAST
+        // ============================================================
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.classList.add('active');
+            setTimeout(() => toast.classList.remove('active'), 3000);
+        }
+
+        // ============================================================
+        //  EDIT ASSIGNMENT (inline from admin)
+        // ============================================================
+        function editAssignmentRole(aKey, role, month, day) {
+            const isPreach = role === 'preacher';
+            const eligible = MEMBERS.filter(m => {
+                if (isPreach && !m.canPreach) return false;
+                if (!isPreach && !m.canFacilitate) return false;
+                if (m.id === 4 && !isPanayoteAvailable(month)) return false;
+                return true;
+            });
+
+            const current = assignments[aKey][role].memberId;
+            const names = eligible.map(m => `${m.id}: ${m.name}`).join('\n');
+            const input = prompt(`Select new ${role} (enter number):\n\n${names}`);
+
+            if (input) {
+                const newId = parseInt(input);
+                const member = MEMBERS.find(m => m.id === newId);
+                if (member) {
+                    assignments[aKey][role].memberId = newId;
+                    assignments[aKey][role].status = 'pending';
+                    assignments[aKey][role].rescheduleCount = 0;
+                    saveAssignments();
+                    showToast(`Updated ${role} to ${member.name}`);
+                    openDayModal(month, day);
+                }
+            }
+        }
+
+        // ============================================================
+        //  INITIALIZE
+        // ============================================================
+        function init() {
+            // Set to current month if 2026
+            const now = new Date();
+            if (now.getFullYear() === 2026) {
+                currentMonth = now.getMonth();
+            } else {
+                currentMonth = 0;
+            }
+            renderCalendar();
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') changeMonth(-1);
+            if (e.key === 'ArrowRight') changeMonth(1);
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // Touch swipe for month navigation
+        let touchStartX = 0;
+        document.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; });
+        document.addEventListener('touchend', (e) => {
+            const diff = touchStartX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 80) {
+                changeMonth(diff > 0 ? 1 : -1);
+            }
+        });
+
+        init();
+    </script>
+</body>
+
+</html>

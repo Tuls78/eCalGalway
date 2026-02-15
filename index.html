@@ -1148,7 +1148,7 @@
                 <div style="font-size:0.75rem;font-weight:600;letter-spacing:1px;opacity:0.9;">GALWAY ASSEMBLY</div>
             </div>
         </div>
-        <div class="subtitle">2026 Church E-Calendar</div>
+        <div class="subtitle" id="yearSubtitle">2026 Church E-Calendar</div>
         <div class="venue">Galway Westside Community Hall · H91 R853</div>
         <span class="service-time">Every Sunday · 10:00 Hours</span>
     </div>
@@ -1434,7 +1434,40 @@
 
     <!-- ============ MODAL ============ -->
     <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
-        <div class="modal" id="modalContent"></div>
+        <div class="modal" id="modalContent"><div class="modal-handle"></div><h2>Sunday, 8 February 2026</h2><div class="section-label">Sunday Service — 10:00 AM</div><div class="detail-card">
+                <div class="label">Facilitator / Chairperson</div>
+                <div class="value">Mrs V Dube 
+                    <span class="status-badge status-pending">PENDING</span>
+                </div>
+            </div><div class="detail-card">
+                <div class="label">Preacher</div>
+                <div class="value">Dube Daughter 1 
+                    <span class="status-badge status-pending">PENDING</span>
+                </div>
+            </div><div class="confirm-section"><div class="section-label">Availability Management</div><div class="detail-card">
+                <div class="label">🎤 Facilitator: Mrs V Dube</div>
+                <div class="value" style="color:#FF9800;">⏳ Pending</div><div class="reschedule-count">Reschedule attempts: 0 / 2</div>
+                <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:4px;">
+                    <button class="btn btn-confirm" onclick="confirmAssignment('1-8','facilitator')">✅ Confirm</button>
+                    <button class="btn btn-reschedule" onclick="rescheduleAssignment('1-8','facilitator',1,8)">🔄 Reschedule</button>
+                    <button class="btn btn-decline" onclick="declineAssignment('1-8','facilitator',1,8)">❌ Decline</button>
+                    <button class="btn btn-whatsapp" onclick="sendConfirmationRequest('1-8','facilitator',1,8)">📱 Ask via WhatsApp</button>
+                </div></div><div class="detail-card">
+                <div class="label">📖 Preacher: Dube Daughter 1</div>
+                <div class="value" style="color:#FF9800;">⏳ Pending</div><div class="reschedule-count">Reschedule attempts: 0 / 2</div>
+                <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:4px;">
+                    <button class="btn btn-confirm" onclick="confirmAssignment('1-8','preacher')">✅ Confirm</button>
+                    <button class="btn btn-reschedule" onclick="rescheduleAssignment('1-8','preacher',1,8)">🔄 Reschedule</button>
+                    <button class="btn btn-decline" onclick="declineAssignment('1-8','preacher',1,8)">❌ Decline</button>
+                    <button class="btn btn-whatsapp" onclick="sendConfirmationRequest('1-8','preacher',1,8)">📱 Ask via WhatsApp</button>
+                </div></div></div><div class="section-label">Events</div><div class="detail-card" style="border-left: 3px solid #e94560;">
+                <div class="value">Holy Communion</div>
+                <div class="label">General Department</div>
+                
+            </div><div class="description-box">ℹ️ The Lord's Supper — a sacred ordinance where believers partake of bread and wine/juice in remembrance of Christ's sacrifice (1 Corinthians 11:23-26).</div><div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;">
+            <a href="https://wa.me/?text=%E2%9C%9D%EF%B8%8F%20*AFM%20IRELAND%20%E2%80%94%20GALWAY%20ASSEMBLY*%0A%F0%9F%93%85%20*Sunday%2C%208%20February%202026*%0A%0A%E2%9B%AA%20*Sunday%20Service%20%E2%80%94%2010%3A00%20AM*%0A%F0%9F%93%8D%20Galway%20Westside%20Community%20Hall%2C%20H91%20R853%0A%0A%F0%9F%8E%A4%20Facilitator%3A%20*Mrs%20V%20Dube*%0A%F0%9F%93%96%20Preacher%3A%20*Dube%20Daughter%201*%0A%0A%F0%9F%93%8C%20Holy%20Communion%0A%0A%F0%9F%99%8F%20_Worship%20With%20Us!_" target="_blank" class="btn btn-whatsapp" style="text-decoration:none;">📱 Share on WhatsApp</a>
+            <button class="btn btn-close" onclick="closeModal()">Close</button>
+        </div></div>
     </div>
 
     <!-- ============ ADMIN TOGGLE ============ -->
@@ -1537,9 +1570,9 @@
         };
 
         // ============================================================
-        //  DATA: 2026 EVENTS
+        //  DATA: EVENTS
         // ============================================================
-        function generate2026Events() {
+        function generateEvents(year) {
             const events = [];
             // dept can be a string OR an array of strings for multi-dept events
             const addEv = (m, d, title, dept, endDay) => {
@@ -1547,106 +1580,111 @@
                 events.push({ month: m, day: d, endDay: endDay || d, title, dept: depts[0], depts, key: `${m}-${d}-${title}` });
             };
 
-            // ---- JANUARY ----
-            addEv(0, 1, "Prayer and Fasting (10 Days)", "general", 10);
-            addEv(0, 4, "Theme Unveiling", "general");
-            addEv(0, 4, "Leadership Meeting", "general");
-            addEv(0, 11, "Holy Communion", "general");
-            addEv(0, 17, "National Ladies Leadership Meeting", ["ladies", "national"]);
-            addEv(0, 25, "Holy Communion", "general");
+            if (year === 2026) {
+                // ---- JANUARY ----
+                addEv(0, 1, "Prayer and Fasting (10 Days)", "general", 10);
+                addEv(0, 4, "Theme Unveiling", "general");
+                addEv(0, 4, "Leadership Meeting", "general");
+                addEv(0, 11, "Holy Communion", "general");
+                addEv(0, 17, "National Ladies Leadership Meeting", ["ladies", "national"]);
+                addEv(0, 25, "Holy Communion", "general");
 
-            // ---- FEBRUARY ----
-            addEv(1, 8, "Holy Communion", "general");
-            addEv(1, 14, "National Ladies Leadership Meeting", ["ladies", "national"]);
-            addEv(1, 21, "Men's Breakfast Meeting", "men");
-            addEv(1, 22, "Ladies Special Sunday", "ladies");
-            addEv(1, 22, "Holy Communion", "general");
-            addEv(1, 28, "Couples Meeting", ["men", "ladies"]);
+                // ---- FEBRUARY ----
+                addEv(1, 8, "Holy Communion", "general");
+                addEv(1, 14, "National Ladies Leadership Meeting", ["ladies", "national"]);
+                addEv(1, 21, "Men's Breakfast Meeting", "men");
+                addEv(1, 22, "Ladies Special Sunday", "ladies");
+                addEv(1, 22, "Holy Communion", "general");
+                addEv(1, 28, "Couples Meeting", ["men", "ladies"]);
 
-            // ---- MARCH ----
-            addEv(2, 8, "Holy Communion", "general");
-            addEv(2, 14, "National Ladies Leadership Meeting", ["ladies", "national"]);
-            addEv(2, 22, "Holy Communion", "general");
-            addEv(2, 29, "Sunday School Special Sunday", "sunday-school");
-            addEv(2, 29, "Holy Communion", "general");
+                // ---- MARCH ----
+                addEv(2, 8, "Holy Communion", "general");
+                addEv(2, 14, "National Ladies Leadership Meeting", ["ladies", "national"]);
+                addEv(2, 22, "Holy Communion", "general");
+                addEv(2, 29, "Sunday School Special Sunday", "sunday-school");
+                addEv(2, 29, "Holy Communion", "general");
 
-            // ---- APRIL ----
-            addEv(3, 2, "Easter Conference", "general", 5);
-            addEv(3, 5, "Holy Communion", "general");
-            addEv(3, 18, "National Ladies Leadership Meeting", ["ladies", "national"]);
-            addEv(3, 25, "Leadership Meeting", "general");
-            addEv(3, 26, "Men's Special Sunday", "men");
-            addEv(3, 26, "Holy Communion", "general");
+                // ---- APRIL ----
+                addEv(3, 2, "Easter Conference", "general", 5);
+                addEv(3, 5, "Holy Communion", "general");
+                addEv(3, 18, "National Ladies Leadership Meeting", ["ladies", "national"]);
+                addEv(3, 25, "Leadership Meeting", "general");
+                addEv(3, 26, "Men's Special Sunday", "men");
+                addEv(3, 26, "Holy Communion", "general");
 
-            // ---- MAY ----
-            addEv(4, 2, "National Ladies Leadership Meeting", ["ladies", "national"]);
-            addEv(4, 10, "Holy Communion", "general");
-            addEv(4, 24, "Ladies Special Sunday", "ladies");
-            addEv(4, 24, "Holy Communion", "general");
-            addEv(4, 31, "Holy Communion", "general");
+                // ---- MAY ----
+                addEv(4, 2, "National Ladies Leadership Meeting", ["ladies", "national"]);
+                addEv(4, 10, "Holy Communion", "general");
+                addEv(4, 24, "Ladies Special Sunday", "ladies");
+                addEv(4, 24, "Holy Communion", "general");
+                addEv(4, 31, "Holy Communion", "general");
 
-            // ---- JUNE ----
-            addEv(5, 1, "Prayer and Fasting (10 Days)", "general", 10);
-            addEv(5, 14, "Holy Communion", "general");
-            addEv(5, 27, "National Youth Camp Revival", ["youth", "national"], 28);
-            addEv(5, 28, "Holy Communion", "general");
+                // ---- JUNE ----
+                addEv(5, 1, "Prayer and Fasting (10 Days)", "general", 10);
+                addEv(5, 14, "Holy Communion", "general");
+                addEv(5, 27, "National Youth Camp Revival", ["youth", "national"], 28);
+                addEv(5, 28, "Holy Communion", "general");
 
-            // ---- JULY ----
-            addEv(6, 4, "National Ladies Mentoring BBQ", ["ladies", "national"]);
-            addEv(6, 5, "Holy Communion", "general");
-            addEv(6, 19, "Youth Special Sunday", "youth");
-            addEv(6, 19, "Holy Communion", "general");
-            addEv(6, 20, "Leadership Meeting", "general");
-            addEv(6, 24, "National Annual General Conference", ["general", "national"], 26);
-            addEv(6, 25, "Men's Breakfast Meeting", "men");
-            addEv(6, 26, "Holy Communion", "general");
+                // ---- JULY ----
+                addEv(6, 4, "National Ladies Mentoring BBQ", ["ladies", "national"]);
+                addEv(6, 5, "Holy Communion", "general");
+                addEv(6, 19, "Youth Special Sunday", "youth");
+                addEv(6, 19, "Holy Communion", "general");
+                addEv(6, 20, "Leadership Meeting", "general");
+                addEv(6, 24, "National Annual General Conference", ["general", "national"], 26);
+                addEv(6, 25, "Men's Breakfast Meeting", "men");
+                addEv(6, 26, "Holy Communion", "general");
 
-            // ---- AUGUST ----
-            addEv(7, 8, "National Ladies Leadership Meeting", ["ladies", "national"]);
-            addEv(7, 9, "Holy Communion", "general");
-            addEv(7, 23, "Ladies Special Sunday", "ladies");
-            addEv(7, 23, "Holy Communion", "general");
-            addEv(7, 30, "Holy Communion", "general");
+                // ---- AUGUST ----
+                addEv(7, 8, "National Ladies Leadership Meeting", ["ladies", "national"]);
+                addEv(7, 9, "Holy Communion", "general");
+                addEv(7, 23, "Ladies Special Sunday", "ladies");
+                addEv(7, 23, "Holy Communion", "general");
+                addEv(7, 30, "Holy Communion", "general");
 
-            // ---- SEPTEMBER ----
-            addEv(8, 12, "National Ladies Leadership Meeting", ["ladies", "national"]);
-            addEv(8, 13, "Holy Communion", "general");
-            addEv(8, 25, "National Annual Youth Conference", ["youth", "national"], 27);
-            addEv(8, 27, "Holy Communion", "general");
+                // ---- SEPTEMBER ----
+                addEv(8, 12, "National Ladies Leadership Meeting", ["ladies", "national"]);
+                addEv(8, 13, "Holy Communion", "general");
+                addEv(8, 25, "National Annual Youth Conference", ["youth", "national"], 27);
+                addEv(8, 27, "Holy Communion", "general");
 
-            // ---- OCTOBER ----
-            addEv(9, 9, "National Ladies Conference", ["ladies", "national"], 11);
-            addEv(9, 11, "Holy Communion", "general");
-            addEv(9, 25, "Men's Special Sunday", "men");
-            addEv(9, 25, "Holy Communion", "general");
-            addEv(9, 25, "Leadership Meeting", "general");
+                // ---- OCTOBER ----
+                addEv(9, 9, "National Ladies Conference", ["ladies", "national"], 11);
+                addEv(9, 11, "Holy Communion", "general");
+                addEv(9, 25, "Men's Special Sunday", "men");
+                addEv(9, 25, "Holy Communion", "general");
+                addEv(9, 25, "Leadership Meeting", "general");
 
-            // ---- NOVEMBER ----
-            addEv(10, 1, "Holy Communion", "general");
-            addEv(10, 7, "National Ladies Mentoring BBQ", ["ladies", "national"]);
-            addEv(10, 8, "Holy Communion", "general");
-            addEv(10, 21, "Ladies Conference Galway", "ladies", 23);
-            addEv(10, 22, "Ladies Special Sunday", "ladies");
-            addEv(10, 22, "Holy Communion", "general");
-            addEv(10, 29, "Holy Communion", "general");
-            addEv(10, 30, "Leadership Meeting", "general");
+                // ---- NOVEMBER ----
+                addEv(10, 1, "Holy Communion", "general");
+                addEv(10, 7, "National Ladies Mentoring BBQ", ["ladies", "national"]);
+                addEv(10, 8, "Holy Communion", "general");
+                addEv(10, 21, "Ladies Conference Galway", "ladies", 23);
+                addEv(10, 22, "Ladies Special Sunday", "ladies");
+                addEv(10, 22, "Holy Communion", "general");
+                addEv(10, 29, "Holy Communion", "general");
+                addEv(10, 30, "Leadership Meeting", "general");
 
-            // ---- DECEMBER ----
-            addEv(11, 5, "National Ladies Leadership Meeting", ["ladies", "national"]);
-            addEv(11, 6, "Holy Communion", "general");
-            addEv(11, 13, "Holy Communion", "general");
-            addEv(11, 27, "Youth Special Sunday", "youth");
-            addEv(11, 27, "Holy Communion", "general");
-            addEv(11, 27, "Men's Breakfast Meeting", "men");
+                // ---- DECEMBER ----
+                addEv(11, 5, "National Ladies Leadership Meeting", ["ladies", "national"]);
+                addEv(11, 6, "Holy Communion", "general");
+                addEv(11, 13, "Holy Communion", "general");
+                addEv(11, 27, "Youth Special Sunday", "youth");
+                addEv(11, 27, "Holy Communion", "general");
+                addEv(11, 27, "Men's Breakfast Meeting", "men");
+            } else {
+                // Placeholder for future years
+                addEv(0, 1, "⚠️ UPDATE CALENDAR FOR " + year, "general");
+            }
 
-            // ---- PRAYER AND FASTING: Every Monday throughout 2026 ----
+            // ---- PRAYER AND FASTING: Every Monday throughout the year ----
             for (let m = 0; m < 12; m++) {
-                const daysInMonth = new Date(2026, m + 1, 0).getDate();
+                const daysInMonth = new Date(year, m + 1, 0).getDate();
                 for (let d = 1; d <= daysInMonth; d++) {
-                    const dow = new Date(2026, m, d).getDay(); // 0=Sun, 1=Mon
+                    const dow = new Date(year, m, d).getDay(); // 0=Sun, 1=Mon
                     if (dow === 1) {
-                        // Skip if within Jan 1-10 or Jun 1-10 extended periods
-                        if ((m === 0 && d <= 10) || (m === 5 && d <= 10)) continue;
+                        // Skip if within Jan 1-10 or Jun 1-10 extended periods (assuming recurrence)
+                        if (year === 2026 && ((m === 0 && d <= 10) || (m === 5 && d <= 10))) continue;
                         addEv(m, d, "Prayer and Fasting", "prayer");
                     }
                 }
@@ -1655,17 +1693,17 @@
             return events;
         }
 
-        const EVENTS = generate2026Events();
+        let EVENTS;
 
         // ============================================================
         //  DATA: SUNDAY ASSIGNMENTS (Facilitator + Preacher)
         // ============================================================
-        function getAllSundays2026() {
+        function getAllSundays(year) {
             const sundays = [];
             for (let m = 0; m < 12; m++) {
-                const daysInMonth = new Date(2026, m + 1, 0).getDate();
+                const daysInMonth = new Date(year, m + 1, 0).getDate();
                 for (let d = 1; d <= daysInMonth; d++) {
-                    if (new Date(2026, m, d).getDay() === 0) {
+                    if (new Date(year, m, d).getDay() === 0) {
                         sundays.push({ month: m, day: d });
                     }
                 }
@@ -1808,6 +1846,14 @@
             if (candidates.length === 0) {
                 candidates = pool.filter(p => p.id !== excludeId);
             }
+
+            // Safety check: if still empty (e.g. strict filters), fallback to full pool
+            if (candidates.length === 0) {
+                candidates = pool;
+            }
+            // If absolute failure (empty pool), return default ID (1=Pastor) or handle gracefully
+            if (candidates.length === 0) return 1;
+
             // Sort by deficit: most under-served first
             candidates.sort((a, b) => {
                 const ra = a.target > 0 ? a.count / a.target : 999;
@@ -1818,7 +1864,7 @@
         }
 
         function generateInitialAssignments() {
-            const sundays = getAllSundays2026();
+            const sundays = getAllSundays(currentYear);
             const saved = localStorage.getItem('afm_assignments');
             if (saved) return JSON.parse(saved);
 
@@ -1889,7 +1935,12 @@
         //  STATE
         // ============================================================
         let currentMonth = new Date().getMonth();
-        let currentYear = 2026;
+        let currentYear = new Date().getFullYear();
+        if (currentYear < 2026) currentYear = 2026;
+
+        // Initialize dynamic events
+        EVENTS = generateEvents(currentYear);
+
         let activeFilter = 'all';
         let assignments = {"0-4":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":2,"status":"pending","rescheduleCount":0}},"0-11":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":1,"status":"pending","rescheduleCount":0}},"0-18":{"preacher":{"memberId":4,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":3,"status":"pending","rescheduleCount":0}},"0-25":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":4,"status":"pending","rescheduleCount":0}},"1-1":{"preacher":{"memberId":6,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":5,"status":"pending","rescheduleCount":0}},"1-8":{"preacher":{"memberId":7,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":6,"status":"pending","rescheduleCount":0}},"1-15":{"preacher":{"memberId":10,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":7,"status":"pending","rescheduleCount":0}},"1-22":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":6,"status":"pending","rescheduleCount":0}},"2-1":{"preacher":{"memberId":11,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":8,"status":"pending","rescheduleCount":0}},"2-8":{"preacher":{"memberId":12,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":10,"status":"pending","rescheduleCount":0}},"2-15":{"preacher":{"memberId":13,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":11,"status":"pending","rescheduleCount":0}},"2-22":{"preacher":{"memberId":14,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":12,"status":"pending","rescheduleCount":0}},"2-29":{"preacher":{"memberId":13,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":9,"status":"pending","rescheduleCount":0}},"3-5":{"preacher":{"memberId":15,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":13,"status":"pending","rescheduleCount":0}},"3-12":{"preacher":{"memberId":16,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":14,"status":"pending","rescheduleCount":0}},"3-19":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":15,"status":"pending","rescheduleCount":0}},"3-26":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":12,"status":"pending","rescheduleCount":0}},"4-3":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":16,"status":"pending","rescheduleCount":0}},"4-10":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":17,"status":"pending","rescheduleCount":0}},"4-17":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":2,"status":"pending","rescheduleCount":0}},"4-24":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":10,"status":"pending","rescheduleCount":0}},"4-31":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":5,"status":"pending","rescheduleCount":0}},"5-7":{"preacher":{"memberId":6,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":10,"status":"pending","rescheduleCount":0}},"5-14":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":6,"status":"pending","rescheduleCount":0}},"5-21":{"preacher":{"memberId":10,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":11,"status":"pending","rescheduleCount":0}},"5-28":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":12,"status":"pending","rescheduleCount":0}},"6-5":{"preacher":{"memberId":11,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":13,"status":"pending","rescheduleCount":0}},"6-12":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":14,"status":"pending","rescheduleCount":0}},"6-19":{"preacher":{"memberId":12,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":3,"status":"pending","rescheduleCount":0}},"6-26":{"preacher":{"memberId":12,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":15,"status":"pending","rescheduleCount":0}},"7-2":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":3,"status":"pending","rescheduleCount":0}},"7-9":{"preacher":{"memberId":13,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":1,"status":"pending","rescheduleCount":0}},"7-16":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":7,"status":"pending","rescheduleCount":0}},"7-23":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":11,"status":"pending","rescheduleCount":0}},"7-30":{"preacher":{"memberId":14,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":8,"status":"pending","rescheduleCount":0}},"8-6":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":16,"status":"pending","rescheduleCount":0}},"8-13":{"preacher":{"memberId":15,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":17,"status":"pending","rescheduleCount":0}},"8-20":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":2,"status":"pending","rescheduleCount":0}},"8-27":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":5,"status":"pending","rescheduleCount":0}},"9-4":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":6,"status":"pending","rescheduleCount":0}},"9-11":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":10,"status":"pending","rescheduleCount":0}},"9-18":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":11,"status":"pending","rescheduleCount":0}},"9-25":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":14,"status":"pending","rescheduleCount":0}},"10-1":{"preacher":{"memberId":6,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":12,"status":"pending","rescheduleCount":0}},"10-8":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":13,"status":"pending","rescheduleCount":0}},"10-15":{"preacher":{"memberId":7,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":14,"status":"pending","rescheduleCount":0}},"10-22":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":15,"status":"pending","rescheduleCount":0}},"10-29":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":15,"status":"pending","rescheduleCount":0}},"11-6":{"preacher":{"memberId":4,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":1,"status":"pending","rescheduleCount":0}},"11-13":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":2,"status":"pending","rescheduleCount":0}},"11-20":{"preacher":{"memberId":10,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":3,"status":"pending","rescheduleCount":0}},"11-27":{"preacher":{"memberId":12,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":4,"status":"pending","rescheduleCount":0}}}; // __BAKE_POINT__
 
@@ -1918,8 +1969,8 @@
         // ============================================================
         function renderCalendar() {
             const grid = document.getElementById('calGrid');
-            const firstDay = new Date(2026, currentMonth, 1).getDay();
-            const daysInMonth = new Date(2026, currentMonth + 1, 0).getDate();
+            const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+            const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
             const today = new Date();
 
             // Adjust first day (Mon=0 format)
@@ -1932,7 +1983,7 @@
             }
 
             for (let d = 1; d <= daysInMonth; d++) {
-                const date = new Date(2026, currentMonth, d);
+                const date = new Date(currentYear, currentMonth, d);
                 const isSunday = date.getDay() === 0;
                 const isToday = date.toDateString() === today.toDateString();
                 const isPast = date < new Date(today.getFullYear(), today.getMonth(), today.getDate());
@@ -1943,7 +1994,7 @@
                 let classes = 'cal-cell';
                 if (isSunday) classes += ' sunday';
                 if (isToday) classes += ' today';
-                if (isPast && currentYear === 2026) classes += ' past';
+                if (isPast) classes += ' past';
 
                 let dots = '';
                 if (filteredEvents.length > 0) {
@@ -1969,7 +2020,7 @@
             }
 
             grid.innerHTML = html;
-            document.getElementById('monthYear').textContent = `${MONTH_NAMES[currentMonth]} 2026`;
+            document.getElementById('monthYear').textContent = `${MONTH_NAMES[currentMonth]} ${currentYear}`;
             renderMonthVerse();
             renderEventList();
         }
@@ -2023,7 +2074,7 @@
                 }
             });
 
-            let html = `<h3>${MONTH_NAMES[currentMonth]} 2026 — Events</h3>`;
+            let html = `<h3>${MONTH_NAMES[currentMonth]} ${currentYear} — Events</h3>`;
 
             if (prayerDays.length > 0 && (activeFilter === 'all' || activeFilter === 'prayer')) {
                 html += `<div class="event-item" onclick="showActivityInfo('Prayer and Fasting')">
@@ -2039,7 +2090,7 @@
             displayed.forEach(ev => {
                 const bgClass = ev.dept === 'prayer' ? 'bg-prayer' : `bg-${ev.dept}`;
                 const dateLabel = ev.endDay && ev.endDay !== ev.day ? `${ev.day}-${ev.endDay}` : ev.day;
-                const dow = new Date(2026, ev.month, ev.day).getDay();
+                const dow = new Date(currentYear, ev.month, ev.day).getDay();
                 const isSunday = dow === 0;
 
                 // Check for Sunday assignment
@@ -2140,8 +2191,8 @@
             const today = new Date();
 
             months.forEach(m => {
-                const daysInMonth = new Date(2026, m + 1, 0).getDate();
-                const firstDay = new Date(2026, m, 1).getDay();
+                const daysInMonth = new Date(currentYear, m + 1, 0).getDate();
+                const firstDay = new Date(currentYear, m, 1).getDay();
                 const startOffset = firstDay === 0 ? 6 : firstDay - 1;
                 const t = MONTHLY_THEMES[m];
                 const monthEventsAll = EVENTS.filter(ev => ev.month === m && ev.title !== 'Prayer and Fasting');
@@ -2156,7 +2207,7 @@
                 for (let i = 0; i < startOffset; i++) html += '<span class="mini-empty"></span>';
 
                 for (let d = 1; d <= daysInMonth; d++) {
-                    const dt = new Date(2026, m, d);
+                    const dt = new Date(currentYear, m, d);
                     const isSun = dt.getDay() === 0;
                     const isToday = dt.toDateString() === today.toDateString();
                     const hasEvent = monthEvents.some(ev => d >= ev.day && d <= (ev.endDay || ev.day));
@@ -2201,13 +2252,13 @@
         //  MODAL: Day Details
         // ============================================================
         function openDayModal(month, day) {
-            const date = new Date(2026, month, day);
+            const date = new Date(currentYear, month, day);
             const dayEvents = getEventsForDate(month, day);
             const isSunday = date.getDay() === 0;
             const aKey = `${month}-${day}`;
 
             let html = '<div class="modal-handle"></div>';
-            html += `<h2>${DAY_NAMES[date.getDay()]}, ${day} ${MONTH_NAMES[month]} 2026</h2>`;
+            html += `<h2>${DAY_NAMES[date.getDay()]}, ${day} ${MONTH_NAMES[month]} ${currentYear}</h2>`;
 
             // Sunday Service Details
             if (isSunday) {
@@ -2360,7 +2411,7 @@
 
             // Notify Pastor and Secretary via WhatsApp
             const [month, day] = aKey.split('-').map(Number);
-            const dateStr = `${day} ${MONTH_NAMES[month]} 2026`;
+            const dateStr = `${day} ${MONTH_NAMES[month]} ${currentYear}`;
             const msg = `✅ CONFIRMATION: ${member.name} has confirmed as ${role} for Sunday ${dateStr} at AFM Galway Assembly.`;
 
             setTimeout(() => {
@@ -2381,17 +2432,17 @@
             }
 
             // Show available Sundays for rescheduling
-            const sundays = getAllSundays2026().filter(s => {
+            const sundays = getAllSundays(currentYear).filter(s => {
                 const sKey = `${s.month}-${s.day}`;
-                const sDate = new Date(2026, s.month, s.day);
+                const sDate = new Date(currentYear, s.month, s.day);
                 return sDate > new Date() && sKey !== aKey;
             });
 
             let options = sundays.slice(0, 12).map(s =>
-                `${s.day} ${MONTH_NAMES[s.month]} 2026`
+                `${s.day} ${MONTH_NAMES[s.month]} ${currentYear}`
             ).join('\n');
 
-            const newDate = prompt(`Current: ${day} ${MONTH_NAMES[month]} 2026\n\nPropose a new Sunday (enter day month, e.g. "15 March"):\n\nAvailable Sundays:\n${options}`);
+            const newDate = prompt(`Current: ${day} ${MONTH_NAMES[month]} ${currentYear}\n\nPropose a new Sunday (enter day month, e.g. "15 March"):\n\nAvailable Sundays:\n${options}`);
 
             if (!newDate) return;
 
@@ -2420,7 +2471,7 @@
 
                         // Notify
                         const member = MEMBERS.find(m => m.id === memberId);
-                        const msg = `🔄 RESCHEDULE: ${member.name} (${role}) rescheduled from ${day} ${MONTH_NAMES[month]} to ${newDay} ${MONTH_NAMES[newMonthIdx]} 2026. (Attempt ${data.rescheduleCount}/2)`;
+                        const msg = `🔄 RESCHEDULE: ${member.name} (${role}) rescheduled from ${day} ${MONTH_NAMES[month]} to ${newDay} ${MONTH_NAMES[newMonthIdx]} ${currentYear}. (Attempt ${data.rescheduleCount}/2)`;
                         setTimeout(() => {
                             if (confirm(`Notify via WhatsApp?\n\n${msg}`)) {
                                 window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
@@ -2498,7 +2549,7 @@
 
             let html = '<div class="modal-handle"></div>';
             html += `<h2>Find Alternative ${role === 'preacher' ? 'Preacher' : 'Facilitator'}</h2>`;
-            html += `<div class="modal-date">${day} ${MONTH_NAMES[month]} 2026</div>`;
+            html += `<div class="modal-date">${day} ${MONTH_NAMES[month]} ${currentYear}</div>`;
             if (specialDept) {
                 const deptLabel = specialDept === 'sunday-school' ? 'Sunday School' : specialDept.charAt(0).toUpperCase() + specialDept.slice(1);
                 html += `<div class="section-label" style="color:#FF9800;">🏷️ ${deptLabel} Special Sunday — Department Members Only</div>`;
@@ -2536,7 +2587,7 @@
             showToast(`✅ ${member.name} assigned as ${role}. Awaiting confirmation.`);
 
             // Offer to send WhatsApp
-            const dateStr = `${day} ${MONTH_NAMES[month]} 2026`;
+            const dateStr = `${day} ${MONTH_NAMES[month]} ${currentYear}`;
             const msg = `🙏 Dear ${member.name}, you have been assigned as ${role.toUpperCase()} for the Sunday Service on ${dateStr} at AFM Galway Assembly (10:00 AM). Please confirm your availability. Reply CONFIRM, RESCHEDULE, or DECLINE. Thank you!`;
 
             setTimeout(() => {
@@ -2641,7 +2692,7 @@
         function computeAllocationCounts() {
             const counts = {};
             MEMBERS.forEach(m => { counts[m.id] = { preach: 0, facilitate: 0, total: 0 }; });
-            const sundays = getAllSundays2026();
+            const sundays = getAllSundays(currentYear);
             sundays.forEach(s => {
                 const key = `${s.month}-${s.day}`;
                 const a = assignments[key];
@@ -2659,7 +2710,7 @@
         }
 
         function computeTargets() {
-            const sundays = getAllSundays2026();
+            const sundays = getAllSundays(currentYear);
             const normalCount = sundays.filter(s => !getSpecialSundayDept(s.month, s.day)).length;
             const pPool = MEMBERS.filter(m => getPreacherWeight(m) > 0);
             const fPool = MEMBERS.filter(m => getFacilitatorWeight(m) > 0);
@@ -2682,11 +2733,11 @@
             const targets = computeTargets();
 
             let html = '<div class="modal-handle"></div>';
-            html += '<h2>📊 Allocation Matrix 2026</h2>';
+            html += `<h2>📊 Allocation Matrix ${currentYear}</h2>`;
             html += '<div class="modal-date">Year-end duty distribution across all members</div>';
 
             // Summary stats
-            const sundays = getAllSundays2026();
+            const sundays = getAllSundays(currentYear);
             const normalCount = sundays.filter(s => !getSpecialSundayDept(s.month, s.day)).length;
             const specialCount = sundays.length - normalCount;
             html += `<div class="description-box" style="margin:10px 0;font-size:0.7rem;">📅 Total Sundays: <strong>${sundays.length}</strong> &nbsp;│&nbsp; Normal: <strong>${normalCount}</strong> &nbsp;│&nbsp; Special: <strong>${specialCount}</strong></div>`;
@@ -2748,7 +2799,7 @@
             html += '<div style="display:flex;flex-wrap:wrap;gap:4px;margin:6px 0;">';
             for (let mo = 0; mo < 12; mo++) {
                 let moCount = 0;
-                const moSundays = getAllSundays2026().filter(s => s.month === mo);
+                const moSundays = getAllSundays(currentYear).filter(s => s.month === mo);
                 moSundays.forEach(s => {
                     const a = assignments[`${s.month}-${s.day}`];
                     if (a && a.preacher.memberId === 1) moCount++;
@@ -2792,7 +2843,7 @@
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'AFM_Galway_2026_CalendarData.json';
+            a.download = `AFM_Galway_${currentYear}_CalendarData.json`;
             a.click();
             URL.revokeObjectURL(url);
             showToast('💾 Data exported!');
@@ -2876,18 +2927,13 @@
             showToast('✅ Settings saved!');
         }
 
-        // Reset assignments only — preserve settings (token, phones, delegation)
+        // Reset assignments only — now only removes the specific key
         function resetAssignmentsOnly() {
-            const keysToKeep = ['gh_token', 'gh_owner', 'gh_repo', 'gh_file',
-                'secretary_phone', 'pastor_phone', 'delegated_to_pastor'];
-            const preserved = {};
-            keysToKeep.forEach(k => {
-                const v = localStorage.getItem(k);
-                if (v !== null) preserved[k] = v;
-            });
-            localStorage.clear();
-            Object.entries(preserved).forEach(([k, v]) => localStorage.setItem(k, v));
-            location.reload();
+            if (!confirm('Are you sure you want to reset ALL assignments and confirmations?\n\nThis cannot be undone.')) return;
+
+            localStorage.removeItem('afm_assignments');
+            showToast('♻️ Assignments reset successfully. Reloading...');
+            setTimeout(() => location.reload(), 1500);
         }
 
         async function buildPublishableHTML() {
@@ -3042,7 +3088,7 @@
             html += '<h2>All Pending Confirmations</h2>';
             html += '<div class="modal-date">Assignments awaiting response</div>';
 
-            const sundays = getAllSundays2026();
+            const sundays = getAllSundays(currentYear);
             let hasPending = false;
 
             sundays.forEach(s => {
@@ -3063,7 +3109,7 @@
                 if (pending.length > 0) {
                     hasPending = true;
                     html += `<div class="detail-card" style="cursor:pointer;" onclick="closeModal();currentMonth=${s.month};renderCalendar();setTimeout(()=>openDayModal(${s.month},${s.day}),300);">
-                <div class="value">${s.day} ${MONTH_NAMES[s.month]} 2026</div>`;
+                <div class="value">${s.day} ${MONTH_NAMES[s.month]} ${currentYear}</div>`;
                     pending.forEach(p => {
                         html += `<div class="label">${p.role}: ${p.member ? p.member.name : 'TBA'} 
                     <span class="status-badge status-${p.status}">${p.status.toUpperCase()}</span>
@@ -3108,7 +3154,7 @@
         // ============================================================
         function buildDayShareText(month, day, events, isSunday) {
             let text = `✝️ *AFM IRELAND — GALWAY ASSEMBLY*\n`;
-            text += `📅 *${DAY_NAMES[new Date(2026, month, day).getDay()]}, ${day} ${MONTH_NAMES[month]} 2026*\n\n`;
+            text += `📅 *${DAY_NAMES[new Date(currentYear, month, day).getDay()]}, ${day} ${MONTH_NAMES[month]} ${currentYear}*\n\n`;
 
             if (isSunday) {
                 const specialDept = getSpecialSundayDept(month, day);
@@ -3141,14 +3187,14 @@
 
         function shareMonthCalendar() {
             let text = `✝️ *AFM IRELAND — GALWAY ASSEMBLY*\n`;
-            text += `📅 *${MONTH_NAMES[currentMonth]} 2026 — Calendar*\n\n`;
+            text += `📅 *${MONTH_NAMES[currentMonth]} ${currentYear} — Calendar*\n\n`;
             text += `⛪ Every Sunday · 10:00 AM\n`;
             text += `📍 Galway Westside Community Hall\n\n`;
 
             const monthEvents = EVENTS.filter(ev => ev.month === currentMonth && ev.title !== "Prayer and Fasting");
             monthEvents.sort((a, b) => a.day - b.day);
 
-            const sundays = getAllSundays2026().filter(s => s.month === currentMonth);
+            const sundays = getAllSundays(currentYear).filter(s => s.month === currentMonth);
 
             sundays.forEach(s => {
                 const aKey = `${s.month}-${s.day}`;
@@ -3175,11 +3221,11 @@
             });
 
             // Non-Sunday events
-            const nonSundayEvents = monthEvents.filter(ev => new Date(2026, ev.month, ev.day).getDay() !== 0);
+            const nonSundayEvents = monthEvents.filter(ev => new Date(currentYear, ev.month, ev.day).getDay() !== 0);
             if (nonSundayEvents.length > 0) {
                 text += `*Other Events:*\n`;
                 nonSundayEvents.forEach(ev => {
-                    const dow = DAY_NAMES[new Date(2026, ev.month, ev.day).getDay()];
+                    const dow = DAY_NAMES[new Date(currentYear, ev.month, ev.day).getDay()];
                     const dateRange = ev.endDay && ev.endDay !== ev.day ? `${ev.day}-${ev.endDay}` : ev.day;
                     text += `  📌 ${dateRange} ${MONTH_NAMES[ev.month]} (${dow}) — ${ev.title}\n`;
                 });
@@ -3225,18 +3271,21 @@
             const pass = prompt("Enter Access Password (Pastor or Secretary):");
             if (!pass) return;
 
+            // NOTE: Client-side simple authentication. Not for high-security data.
             // Password Logic
             if (pass === "Shepherd26") {
                 isAdminLoggedIn = true;
                 adminRole = 'pastor';
                 showToast("🔓 Welcome, Pastor Mudada!");
                 p.classList.add('active');
+                checkYearEndReminder();
             }
             else if (pass === "Galway26") {
                 isAdminLoggedIn = true;
                 adminRole = 'secretary';
                 showToast("🔓 Welcome, Secretary!");
                 p.classList.add('active');
+                checkYearEndReminder();
             }
             else {
                 alert("❌ Incorrect Password. Access Denied.");
@@ -3244,13 +3293,35 @@
         }
 
         // ============================================================
-        //  TOAST
+        //  TOAST (Queue-based)
         // ============================================================
+        let toastQueue = [];
+        let isToastVisible = false;
+
         function showToast(msg) {
+            toastQueue.push(msg);
+            processToastQueue();
+        }
+
+        function processToastQueue() {
+            if (isToastVisible || toastQueue.length === 0) return;
+
+            const msg = toastQueue.shift();
             const toast = document.getElementById('toast');
+
+            isToastVisible = true;
             toast.textContent = msg;
             toast.classList.add('active');
-            setTimeout(() => toast.classList.remove('active'), 3000);
+
+            // Show for 3s, then hide
+            setTimeout(() => {
+                toast.classList.remove('active');
+                // Wait for transition (300ms) then check queue
+                setTimeout(() => {
+                    isToastVisible = false;
+                    processToastQueue();
+                }, 300);
+            }, 3000);
         }
 
         // ============================================================
@@ -3318,7 +3389,7 @@
             if (role === 'member') {
                 h += `<div class="section-label">👥 Church Member Guide</div>`;
                 h += `<div class="description-box" style="margin:6px 0;">
-                    <strong>Welcome to the AFM Galway 2026 E-Calendar!</strong><br><br>
+                    <strong>Welcome to the AFM Galway ${currentYear} E-Calendar!</strong><br><br>
                     This calendar shows all church events, Sunday service assignments, and departmental activities for the year.
                 </div>`;
                 h += `<div class="detail-card">
@@ -3475,15 +3546,75 @@
         //  INITIALIZE
         // ============================================================
         function init() {
-            // Set to current month if 2026
             const now = new Date();
-            if (now.getFullYear() === 2026) {
+            // If we're in the calendar's year, go to the current month
+            if (now.getFullYear() === currentYear) {
                 currentMonth = now.getMonth();
             } else {
                 currentMonth = 0;
             }
+
+            // Dynamic subtitle
+            const sub = document.getElementById('yearSubtitle');
+            if (sub) sub.textContent = `${currentYear} Church E-Calendar`;
+
+            // Dynamic page title
+            document.title = `AFM Galway Assembly – ${currentYear} E-Calendar`;
+
             renderCalendar();
             updateDelegationUI();
+        }
+
+        function checkYearEndReminder() {
+            // Only for Secretary or Pastor
+            if (!isAdminLoggedIn) return;
+
+            const now = new Date();
+            const thisYear = now.getFullYear();
+            const nextYear = thisYear + 1;
+
+            // Only show from 15 November onwards when viewing the current year's calendar
+            if (now.getMonth() < 10 || (now.getMonth() === 10 && now.getDate() < 15)) return;
+            if (currentYear !== thisYear) return;
+
+            // Only show once per session
+            if (window.__yearEndReminderShown) return;
+            window.__yearEndReminderShown = true;
+
+            // Show reminder after a short delay so it doesn't block page load
+            setTimeout(() => {
+                const dismissKey = `year_reminder_${nextYear}_dismissed`;
+                if (localStorage.getItem(dismissKey) === 'true') return;
+
+                let html = '<div class="modal-handle"></div>';
+                html += `<h2>📅 Prepare ${nextYear} Calendar</h2>`;
+                html += `<div class="description-box" style="margin:10px 0;">
+                    <strong>⏰ It's time to plan ahead!</strong><br><br>
+                    The ${thisYear} church calendar is nearing its end. Please prepare the <strong>${nextYear} E-Calendar</strong> with updated events, assignments, and any new members.
+                </div>`;
+                html += `<div class="detail-card">
+                    <div class="label">📋 Steps for Next Year</div>
+                    <div class="value" style="font-size:0.75rem;line-height:1.6;">
+                        1. Update the <strong>events list</strong> in the code for ${nextYear} (dates, conferences, camps)<br>
+                        2. Review and update the <strong>MEMBERS</strong> array (new members, departed members, age updates)<br>
+                        3. Update <strong>Special Sunday</strong> dates for ${nextYear}<br>
+                        4. <strong>Reset All Data</strong> to clear ${thisYear} assignments<br>
+                        5. The system will auto-generate new balanced assignments for ${nextYear}<br>
+                        6. <strong>Publish</strong> the updated calendar to the live website
+                    </div>
+                </div>`;
+                html += `<div class="detail-card" style="border-left:3px solid #FF9800;">
+                    <div class="label">⚠️ Important</div>
+                    <div class="value" style="font-size:0.75rem;">Export a backup of ${thisYear} data before resetting. Your GitHub token and phone numbers will be preserved.</div>
+                </div>`;
+                html += `<div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;">
+                    <button class="btn btn-confirm" onclick="localStorage.setItem('${dismissKey}','true');closeModal();showToast('Reminder dismissed until next year');">Got it — Dismiss</button>
+                    <button class="btn btn-close" onclick="closeModal()">Remind Me Later</button>
+                </div>`;
+
+                document.getElementById('modalContent').innerHTML = html;
+                document.getElementById('modalOverlay').classList.add('active');
+            }, 2000);
         }
 
         // Keyboard navigation

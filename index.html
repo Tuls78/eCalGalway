@@ -1309,10 +1309,10 @@
         </div><div class="cal-cell past" onclick="openDayModal(1, 13)">
             <span class="day-num">13</span>
             
-        </div><div class="cal-cell today" onclick="openDayModal(1, 14)">
+        </div><div class="cal-cell past" onclick="openDayModal(1, 14)">
             <span class="day-num">14</span>
             <div class="event-dots"><span class="event-dot dot-ladies"></span><span class="event-dot dot-national"></span></div>
-        </div><div class="cal-cell sunday" onclick="openDayModal(1, 15)">
+        </div><div class="cal-cell sunday today" onclick="openDayModal(1, 15)">
             <span class="day-num">15</span>
             
         </div><div class="cal-cell" onclick="openDayModal(1, 16)">
@@ -3236,23 +3236,58 @@
         //  IN-APP HELP — Role-Based Guide
         // ============================================================
         function showHelp() {
+            // ── Determine which help sections this user can see ──
+            // Not logged in  → member only (public calendar viewer)
+            // Pastor login   → member + responder + pastor
+            // Secretary login → everything (full admin)
+            const sections = [];
+            sections.push({ id: 'member', label: '👥 Member', btn: 'btn-confirm' });
+
+            if (isAdminLoggedIn) {
+                sections.push({ id: 'responder', label: '📱 WhatsApp', btn: 'btn-edit' });
+                if (adminRole === 'pastor') {
+                    sections.push({ id: 'pastor', label: '⛪ Pastor', btn: 'btn-reschedule' });
+                }
+                if (adminRole === 'secretary') {
+                    sections.push({ id: 'responder_skip', label: '', btn: '' }); // already added
+                    sections.push({ id: 'secretary', label: '📋 Secretary', btn: 'btn-whatsapp' });
+                    sections.push({ id: 'pastor', label: '⛪ Pastor', btn: 'btn-reschedule' });
+                }
+            }
+
+            // De-duplicate (responder already added for both roles)
+            const seen = new Set();
+            const unique = sections.filter(s => {
+                if (!s.label || seen.has(s.id)) return false;
+                seen.add(s.id);
+                return true;
+            });
+
             let html = '<div class="modal-handle"></div>';
             html += '<h2>❓ Help & Guide</h2>';
-            html += '<div class="modal-date">Tap a section relevant to you</div>';
 
-            html += `<div style="display:flex;flex-wrap:wrap;gap:6px;margin:12px 0;">
-                <button class="btn btn-confirm" onclick="showHelpSection('member')" style="flex:1;min-width:100px;">👥 Member</button>
-                <button class="btn btn-edit" onclick="showHelpSection('responder')" style="flex:1;min-width:100px;">📱 WhatsApp</button>
-                <button class="btn btn-whatsapp" onclick="showHelpSection('secretary')" style="flex:1;min-width:100px;">📋 Secretary</button>
-                <button class="btn btn-reschedule" onclick="showHelpSection('pastor')" style="flex:1;min-width:100px;">⛪ Pastor</button>
-            </div>`;
+            if (!isAdminLoggedIn) {
+                html += '<div class="modal-date">Church Member Guide</div>';
+            } else if (adminRole === 'pastor') {
+                html += '<div class="modal-date">Pastor Help — tap a section</div>';
+            } else {
+                html += '<div class="modal-date">Secretary Help — tap a section</div>';
+            }
+
+            if (unique.length > 1) {
+                html += `<div style="display:flex;flex-wrap:wrap;gap:6px;margin:12px 0;">`;
+                unique.forEach(s => {
+                    html += `<button class="btn ${s.btn}" onclick="showHelpSection('${s.id}')" style="flex:1;min-width:100px;">${s.label}</button>`;
+                });
+                html += `</div>`;
+            }
 
             html += '<div id="helpContent"></div>';
             html += `<div style="margin-top:16px;"><button class="btn btn-close" onclick="closeModal()">Close</button></div>`;
 
             document.getElementById('modalContent').innerHTML = html;
             document.getElementById('modalOverlay').classList.add('active');
-            showHelpSection('member');
+            showHelpSection(unique[0].id);
         }
 
         function showHelpSection(role) {

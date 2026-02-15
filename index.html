@@ -2292,7 +2292,13 @@
         // ============================================================
         function buildConfirmationUI(aKey, assign, month, day) {
             let html = '<div class="confirm-section">';
-            html += '<div class="section-label">Availability Management</div>';
+
+            // ── ACCESS CONTROL ──
+            // Only Secretary / Pastor (logged in) can manage confirmations.
+            // Church members see read-only status badges.
+            const canManage = isAdminLoggedIn; // secretary or pastor
+
+            html += `<div class="section-label">${canManage ? 'Availability Management' : 'Assignment Status'}</div>`;
 
             ['facilitator', 'preacher'].forEach(role => {
                 const data = assign[role];
@@ -2308,25 +2314,34 @@
                     html += `<div class="detail-card" style="border-left:3px solid #f44336;">
                 <div class="label">${roleLabel}: ${member ? member.name : 'TBA'}</div>
                 <div class="value" style="color:#C62828;">❌ Declined</div>
-                <div style="margin-top:8px;">
+                ${canManage ? `<div style="margin-top:8px;">
                     <button class="btn btn-edit" onclick="showAlternatives('${aKey}','${role}',${month},${day})">Find Alternative</button>
-                </div>
+                </div>` : ''}
             </div>`;
                 } else {
                     // Pending
                     html += `<div class="detail-card">
                 <div class="label">${roleLabel}: ${member ? member.name : 'TBA'}</div>
-                <div class="reschedule-count">Reschedule attempts: ${data.rescheduleCount} / 2</div>
+                <div class="value" style="color:#FF9800;">⏳ Pending</div>`;
+
+                    if (canManage) {
+                        html += `<div class="reschedule-count">Reschedule attempts: ${data.rescheduleCount} / 2</div>
                 <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:4px;">
                     <button class="btn btn-confirm" onclick="confirmAssignment('${aKey}','${role}')">✅ Confirm</button>
                     ${data.rescheduleCount < 2 ?
-                            `<button class="btn btn-reschedule" onclick="rescheduleAssignment('${aKey}','${role}',${month},${day})">🔄 Reschedule</button>` : ''}
+                                `<button class="btn btn-reschedule" onclick="rescheduleAssignment('${aKey}','${role}',${month},${day})">🔄 Reschedule</button>` : ''}
                     <button class="btn btn-decline" onclick="declineAssignment('${aKey}','${role}',${month},${day})">❌ Decline</button>
                     <button class="btn btn-whatsapp" onclick="sendConfirmationRequest('${aKey}','${role}',${month},${day})">📱 Ask via WhatsApp</button>
-                </div>
-            </div>`;
+                </div>`;
+                    }
+
+                    html += `</div>`;
                 }
             });
+
+            if (!canManage) {
+                html += `<div class="description-box" style="margin-top:8px;font-size:0.7rem;color:#888;">🔒 Only the Secretary or Pastor can manage confirmations. Log in via ⚙ to access controls.</div>`;
+            }
 
             html += '</div>';
             return html;
@@ -2336,6 +2351,7 @@
         //  CONFIRMATION ACTIONS
         // ============================================================
         function confirmAssignment(aKey, role) {
+            if (!isAdminLoggedIn) { showToast('🔒 Admin login required'); return; }
             assignments[aKey][role].status = 'confirmed';
             saveAssignments();
 
@@ -2357,6 +2373,7 @@
         }
 
         function rescheduleAssignment(aKey, role, month, day) {
+            if (!isAdminLoggedIn) { showToast('🔒 Admin login required'); return; }
             const data = assignments[aKey][role];
             if (data.rescheduleCount >= 2) {
                 showToast('❌ Maximum reschedules reached. Can only decline.');
@@ -2421,6 +2438,7 @@
         }
 
         function declineAssignment(aKey, role, month, day) {
+            if (!isAdminLoggedIn) { showToast('🔒 Admin login required'); return; }
             const member = MEMBERS.find(m => m.id === assignments[aKey][role].memberId);
             if (confirm(`${member.name} declines ${role} for ${day} ${MONTH_NAMES[month]}?`)) {
                 assignments[aKey][role].status = 'declined';
@@ -2431,6 +2449,7 @@
         }
 
         function showAlternatives(aKey, role, month, day) {
+            if (!isAdminLoggedIn) { showToast('🔒 Admin login required'); return; }
             const isPreach = role === 'preacher';
             const currentId = assignments[aKey][role].memberId;
             const specialDept = getSpecialSundayDept(month, day);
@@ -2507,6 +2526,7 @@
         }
 
         function assignAlternative(aKey, role, memberId, month, day) {
+            if (!isAdminLoggedIn) { showToast('🔒 Admin login required'); return; }
             assignments[aKey][role].memberId = memberId;
             assignments[aKey][role].status = 'pending';
             assignments[aKey][role].rescheduleCount = 0;
@@ -2581,6 +2601,7 @@
         }
 
         function sendConfirmationRequest(aKey, role, month, day) {
+            if (!isAdminLoggedIn) { showToast('🔒 Admin login required'); return; }
             const member = MEMBERS.find(m => m.id === assignments[aKey][role].memberId);
             const dateStr = `${day} ${MONTH_NAMES[month]}`;
             const roleLabel = role === 'facilitator' ? 'Facilitator' : 'Preacher';
@@ -3423,6 +3444,7 @@
         //  EDIT ASSIGNMENT (inline from admin)
         // ============================================================
         function editAssignmentRole(aKey, role, month, day) {
+            if (!isAdminLoggedIn) { showToast('🔒 Admin login required'); return; }
             const isPreach = role === 'preacher';
             const eligible = MEMBERS.filter(m => {
                 if (isPreach && !m.canPreach) return false;

@@ -844,6 +844,36 @@
             font-weight: 600;
         }
 
+        /* ============ PROJECTS OF THE YEAR BAR ============ */
+        .projects-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
+            border-bottom: 1px solid #c8e6c9;
+            font-size: 0.75rem;
+        }
+
+        .projects-label {
+            font-weight: 700;
+            color: #2e7d32;
+            letter-spacing: 0.5px;
+        }
+
+        .project-tag {
+            background: #fff;
+            border: 1px solid #81c784;
+            color: #1b5e20;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.7rem;
+            white-space: nowrap;
+        }
+
         /* ============ VIEW MODE TABS ============ */
         .view-tabs {
             display: flex;
@@ -1175,6 +1205,13 @@
         <div class="verse-ref">— Colossians 3:14</div>
     </div>
 
+    <!-- ============ PROJECTS OF THE YEAR ============ -->
+    <div class="projects-bar" id="projectsBar">
+        <span class="projects-label">📋 Projects of the Year:</span>
+        <span class="project-tag">🎤 Mikes (Microphones)</span>
+        <span class="project-tag">📽️ Projector</span>
+    </div>
+
     <!-- ============ DEPARTMENT FILTERS ============ -->
     <div class="filters">
         <button class="filter-btn active" data-dept="all" onclick="setFilter('all')">All</button>
@@ -1381,7 +1418,7 @@
                 <div class="event-title">Holy Communion</div>
                 <div class="event-dept">Sunday · General</div>
                 <div class="event-service">
-                    🎤 Mrs V Dube · 📖 Dube Daughter 1
+                    🎤 Mr Dube · 📖 Pastor C Mudada
                 </div>
             </div>
             <div class="info-icon" onclick="event.stopPropagation();showActivityInfo('Holy Communion')">?</div>
@@ -1434,40 +1471,7 @@
 
     <!-- ============ MODAL ============ -->
     <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
-        <div class="modal" id="modalContent"><div class="modal-handle"></div><h2>Sunday, 8 February 2026</h2><div class="section-label">Sunday Service — 10:00 AM</div><div class="detail-card">
-                <div class="label">Facilitator / Chairperson</div>
-                <div class="value">Mrs V Dube 
-                    <span class="status-badge status-pending">PENDING</span>
-                </div>
-            </div><div class="detail-card">
-                <div class="label">Preacher</div>
-                <div class="value">Dube Daughter 1 
-                    <span class="status-badge status-pending">PENDING</span>
-                </div>
-            </div><div class="confirm-section"><div class="section-label">Availability Management</div><div class="detail-card">
-                <div class="label">🎤 Facilitator: Mrs V Dube</div>
-                <div class="value" style="color:#FF9800;">⏳ Pending</div><div class="reschedule-count">Reschedule attempts: 0 / 2</div>
-                <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:4px;">
-                    <button class="btn btn-confirm" onclick="confirmAssignment('1-8','facilitator')">✅ Confirm</button>
-                    <button class="btn btn-reschedule" onclick="rescheduleAssignment('1-8','facilitator',1,8)">🔄 Reschedule</button>
-                    <button class="btn btn-decline" onclick="declineAssignment('1-8','facilitator',1,8)">❌ Decline</button>
-                    <button class="btn btn-whatsapp" onclick="sendConfirmationRequest('1-8','facilitator',1,8)">📱 Ask via WhatsApp</button>
-                </div></div><div class="detail-card">
-                <div class="label">📖 Preacher: Dube Daughter 1</div>
-                <div class="value" style="color:#FF9800;">⏳ Pending</div><div class="reschedule-count">Reschedule attempts: 0 / 2</div>
-                <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:4px;">
-                    <button class="btn btn-confirm" onclick="confirmAssignment('1-8','preacher')">✅ Confirm</button>
-                    <button class="btn btn-reschedule" onclick="rescheduleAssignment('1-8','preacher',1,8)">🔄 Reschedule</button>
-                    <button class="btn btn-decline" onclick="declineAssignment('1-8','preacher',1,8)">❌ Decline</button>
-                    <button class="btn btn-whatsapp" onclick="sendConfirmationRequest('1-8','preacher',1,8)">📱 Ask via WhatsApp</button>
-                </div></div></div><div class="section-label">Events</div><div class="detail-card" style="border-left: 3px solid #e94560;">
-                <div class="value">Holy Communion</div>
-                <div class="label">General Department</div>
-                
-            </div><div class="description-box">ℹ️ The Lord's Supper — a sacred ordinance where believers partake of bread and wine/juice in remembrance of Christ's sacrifice (1 Corinthians 11:23-26).</div><div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;">
-            <a href="https://wa.me/?text=%E2%9C%9D%EF%B8%8F%20*AFM%20IRELAND%20%E2%80%94%20GALWAY%20ASSEMBLY*%0A%F0%9F%93%85%20*Sunday%2C%208%20February%202026*%0A%0A%E2%9B%AA%20*Sunday%20Service%20%E2%80%94%2010%3A00%20AM*%0A%F0%9F%93%8D%20Galway%20Westside%20Community%20Hall%2C%20H91%20R853%0A%0A%F0%9F%8E%A4%20Facilitator%3A%20*Mrs%20V%20Dube*%0A%F0%9F%93%96%20Preacher%3A%20*Dube%20Daughter%201*%0A%0A%F0%9F%93%8C%20Holy%20Communion%0A%0A%F0%9F%99%8F%20_Worship%20With%20Us!_" target="_blank" class="btn btn-whatsapp" style="text-decoration:none;">📱 Share on WhatsApp</a>
-            <button class="btn btn-close" onclick="closeModal()">Close</button>
-        </div></div>
+        <div class="modal" id="modalContent"></div>
     </div>
 
     <!-- ============ ADMIN TOGGLE ============ -->
@@ -1719,6 +1723,21 @@
         }
 
         // ============================================================
+        //  FIXED ASSIGNMENTS: Override specific Sundays
+        // ============================================================
+        const FIXED_ASSIGNMENTS = {
+            '1-15': { preacherId: 1, facilitatorId: 5 }   // Feb 15 — Pastor C Mudada preaches, Mr Dube facilitates
+        };
+
+        // ============================================================
+        //  HOLY COMMUNION: Preacher Constraint
+        // ============================================================
+        // Returns true if this Sunday has a Holy Communion event
+        function isHolyCommunionSunday(month, day) {
+            return EVENTS.some(e => e.month === month && e.day === day && e.title === 'Holy Communion');
+        }
+
+        // ============================================================
         //  SPECIAL SUNDAYS: Department-Led Service Rules
         // ============================================================
         // Returns the department string if this Sunday is a Special Sunday, or null
@@ -1887,12 +1906,20 @@
             const specialDeptCounters = {};
             const assignments = {};
 
+            let holyCommunionToggle = 0; // alternates preacher between Pastor(1) and Mr Dube(5)
+
             sundays.forEach(s => {
                 const key = `${s.month}-${s.day}`;
                 const specialDept = getSpecialSundayDept(s.month, s.day);
+                const fixed = FIXED_ASSIGNMENTS[key];
+                const holyCommunion = isHolyCommunionSunday(s.month, s.day);
                 let preacherId, facilitatorId;
 
-                if (specialDept) {
+                if (fixed) {
+                    // ─── FIXED ASSIGNMENT: Manually overridden Sunday ───
+                    preacherId = fixed.preacherId;
+                    facilitatorId = fixed.facilitatorId;
+                } else if (specialDept) {
                     // ─── SPECIAL SUNDAY: Department members only (this day only) ───
                     const leader = getDeptLeader(specialDept);
                     const dp = getDeptMembers(specialDept, 'preacher');
@@ -1907,6 +1934,16 @@
                         facilitatorId = df.length ? df[0].id : preacherId;
                     }
                     // Don't affect normal-Sunday counters
+                } else if (holyCommunion) {
+                    // ─── HOLY COMMUNION: Pastor C Mudada or Mr Dube must preach ───
+                    const hcPreachers = [1, 5]; // Pastor C Mudada, Mr Dube
+                    preacherId = hcPreachers[holyCommunionToggle % 2];
+                    holyCommunionToggle++;
+                    // Facilitator from normal pool (exclude preacher)
+                    facilitatorId = pickCandidate(facilitatorPool, lastFacilitatorId, preacherId, s.month, false);
+                    const fp = facilitatorPool.find(p => p.id === facilitatorId);
+                    if (fp) { fp.count++; fp.monthly[s.month] = (fp.monthly[s.month] || 0) + 1; }
+                    lastFacilitatorId = facilitatorId;
                 } else {
                     // ─── NORMAL SUNDAY: Balanced allocation ───
                     preacherId = pickCandidate(preacherPool, lastPreacherId, -1, s.month, true);
@@ -1942,7 +1979,7 @@
         EVENTS = generateEvents(currentYear);
 
         let activeFilter = 'all';
-        let assignments = {"0-4":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":2,"status":"pending","rescheduleCount":0}},"0-11":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":1,"status":"pending","rescheduleCount":0}},"0-18":{"preacher":{"memberId":4,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":3,"status":"pending","rescheduleCount":0}},"0-25":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":4,"status":"pending","rescheduleCount":0}},"1-1":{"preacher":{"memberId":6,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":5,"status":"pending","rescheduleCount":0}},"1-8":{"preacher":{"memberId":7,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":6,"status":"pending","rescheduleCount":0}},"1-15":{"preacher":{"memberId":10,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":7,"status":"pending","rescheduleCount":0}},"1-22":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":6,"status":"pending","rescheduleCount":0}},"2-1":{"preacher":{"memberId":11,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":8,"status":"pending","rescheduleCount":0}},"2-8":{"preacher":{"memberId":12,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":10,"status":"pending","rescheduleCount":0}},"2-15":{"preacher":{"memberId":13,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":11,"status":"pending","rescheduleCount":0}},"2-22":{"preacher":{"memberId":14,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":12,"status":"pending","rescheduleCount":0}},"2-29":{"preacher":{"memberId":13,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":9,"status":"pending","rescheduleCount":0}},"3-5":{"preacher":{"memberId":15,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":13,"status":"pending","rescheduleCount":0}},"3-12":{"preacher":{"memberId":16,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":14,"status":"pending","rescheduleCount":0}},"3-19":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":15,"status":"pending","rescheduleCount":0}},"3-26":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":12,"status":"pending","rescheduleCount":0}},"4-3":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":16,"status":"pending","rescheduleCount":0}},"4-10":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":17,"status":"pending","rescheduleCount":0}},"4-17":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":2,"status":"pending","rescheduleCount":0}},"4-24":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":10,"status":"pending","rescheduleCount":0}},"4-31":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":5,"status":"pending","rescheduleCount":0}},"5-7":{"preacher":{"memberId":6,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":10,"status":"pending","rescheduleCount":0}},"5-14":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":6,"status":"pending","rescheduleCount":0}},"5-21":{"preacher":{"memberId":10,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":11,"status":"pending","rescheduleCount":0}},"5-28":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":12,"status":"pending","rescheduleCount":0}},"6-5":{"preacher":{"memberId":11,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":13,"status":"pending","rescheduleCount":0}},"6-12":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":14,"status":"pending","rescheduleCount":0}},"6-19":{"preacher":{"memberId":12,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":3,"status":"pending","rescheduleCount":0}},"6-26":{"preacher":{"memberId":12,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":15,"status":"pending","rescheduleCount":0}},"7-2":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":3,"status":"pending","rescheduleCount":0}},"7-9":{"preacher":{"memberId":13,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":1,"status":"pending","rescheduleCount":0}},"7-16":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":7,"status":"pending","rescheduleCount":0}},"7-23":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":11,"status":"pending","rescheduleCount":0}},"7-30":{"preacher":{"memberId":14,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":8,"status":"pending","rescheduleCount":0}},"8-6":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":16,"status":"pending","rescheduleCount":0}},"8-13":{"preacher":{"memberId":15,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":17,"status":"pending","rescheduleCount":0}},"8-20":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":2,"status":"pending","rescheduleCount":0}},"8-27":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":5,"status":"pending","rescheduleCount":0}},"9-4":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":6,"status":"pending","rescheduleCount":0}},"9-11":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":10,"status":"pending","rescheduleCount":0}},"9-18":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":11,"status":"pending","rescheduleCount":0}},"9-25":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":14,"status":"pending","rescheduleCount":0}},"10-1":{"preacher":{"memberId":6,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":12,"status":"pending","rescheduleCount":0}},"10-8":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":13,"status":"pending","rescheduleCount":0}},"10-15":{"preacher":{"memberId":7,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":14,"status":"pending","rescheduleCount":0}},"10-22":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":15,"status":"pending","rescheduleCount":0}},"10-29":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":15,"status":"pending","rescheduleCount":0}},"11-6":{"preacher":{"memberId":4,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":1,"status":"pending","rescheduleCount":0}},"11-13":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":2,"status":"pending","rescheduleCount":0}},"11-20":{"preacher":{"memberId":10,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":3,"status":"pending","rescheduleCount":0}},"11-27":{"preacher":{"memberId":12,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":4,"status":"pending","rescheduleCount":0}}}; // __BAKE_POINT__
+        let assignments = {"0-4":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":2,"status":"pending","rescheduleCount":0}},"0-11":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":3,"status":"pending","rescheduleCount":0}},"0-18":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":1,"status":"pending","rescheduleCount":0}},"0-25":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":4,"status":"pending","rescheduleCount":0}},"1-1":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":6,"status":"pending","rescheduleCount":0}},"1-8":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":5,"status":"pending","rescheduleCount":0}},"1-15":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":5,"status":"pending","rescheduleCount":0}},"1-22":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":6,"status":"pending","rescheduleCount":0}},"2-1":{"preacher":{"memberId":6,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":7,"status":"pending","rescheduleCount":0}},"2-8":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":8,"status":"pending","rescheduleCount":0}},"2-15":{"preacher":{"memberId":7,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":10,"status":"pending","rescheduleCount":0}},"2-22":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":11,"status":"pending","rescheduleCount":0}},"2-29":{"preacher":{"memberId":13,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":9,"status":"pending","rescheduleCount":0}},"3-5":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":12,"status":"pending","rescheduleCount":0}},"3-12":{"preacher":{"memberId":10,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":13,"status":"pending","rescheduleCount":0}},"3-19":{"preacher":{"memberId":11,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":14,"status":"pending","rescheduleCount":0}},"3-26":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":12,"status":"pending","rescheduleCount":0}},"4-3":{"preacher":{"memberId":12,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":15,"status":"pending","rescheduleCount":0}},"4-10":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":16,"status":"pending","rescheduleCount":0}},"4-17":{"preacher":{"memberId":13,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":17,"status":"pending","rescheduleCount":0}},"4-24":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":10,"status":"pending","rescheduleCount":0}},"4-31":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":2,"status":"pending","rescheduleCount":0}},"5-7":{"preacher":{"memberId":4,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":5,"status":"pending","rescheduleCount":0}},"5-14":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":6,"status":"pending","rescheduleCount":0}},"5-21":{"preacher":{"memberId":14,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":10,"status":"pending","rescheduleCount":0}},"5-28":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":11,"status":"pending","rescheduleCount":0}},"6-5":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":12,"status":"pending","rescheduleCount":0}},"6-12":{"preacher":{"memberId":15,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":13,"status":"pending","rescheduleCount":0}},"6-19":{"preacher":{"memberId":12,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":3,"status":"pending","rescheduleCount":0}},"6-26":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":14,"status":"pending","rescheduleCount":0}},"7-2":{"preacher":{"memberId":16,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":15,"status":"pending","rescheduleCount":0}},"7-9":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":3,"status":"pending","rescheduleCount":0}},"7-16":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":7,"status":"pending","rescheduleCount":0}},"7-23":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":11,"status":"pending","rescheduleCount":0}},"7-30":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":1,"status":"pending","rescheduleCount":0}},"8-6":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":8,"status":"pending","rescheduleCount":0}},"8-13":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":16,"status":"pending","rescheduleCount":0}},"8-20":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":17,"status":"pending","rescheduleCount":0}},"8-27":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":2,"status":"pending","rescheduleCount":0}},"9-4":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":6,"status":"pending","rescheduleCount":0}},"9-11":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":5,"status":"pending","rescheduleCount":0}},"9-18":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":10,"status":"pending","rescheduleCount":0}},"9-25":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":14,"status":"pending","rescheduleCount":0}},"10-1":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":11,"status":"pending","rescheduleCount":0}},"10-8":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":12,"status":"pending","rescheduleCount":0}},"10-15":{"preacher":{"memberId":6,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":13,"status":"pending","rescheduleCount":0}},"10-22":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":15,"status":"pending","rescheduleCount":0}},"10-29":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":14,"status":"pending","rescheduleCount":0}},"11-6":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":15,"status":"pending","rescheduleCount":0}},"11-13":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":1,"status":"pending","rescheduleCount":0}},"11-20":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":2,"status":"pending","rescheduleCount":0}},"11-27":{"preacher":{"memberId":12,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":4,"status":"pending","rescheduleCount":0}}}; // __BAKE_POINT__
 
         const MONTH_NAMES = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         const DAY_NAMES = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];

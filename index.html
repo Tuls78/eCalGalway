@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<!-- Last Updated: 22 March 2026 - Privacy features, Fixed assignments, Holy Communion rule, Projects of Year -->
+<html lang="en">
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>AFM Galway Assembly – 2026 E-Calendar</title>
+    <title>AFM Galway Assembly – E-Calendar</title>
     <style>
         /* ============ RESET & BASE ============ */
         *,
@@ -1090,88 +1093,93 @@
             <svg width="56" height="56" viewBox="0 0 300 300" style="flex-shrink:0;" id="afmLogoHeader">
                 <defs>
                     <radialGradient id="bgGrad" cx="45%" cy="40%">
-                        <stop offset="0%" stop-color="#3068c8"></stop>
-                        <stop offset="100%" stop-color="#1a4590"></stop>
+                        <stop offset="0%" stop-color="#3068c8" />
+                        <stop offset="100%" stop-color="#1a4590" />
                     </radialGradient>
                     <linearGradient id="crownGrad" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stop-color="#dbbe44"></stop>
-                        <stop offset="100%" stop-color="#a88620"></stop>
+                        <stop offset="0%" stop-color="#dbbe44" />
+                        <stop offset="100%" stop-color="#a88620" />
                     </linearGradient>
                     <linearGradient id="silverRing" x1="0" y1="0" x2="1" y2="1">
-                        <stop offset="0%" stop-color="#e8e8ee"></stop>
-                        <stop offset="50%" stop-color="#c0c0cc"></stop>
-                        <stop offset="100%" stop-color="#e0e0e8"></stop>
+                        <stop offset="0%" stop-color="#e8e8ee" />
+                        <stop offset="50%" stop-color="#c0c0cc" />
+                        <stop offset="100%" stop-color="#e0e0e8" />
                     </linearGradient>
                 </defs>
                 <!-- Outer thin blue ring -->
-                <circle cx="150" cy="150" r="147" fill="none" stroke="#1a4590" stroke-width="3"></circle>
+                <circle cx="150" cy="150" r="147" fill="none" stroke="#1a4590" stroke-width="3" />
                 <!-- Thick silver/gray ring -->
-                <circle cx="150" cy="150" r="138" fill="none" stroke="url(#silverRing)" stroke-width="18"></circle>
+                <circle cx="150" cy="150" r="138" fill="none" stroke="url(#silverRing)" stroke-width="18" />
                 <!-- Inner thin blue ring -->
-                <circle cx="150" cy="150" r="126" fill="none" stroke="#1a4590" stroke-width="2.5"></circle>
+                <circle cx="150" cy="150" r="126" fill="none" stroke="#1a4590" stroke-width="2.5" />
                 <!-- Inner blue circle -->
-                <circle cx="150" cy="150" r="122" fill="url(#bgGrad)"></circle>
+                <circle cx="150" cy="150" r="122" fill="url(#bgGrad)" />
 
                 <!-- Rays: 11 Long, 10 Short -->
                 <g transform="translate(142,155)">
                     <!-- Long Rays -->
-                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a"></polygon>
-                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(20)"></polygon>
-                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(40)"></polygon>
-                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(60)"></polygon>
-                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(80)"></polygon>
-                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(100)"></polygon>
-                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-20)"></polygon>
-                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-40)"></polygon>
-                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-60)"></polygon>
-                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-80)"></polygon>
-                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-100)"></polygon>
+                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" />
+                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(20)" />
+                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(40)" />
+                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(60)" />
+                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(80)" />
+                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(100)" />
+                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-20)" />
+                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-40)" />
+                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-60)" />
+                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-80)" />
+                    <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-100)" />
                     <!-- Short Rays -->
-                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(10)"></polygon>
-                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(30)"></polygon>
-                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(50)"></polygon>
-                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(70)"></polygon>
-                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(90)"></polygon>
-                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-10)"></polygon>
-                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-30)"></polygon>
-                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-50)"></polygon>
-                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-70)"></polygon>
-                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-90)"></polygon>
+                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(10)" />
+                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(30)" />
+                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(50)" />
+                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(70)" />
+                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(90)" />
+                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-10)" />
+                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-30)" />
+                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-50)" />
+                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-70)" />
+                    <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-90)" />
                 </g>
 
                 <!-- Dark blue orb behind crown -->
-                <circle cx="138" cy="138" r="16" fill="#0e2660" stroke="#c8a82a" stroke-width="2.5"></circle>
+                <circle cx="138" cy="138" r="16" fill="#0e2660" stroke="#c8a82a" stroke-width="2.5" />
 
                 <!-- Tilted red cross (Behnd Crown) -->
                 <g transform="translate(165,130) rotate(28)">
                     <!-- White border -->
-                    <rect x="-10" y="-90" width="20" height="180" rx="3" fill="#fff"></rect>
-                    <rect x="-45" y="-38" width="90" height="20" rx="3" fill="#fff"></rect>
+                    <rect x="-10" y="-90" width="20" height="180" rx="3" fill="#fff" />
+                    <rect x="-45" y="-38" width="90" height="20" rx="3" fill="#fff" />
                     <!-- Red cross -->
-                    <rect x="-7" y="-87" width="14" height="174" rx="2" fill="#cc1111"></rect>
-                    <rect x="-42" y="-35" width="84" height="14" rx="2" fill="#cc1111"></rect>
+                    <rect x="-7" y="-87" width="14" height="174" rx="2" fill="#cc1111" />
+                    <rect x="-42" y="-35" width="84" height="14" rx="2" fill="#cc1111" />
                 </g>
 
                 <!-- Crown body -->
                 <g transform="translate(148,168)">
                     <!-- Crown shape -->
-                    <polygon points="-62,12 -54,-14 -38,4 -22,-22 -8,0 8,-22 22,4 38,-14 62,12" fill="url(#crownGrad)" stroke="#8a6e18" stroke-width="1.5"></polygon>
+                    <polygon points="-62,12 -54,-14 -38,4 -22,-22 -8,0 8,-22 22,4 38,-14 62,12" fill="url(#crownGrad)"
+                        stroke="#8a6e18" stroke-width="1.5" />
                     <!-- Crown band/rim -->
-                    <ellipse cx="0" cy="14" rx="62" ry="10" fill="url(#crownGrad)" stroke="#8a6e18" stroke-width="1.2"></ellipse>
+                    <ellipse cx="0" cy="14" rx="62" ry="10" fill="url(#crownGrad)" stroke="#8a6e18"
+                        stroke-width="1.2" />
                     <!-- Red jewels -->
-                    <rect x="-5" y="6" width="10" height="10" rx="2" fill="#cc1111" stroke="#900" stroke-width="1" transform="rotate(45,0,11)"></rect>
-                    <rect x="-30" y="7" width="8" height="8" rx="1.5" fill="#cc1111" stroke="#900" stroke-width="0.8" transform="rotate(45,-26,11)"></rect>
-                    <rect x="22" y="7" width="8" height="8" rx="1.5" fill="#cc1111" stroke="#900" stroke-width="0.8" transform="rotate(45,26,11)"></rect>
+                    <rect x="-5" y="6" width="10" height="10" rx="2" fill="#cc1111" stroke="#900" stroke-width="1"
+                        transform="rotate(45,0,11)" />
+                    <rect x="-30" y="7" width="8" height="8" rx="1.5" fill="#cc1111" stroke="#900" stroke-width="0.8"
+                        transform="rotate(45,-26,11)" />
+                    <rect x="22" y="7" width="8" height="8" rx="1.5" fill="#cc1111" stroke="#900" stroke-width="0.8"
+                        transform="rotate(45,26,11)" />
                     <!-- White cushion at bottom -->
-                    <ellipse cx="0" cy="24" rx="55" ry="8" fill="#eef" stroke="#ccc" stroke-width="1"></ellipse>
-                    <ellipse cx="0" cy="23" rx="52" ry="6" fill="#fff" opacity="0.6"></ellipse>
+                    <ellipse cx="0" cy="24" rx="55" ry="8" fill="#eef" stroke="#ccc" stroke-width="1" />
+                    <ellipse cx="0" cy="23" rx="52" ry="6" fill="#fff" opacity="0.6" />
                 </g>
 
                 <!-- Gold orbs on crown tips -->
-                <circle cx="86" cy="154" r="7" fill="#e0d8b0" stroke="#c8a82a" stroke-width="2"></circle>
-                <circle cx="210" cy="154" r="7" fill="#e0d8b0" stroke="#c8a82a" stroke-width="2"></circle>
-                <circle cx="110" cy="172" r="6" fill="#e0d8b0" stroke="#c8a82a" stroke-width="1.5"></circle>
-                <circle cx="186" cy="172" r="6" fill="#e0d8b0" stroke="#c8a82a" stroke-width="1.5"></circle>
+                <circle cx="86" cy="154" r="7" fill="#e0d8b0" stroke="#c8a82a" stroke-width="2" />
+                <circle cx="210" cy="154" r="7" fill="#e0d8b0" stroke="#c8a82a" stroke-width="2" />
+                <circle cx="110" cy="172" r="6" fill="#e0d8b0" stroke="#c8a82a" stroke-width="1.5" />
+                <circle cx="186" cy="172" r="6" fill="#e0d8b0" stroke="#c8a82a" stroke-width="1.5" />
             </svg>
             <div>
                 <h1>AFM IRELAND</h1>
@@ -1185,9 +1193,9 @@
 
     <!-- ============ MONTH NAV ============ -->
     <div class="nav">
-        <button onclick="changeMonth(-1)">◀</button>
-        <span class="month-year" id="monthYear">February 2026</span>
-        <button onclick="changeMonth(1)">▶</button>
+        <button onclick="changeMonth(-1)">&#9664;</button>
+        <span class="month-year" id="monthYear"></span>
+        <button onclick="changeMonth(1)">&#9654;</button>
     </div>
 
     <!-- ============ VIEW MODE TABS ============ -->
@@ -1199,11 +1207,7 @@
     </div>
 
     <!-- ============ MONTHLY THEME & VERSE ============ -->
-    <div class="month-verse" id="monthVerse">
-        <div class="theme-label">Love &amp; Unity</div>
-        <div class="verse-text">"Above all, clothe yourselves with love, which binds us all together in perfect harmony."</div>
-        <div class="verse-ref">— Colossians 3:14</div>
-    </div>
+    <div class="month-verse" id="monthVerse"></div>
 
     <!-- ============ PROJECTS OF THE YEAR ============ -->
     <div class="projects-bar" id="projectsBar">
@@ -1232,166 +1236,86 @@
         <svg class="watermark" viewBox="0 0 300 300">
             <defs>
                 <radialGradient id="wmBg" cx="45%" cy="40%">
-                    <stop offset="0%" stop-color="#3068c8"></stop>
-                    <stop offset="100%" stop-color="#1a4590"></stop>
+                    <stop offset="0%" stop-color="#3068c8" />
+                    <stop offset="100%" stop-color="#1a4590" />
                 </radialGradient>
                 <linearGradient id="wmCrown" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#dbbe44"></stop>
-                    <stop offset="100%" stop-color="#a88620"></stop>
+                    <stop offset="0%" stop-color="#dbbe44" />
+                    <stop offset="100%" stop-color="#a88620" />
                 </linearGradient>
                 <linearGradient id="wmSilver" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stop-color="#e8e8ee"></stop>
-                    <stop offset="50%" stop-color="#c0c0cc"></stop>
-                    <stop offset="100%" stop-color="#e0e0e8"></stop>
+                    <stop offset="0%" stop-color="#e8e8ee" />
+                    <stop offset="50%" stop-color="#c0c0cc" />
+                    <stop offset="100%" stop-color="#e0e0e8" />
                 </linearGradient>
             </defs>
-            <circle cx="150" cy="150" r="147" fill="none" stroke="#1a4590" stroke-width="3"></circle>
-            <circle cx="150" cy="150" r="138" fill="none" stroke="url(#wmSilver)" stroke-width="18"></circle>
-            <circle cx="150" cy="150" r="126" fill="none" stroke="#1a4590" stroke-width="2.5"></circle>
-            <circle cx="150" cy="150" r="122" fill="url(#wmBg)"></circle>
+            <circle cx="150" cy="150" r="147" fill="none" stroke="#1a4590" stroke-width="3" />
+            <circle cx="150" cy="150" r="138" fill="none" stroke="url(#wmSilver)" stroke-width="18" />
+            <circle cx="150" cy="150" r="126" fill="none" stroke="#1a4590" stroke-width="2.5" />
+            <circle cx="150" cy="150" r="122" fill="url(#wmBg)" />
 
             <!-- Rays: 11 Long, 10 Short -->
             <g transform="translate(142,155)">
                 <!-- Long Rays -->
-                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a"></polygon>
-                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(20)"></polygon>
-                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(40)"></polygon>
-                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(60)"></polygon>
-                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(80)"></polygon>
-                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(100)"></polygon>
-                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-20)"></polygon>
-                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-40)"></polygon>
-                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-60)"></polygon>
-                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-80)"></polygon>
-                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-100)"></polygon>
+                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" />
+                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(20)" />
+                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(40)" />
+                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(60)" />
+                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(80)" />
+                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(100)" />
+                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-20)" />
+                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-40)" />
+                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-60)" />
+                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-80)" />
+                <polygon points="0,-10 -5,-100 0,-115 5,-100" fill="#c8a82a" transform="rotate(-100)" />
                 <!-- Short Rays -->
-                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(10)"></polygon>
-                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(30)"></polygon>
-                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(50)"></polygon>
-                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(70)"></polygon>
-                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(90)"></polygon>
-                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-10)"></polygon>
-                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-30)"></polygon>
-                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-50)"></polygon>
-                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-70)"></polygon>
-                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-90)"></polygon>
+                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(10)" />
+                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(30)" />
+                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(50)" />
+                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(70)" />
+                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(90)" />
+                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-10)" />
+                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-30)" />
+                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-50)" />
+                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-70)" />
+                <polygon points="0,-10 -3,-85 0,-95 3,-85" fill="#b89828" transform="rotate(-90)" />
             </g>
 
             <!-- Dark blue orb behind crown -->
-            <circle cx="138" cy="138" r="16" fill="#0e2660" stroke="#c8a82a" stroke-width="2.5"></circle>
+            <circle cx="138" cy="138" r="16" fill="#0e2660" stroke="#c8a82a" stroke-width="2.5" />
 
             <!-- Tilted red cross (MOVED BEHIND CROWN) -->
             <g transform="translate(165,130) rotate(28)">
-                <rect x="-10" y="-90" width="20" height="180" rx="3" fill="#fff"></rect>
-                <rect x="-45" y="-38" width="90" height="20" rx="3" fill="#fff"></rect>
-                <rect x="-7" y="-87" width="14" height="174" rx="2" fill="#cc1111"></rect>
-                <rect x="-42" y="-35" width="84" height="14" rx="2" fill="#cc1111"></rect>
+                <rect x="-10" y="-90" width="20" height="180" rx="3" fill="#fff" />
+                <rect x="-45" y="-38" width="90" height="20" rx="3" fill="#fff" />
+                <rect x="-7" y="-87" width="14" height="174" rx="2" fill="#cc1111" />
+                <rect x="-42" y="-35" width="84" height="14" rx="2" fill="#cc1111" />
             </g>
 
             <!-- Crown body -->
             <g transform="translate(148,168)">
-                <polygon points="-62,12 -54,-14 -38,4 -22,-22 -8,0 8,-22 22,4 38,-14 62,12" fill="url(#wmCrown)" stroke="#8a6e18" stroke-width="1.5"></polygon>
-                <ellipse cx="0" cy="14" rx="62" ry="10" fill="url(#wmCrown)" stroke="#8a6e18" stroke-width="1.2"></ellipse>
-                <rect x="-5" y="6" width="10" height="10" rx="2" fill="#cc1111" stroke="#900" stroke-width="1" transform="rotate(45,0,11)"></rect>
-                <rect x="-30" y="7" width="8" height="8" rx="1.5" fill="#cc1111" stroke="#900" stroke-width="0.8" transform="rotate(45,-26,11)"></rect>
-                <rect x="22" y="7" width="8" height="8" rx="1.5" fill="#cc1111" stroke="#900" stroke-width="0.8" transform="rotate(45,26,11)"></rect>
-                <ellipse cx="0" cy="24" rx="55" ry="8" fill="#eef" stroke="#ccc" stroke-width="1"></ellipse>
-                <ellipse cx="0" cy="23" rx="52" ry="6" fill="#fff" opacity="0.6"></ellipse>
+                <polygon points="-62,12 -54,-14 -38,4 -22,-22 -8,0 8,-22 22,4 38,-14 62,12" fill="url(#wmCrown)"
+                    stroke="#8a6e18" stroke-width="1.5" />
+                <ellipse cx="0" cy="14" rx="62" ry="10" fill="url(#wmCrown)" stroke="#8a6e18" stroke-width="1.2" />
+                <rect x="-5" y="6" width="10" height="10" rx="2" fill="#cc1111" stroke="#900" stroke-width="1"
+                    transform="rotate(45,0,11)" />
+                <rect x="-30" y="7" width="8" height="8" rx="1.5" fill="#cc1111" stroke="#900" stroke-width="0.8"
+                    transform="rotate(45,-26,11)" />
+                <rect x="22" y="7" width="8" height="8" rx="1.5" fill="#cc1111" stroke="#900" stroke-width="0.8"
+                    transform="rotate(45,26,11)" />
+                <ellipse cx="0" cy="24" rx="55" ry="8" fill="#eef" stroke="#ccc" stroke-width="1" />
+                <ellipse cx="0" cy="23" rx="52" ry="6" fill="#fff" opacity="0.6" />
             </g>
 
-            <circle cx="86" cy="154" r="7" fill="#e0d8b0" stroke="#c8a82a" stroke-width="2"></circle>
-            <circle cx="210" cy="154" r="7" fill="#e0d8b0" stroke="#c8a82a" stroke-width="2"></circle>
-            <circle cx="110" cy="172" r="6" fill="#e0d8b0" stroke="#c8a82a" stroke-width="1.5"></circle>
-            <circle cx="186" cy="172" r="6" fill="#e0d8b0" stroke="#c8a82a" stroke-width="1.5"></circle>
+            <circle cx="86" cy="154" r="7" fill="#e0d8b0" stroke="#c8a82a" stroke-width="2" />
+            <circle cx="210" cy="154" r="7" fill="#e0d8b0" stroke="#c8a82a" stroke-width="2" />
+            <circle cx="110" cy="172" r="6" fill="#e0d8b0" stroke="#c8a82a" stroke-width="1.5" />
+            <circle cx="186" cy="172" r="6" fill="#e0d8b0" stroke="#c8a82a" stroke-width="1.5" />
         </svg>
         <div class="day-headers">
             <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
         </div>
-        <div class="cal-grid" id="calGrid"><div class="cal-cell empty"></div><div class="cal-cell empty"></div><div class="cal-cell empty"></div><div class="cal-cell empty"></div><div class="cal-cell empty"></div><div class="cal-cell empty"></div><div class="cal-cell sunday past" onclick="openDayModal(1, 1)">
-            <span class="day-num">1</span>
-            
-        </div><div class="cal-cell past" onclick="openDayModal(1, 2)">
-            <span class="day-num">2</span>
-            <div class="event-dots"><span class="event-dot dot-prayer"></span></div>
-        </div><div class="cal-cell past" onclick="openDayModal(1, 3)">
-            <span class="day-num">3</span>
-            
-        </div><div class="cal-cell past" onclick="openDayModal(1, 4)">
-            <span class="day-num">4</span>
-            
-        </div><div class="cal-cell past" onclick="openDayModal(1, 5)">
-            <span class="day-num">5</span>
-            
-        </div><div class="cal-cell past" onclick="openDayModal(1, 6)">
-            <span class="day-num">6</span>
-            
-        </div><div class="cal-cell past" onclick="openDayModal(1, 7)">
-            <span class="day-num">7</span>
-            
-        </div><div class="cal-cell sunday past" onclick="openDayModal(1, 8)">
-            <span class="day-num">8</span>
-            <div class="event-dots"><span class="event-dot dot-general"></span></div>
-        </div><div class="cal-cell past" onclick="openDayModal(1, 9)">
-            <span class="day-num">9</span>
-            <div class="event-dots"><span class="event-dot dot-prayer"></span></div>
-        </div><div class="cal-cell past" onclick="openDayModal(1, 10)">
-            <span class="day-num">10</span>
-            
-        </div><div class="cal-cell past" onclick="openDayModal(1, 11)">
-            <span class="day-num">11</span>
-            
-        </div><div class="cal-cell past" onclick="openDayModal(1, 12)">
-            <span class="day-num">12</span>
-            
-        </div><div class="cal-cell past" onclick="openDayModal(1, 13)">
-            <span class="day-num">13</span>
-            
-        </div><div class="cal-cell past" onclick="openDayModal(1, 14)">
-            <span class="day-num">14</span>
-            <div class="event-dots"><span class="event-dot dot-ladies"></span><span class="event-dot dot-national"></span></div>
-        </div><div class="cal-cell sunday today" onclick="openDayModal(1, 15)">
-            <span class="day-num">15</span>
-            
-        </div><div class="cal-cell" onclick="openDayModal(1, 16)">
-            <span class="day-num">16</span>
-            <div class="event-dots"><span class="event-dot dot-prayer"></span></div>
-        </div><div class="cal-cell" onclick="openDayModal(1, 17)">
-            <span class="day-num">17</span>
-            
-        </div><div class="cal-cell" onclick="openDayModal(1, 18)">
-            <span class="day-num">18</span>
-            
-        </div><div class="cal-cell" onclick="openDayModal(1, 19)">
-            <span class="day-num">19</span>
-            
-        </div><div class="cal-cell" onclick="openDayModal(1, 20)">
-            <span class="day-num">20</span>
-            
-        </div><div class="cal-cell" onclick="openDayModal(1, 21)">
-            <span class="day-num">21</span>
-            <div class="event-dots"><span class="event-dot dot-men"></span></div>
-        </div><div class="cal-cell sunday" onclick="openDayModal(1, 22)">
-            <span class="day-num">22</span>
-            <div class="event-dots"><span class="event-dot dot-ladies"></span><span class="event-dot dot-general"></span></div>
-        </div><div class="cal-cell" onclick="openDayModal(1, 23)">
-            <span class="day-num">23</span>
-            <div class="event-dots"><span class="event-dot dot-prayer"></span></div>
-        </div><div class="cal-cell" onclick="openDayModal(1, 24)">
-            <span class="day-num">24</span>
-            
-        </div><div class="cal-cell" onclick="openDayModal(1, 25)">
-            <span class="day-num">25</span>
-            
-        </div><div class="cal-cell" onclick="openDayModal(1, 26)">
-            <span class="day-num">26</span>
-            
-        </div><div class="cal-cell" onclick="openDayModal(1, 27)">
-            <span class="day-num">27</span>
-            
-        </div><div class="cal-cell" onclick="openDayModal(1, 28)">
-            <span class="day-num">28</span>
-            <div class="event-dots"><span class="event-dot dot-men"></span><span class="event-dot dot-ladies"></span></div>
-        </div></div>
+        <div class="cal-grid" id="calGrid"></div>
 
         <!-- Legend -->
         <div class="legend">
@@ -1405,68 +1329,7 @@
         </div>
 
         <!-- Event list for month -->
-        <div class="month-events" id="monthEvents"><h3>February 2026 — Events</h3><div class="event-item" onclick="showActivityInfo('Prayer and Fasting')">
-            <div class="event-date-badge bg-prayer">MON</div>
-            <div class="event-info">
-                <div class="event-title">Prayer &amp; Fasting (Every Monday)</div>
-                <div class="event-dept">Weekly · Dates: 2, 9, 16, 23</div>
-            </div>
-            <div class="info-icon" title="What is this?">?</div>
-        </div><div class="event-item" onclick="openDayModal(1, 8)">
-            <div class="event-date-badge bg-general">8</div>
-            <div class="event-info">
-                <div class="event-title">Holy Communion</div>
-                <div class="event-dept">Sunday · General</div>
-                <div class="event-service">
-                    🎤 Mr Dube · 📖 Pastor C Mudada
-                </div>
-            </div>
-            <div class="info-icon" onclick="event.stopPropagation();showActivityInfo('Holy Communion')">?</div>
-        </div><div class="event-item" onclick="openDayModal(1, 14)">
-            <div class="event-date-badge bg-ladies">14</div>
-            <div class="event-info">
-                <div class="event-title">National Ladies Leadership Meeting</div>
-                <div class="event-dept">Saturday · Ladies &amp; National</div>
-                
-            </div>
-            <div class="info-icon" onclick="event.stopPropagation();showActivityInfo('National Ladies Leadership Meeting')">?</div>
-        </div><div class="event-item" onclick="openDayModal(1, 21)">
-            <div class="event-date-badge bg-men">21</div>
-            <div class="event-info">
-                <div class="event-title">Men's Breakfast Meeting</div>
-                <div class="event-dept">Saturday · Men</div>
-                
-            </div>
-            <div class="info-icon" onclick="event.stopPropagation();showActivityInfo('Men\'s Breakfast Meeting')">?</div>
-        </div><div class="event-item" onclick="openDayModal(1, 22)">
-            <div class="event-date-badge bg-ladies">22</div>
-            <div class="event-info">
-                <div class="event-title">Ladies Special Sunday</div>
-                <div class="event-dept">Sunday · Ladies</div>
-                <div class="event-service">
-                    🎤 Mrs V Dube · 📖 Mrs Pastor L Mudada
-                </div>
-            </div>
-            <div class="info-icon" onclick="event.stopPropagation();showActivityInfo('Ladies Special Sunday')">?</div>
-        </div><div class="event-item" onclick="openDayModal(1, 22)">
-            <div class="event-date-badge bg-general">22</div>
-            <div class="event-info">
-                <div class="event-title">Holy Communion</div>
-                <div class="event-dept">Sunday · General</div>
-                <div class="event-service">
-                    🎤 Mrs V Dube · 📖 Mrs Pastor L Mudada
-                </div>
-            </div>
-            <div class="info-icon" onclick="event.stopPropagation();showActivityInfo('Holy Communion')">?</div>
-        </div><div class="event-item" onclick="openDayModal(1, 28)">
-            <div class="event-date-badge bg-men">28</div>
-            <div class="event-info">
-                <div class="event-title">Couples Meeting</div>
-                <div class="event-dept">Saturday · Men &amp; Ladies</div>
-                
-            </div>
-            <div class="info-icon" onclick="event.stopPropagation();showActivityInfo('Couples Meeting')">?</div>
-        </div></div>
+        <div class="month-events" id="monthEvents"></div>
     </div>
 
     <!-- ============ MODAL ============ -->
@@ -1476,13 +1339,16 @@
 
     <!-- ============ ADMIN TOGGLE ============ -->
     <button class="admin-toggle" onclick="toggleAdmin()" title="Secretary Panel">⚙</button>
-    <button class="admin-toggle" style="bottom:80px;background:#1565C0;" onclick="showHelp()" title="Help &amp; Guide">?</button>
+    <button class="admin-toggle" style="bottom:80px;background:#1565C0;" onclick="showHelp()"
+        title="Help & Guide">?</button>
     <div class="admin-panel" id="adminPanel">
         <div style="display:flex;justify-content:space-between;align-items:center;">
             <h3 style="margin:0;">⚙ Secretary Panel</h3>
-            <button onclick="document.getElementById('adminPanel').classList.remove('active')" style="background:none;border:none;font-size:1.3rem;cursor:pointer;color:#888;padding:0 4px;" title="Close Panel">×</button>
+            <button onclick="document.getElementById('adminPanel').classList.remove('active')"
+                style="background:none;border:none;font-size:1.3rem;cursor:pointer;color:#888;padding:0 4px;"
+                title="Close Panel">&times;</button>
         </div>
-        <p style="font-size:0.7rem;color:#888;margin-bottom:10px;">Manage assignments &amp; confirmations</p>
+        <p style="font-size:0.7rem;color:#888;margin-bottom:10px;">Manage assignments & confirmations</p>
         <label style="font-size:0.75rem;font-weight:600;">Quick Actions:</label>
         <button class="btn btn-edit" style="width:100%;margin:6px 0;" onclick="showAllPendingModal()">View All
             Pending</button>
@@ -1495,22 +1361,26 @@
         <hr style="margin:10px 0;border:none;border-top:1px solid #eee;">
         <label style="font-size:0.75rem;font-weight:600;color:#007bff;">Publish to Live Website:</label>
         <p style="font-size:0.65rem;color:#aaa;margin:4px 0 6px;">Pushes your current rota directly to GitHub Pages.</p>
-        <button class="btn btn-whatsapp" style="width:100%;margin:6px 0;background:#007bff;" onclick="publishToGitHub()" id="publishBtn" disabled="">⏳ Publishing...</button>
+        <button class="btn btn-whatsapp" style="width:100%;margin:6px 0;background:#007bff;" onclick="publishToGitHub()"
+            id="publishBtn">🚀 Publish to GitHub</button>
         <button class="btn btn-close" style="width:100%;margin:2px 0;font-size:0.65rem;" onclick="setupGitHub()">⚙
-            Settings (WhatsApp &amp; GitHub)</button>
+            Settings (WhatsApp & GitHub)</button>
         <hr style="margin:10px 0;border:none;border-top:1px solid #eee;">
         <label style="font-size:0.75rem;font-weight:600;color:#FF9800;">Delegation:</label>
         <p style="font-size:0.65rem;color:#aaa;margin:4px 0 6px;">Hand over calendar management to the Pastor when
             you're unavailable.</p>
-        <button class="btn btn-edit" style="width: 100%; margin: 6px 0px;" onclick="toggleDelegation()" id="delegateBtn">📡 Delegate Duties to Pastor</button>
+        <button class="btn btn-edit" style="width:100%;margin:6px 0;" onclick="toggleDelegation()" id="delegateBtn">📡
+            Delegate Duties to Pastor</button>
         <hr style="margin:10px 0;border:none;border-top:1px solid #eee;">
         <label style="font-size:0.75rem;font-weight:600;color:#9C27B0;">Allocation Matrix:</label>
-        <p style="font-size:0.65rem;color:#aaa;margin:4px 0 6px;">View the year-end balance of preaching &amp; facilitation
+        <p style="font-size:0.65rem;color:#aaa;margin:4px 0 6px;">View the year-end balance of preaching & facilitation
             duties across all members.</p>
-        <button class="btn btn-confirm" style="width:100%;margin:6px 0;background:#9C27B0;" onclick="showAllocationMatrix()">📊 View Allocation Matrix</button>
+        <button class="btn btn-confirm" style="width:100%;margin:6px 0;background:#9C27B0;"
+            onclick="showAllocationMatrix()">📊 View Allocation Matrix</button>
         <hr style="margin:10px 0;border:none;border-top:1px solid #eee;">
         <label style="font-size:0.75rem;font-weight:600;">Reset:</label>
-        <button class="btn btn-decline" style="width:100%;margin:6px 0;" onclick="if(confirm('Reset ALL assignments and confirmations?\n\nYour settings (GitHub token, phone numbers) will be kept.')){resetAssignmentsOnly();}">🔄
+        <button class="btn btn-decline" style="width:100%;margin:6px 0;"
+            onclick="if(confirm('Reset ALL assignments and confirmations?\n\nYour settings (GitHub token, phone numbers) will be kept.')){resetAssignmentsOnly();}">🔄
             Reset All Data</button>
     </div>
 
@@ -1520,7 +1390,7 @@
     </div>
 
     <!-- ============ TOAST ============ -->
-    <div class="toast" id="toast">🔓 Welcome, Secretary!</div>
+    <div class="toast" id="toast"></div>
 
     <script>
         // ============================================================
@@ -1979,7 +1849,7 @@
         EVENTS = generateEvents(currentYear);
 
         let activeFilter = 'all';
-        let assignments = {"0-4":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":2,"status":"pending","rescheduleCount":0}},"0-11":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":3,"status":"pending","rescheduleCount":0}},"0-18":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":1,"status":"pending","rescheduleCount":0}},"0-25":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":4,"status":"pending","rescheduleCount":0}},"1-1":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":6,"status":"pending","rescheduleCount":0}},"1-8":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":5,"status":"pending","rescheduleCount":0}},"1-15":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":5,"status":"pending","rescheduleCount":0}},"1-22":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":6,"status":"pending","rescheduleCount":0}},"2-1":{"preacher":{"memberId":6,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":7,"status":"pending","rescheduleCount":0}},"2-8":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":8,"status":"pending","rescheduleCount":0}},"2-15":{"preacher":{"memberId":7,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":10,"status":"pending","rescheduleCount":0}},"2-22":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":11,"status":"pending","rescheduleCount":0}},"2-29":{"preacher":{"memberId":13,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":9,"status":"pending","rescheduleCount":0}},"3-5":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":12,"status":"pending","rescheduleCount":0}},"3-12":{"preacher":{"memberId":10,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":13,"status":"pending","rescheduleCount":0}},"3-19":{"preacher":{"memberId":11,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":14,"status":"pending","rescheduleCount":0}},"3-26":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":12,"status":"pending","rescheduleCount":0}},"4-3":{"preacher":{"memberId":12,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":15,"status":"pending","rescheduleCount":0}},"4-10":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":16,"status":"pending","rescheduleCount":0}},"4-17":{"preacher":{"memberId":13,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":17,"status":"pending","rescheduleCount":0}},"4-24":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":10,"status":"pending","rescheduleCount":0}},"4-31":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":2,"status":"pending","rescheduleCount":0}},"5-7":{"preacher":{"memberId":4,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":5,"status":"pending","rescheduleCount":0}},"5-14":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":6,"status":"pending","rescheduleCount":0}},"5-21":{"preacher":{"memberId":14,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":10,"status":"pending","rescheduleCount":0}},"5-28":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":11,"status":"pending","rescheduleCount":0}},"6-5":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":12,"status":"pending","rescheduleCount":0}},"6-12":{"preacher":{"memberId":15,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":13,"status":"pending","rescheduleCount":0}},"6-19":{"preacher":{"memberId":12,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":3,"status":"pending","rescheduleCount":0}},"6-26":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":14,"status":"pending","rescheduleCount":0}},"7-2":{"preacher":{"memberId":16,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":15,"status":"pending","rescheduleCount":0}},"7-9":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":3,"status":"pending","rescheduleCount":0}},"7-16":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":7,"status":"pending","rescheduleCount":0}},"7-23":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":11,"status":"pending","rescheduleCount":0}},"7-30":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":1,"status":"pending","rescheduleCount":0}},"8-6":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":8,"status":"pending","rescheduleCount":0}},"8-13":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":16,"status":"pending","rescheduleCount":0}},"8-20":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":17,"status":"pending","rescheduleCount":0}},"8-27":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":2,"status":"pending","rescheduleCount":0}},"9-4":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":6,"status":"pending","rescheduleCount":0}},"9-11":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":5,"status":"pending","rescheduleCount":0}},"9-18":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":10,"status":"pending","rescheduleCount":0}},"9-25":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":14,"status":"pending","rescheduleCount":0}},"10-1":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":11,"status":"pending","rescheduleCount":0}},"10-8":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":12,"status":"pending","rescheduleCount":0}},"10-15":{"preacher":{"memberId":6,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":13,"status":"pending","rescheduleCount":0}},"10-22":{"preacher":{"memberId":2,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":15,"status":"pending","rescheduleCount":0}},"10-29":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":14,"status":"pending","rescheduleCount":0}},"11-6":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":15,"status":"pending","rescheduleCount":0}},"11-13":{"preacher":{"memberId":5,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":1,"status":"pending","rescheduleCount":0}},"11-20":{"preacher":{"memberId":1,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":2,"status":"pending","rescheduleCount":0}},"11-27":{"preacher":{"memberId":12,"status":"pending","rescheduleCount":0},"facilitator":{"memberId":4,"status":"pending","rescheduleCount":0}}}; // __BAKE_POINT__
+        let assignments = generateInitialAssignments(); // __BAKE_POINT__
 
         const MONTH_NAMES = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         const DAY_NAMES = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -2134,13 +2004,12 @@
                 let serviceHtml = '';
                 if (isSunday && ev.title !== "Prayer and Fasting") {
                     const aKey = `${ev.month}-${ev.day}`;
-                    const assign = assignments[aKey];
-                    if (assign) {
-                        const preacher = MEMBERS.find(m => m.id === assign.preacher.memberId);
-                        const facilitator = MEMBERS.find(m => m.id === assign.facilitator.memberId);
-                        serviceHtml = `<div class="event-service">
-                    🎤 ${facilitator ? facilitator.name : 'TBA'} · 📖 ${preacher ? preacher.name : 'TBA'}
-                </div>`;
+                    const specialDept = getSpecialSundayDept(ev.month, ev.day);
+                    if (specialDept) {
+                        const deptLabel = specialDept === 'sunday-school' ? 'Sunday School' : specialDept.charAt(0).toUpperCase() + specialDept.slice(1);
+                        serviceHtml = `<div class="event-service">🏷️ ${deptLabel} Leading</div>`;
+                    } else {
+                        serviceHtml = `<div class="event-service">Sunday Service</div>`;
                     }
                 }
 
@@ -2311,7 +2180,8 @@
 
                 html += '<div class="section-label">Sunday Service — 10:00 AM</div>';
 
-                if (assign) {
+                if (assign && isAdminLoggedIn) {
+                    // Admin-only: Show assignment details and management
                     const preacher = MEMBERS.find(m => m.id === assign.preacher.memberId);
                     const facilitator = MEMBERS.find(m => m.id === assign.facilitator.memberId);
 
@@ -2331,6 +2201,12 @@
 
                     // Confirmation actions
                     html += buildConfirmationUI(aKey, assign, month, day);
+                } else if (!specialDept) {
+                    // Public view: Show generic service reminder
+                    html += `<div class="detail-card" style="background:#f0f7ff;">
+                <div class="label">Sunday Worship Service</div>
+                <div class="value" style="color:#1976d2;">10:00 AM · AFM Galway Assembly<br><small>Galway Westside Community Hall, H91 R853</small></div>
+            </div>`;
                 }
             }
 
@@ -2395,12 +2271,12 @@
 
                 if (data.status === 'confirmed' || data.status === 'locked') {
                     html += `<div class="detail-card" style="border-left:3px solid #4CAF50;">
-                <div class="label">${roleLabel}: ${member ? member.name : 'TBA'}</div>
+                <div class="label">${roleLabel}: ${canManage ? member ? member.name : 'TBA' : 'Assigned'}</div>
                 <div class="value" style="color:#2E7D32;">✅ Confirmed & Locked</div>
             </div>`;
                 } else if (data.status === 'declined') {
                     html += `<div class="detail-card" style="border-left:3px solid #f44336;">
-                <div class="label">${roleLabel}: ${member ? member.name : 'TBA'}</div>
+                <div class="label">${roleLabel}: ${canManage ? member ? member.name : 'TBA' : 'Assignment'}</div>
                 <div class="value" style="color:#C62828;">❌ Declined</div>
                 ${canManage ? `<div style="margin-top:8px;">
                     <button class="btn btn-edit" onclick="showAlternatives('${aKey}','${role}',${month},${day})">Find Alternative</button>
@@ -2409,7 +2285,7 @@
                 } else {
                     // Pending
                     html += `<div class="detail-card">
-                <div class="label">${roleLabel}: ${member ? member.name : 'TBA'}</div>
+                <div class="label">${roleLabel}: ${canManage ? member ? member.name : 'TBA' : 'Pending'}</div>
                 <div class="value" style="color:#FF9800;">⏳ Pending</div>`;
 
                     if (canManage) {
@@ -2985,7 +2861,7 @@
             if (!htmlContent) {
                 htmlContent = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
                 // Remove any 'active' class on admin panel so it starts closed
-                htmlContent = htmlContent.replace(/class="admin-panel"/g, 'class="admin-panel"');
+                htmlContent = htmlContent.replace(/class="admin-panel active"/g, 'class="admin-panel"');
             }
 
             // Bake current assignment data into the source
@@ -3207,8 +3083,12 @@
                 if (assign) {
                     const facilitator = MEMBERS.find(m => m.id === assign.facilitator.memberId);
                     const preacher = MEMBERS.find(m => m.id === assign.preacher.memberId);
-                    text += `🎤 Facilitator: *${facilitator ? facilitator.name : 'TBA'}*\n`;
-                    text += `📖 Preacher: *${preacher ? preacher.name : 'TBA'}*\n\n`;
+                    if (isAdminLoggedIn) {
+                        text += `🎤 Facilitator: *${facilitator ? facilitator.name : 'TBA'}*\n`;
+                        text += `📖 Preacher: *${preacher ? preacher.name : 'TBA'}*\n\n`;
+                    } else {
+                        text += `🏪 Sunday Worship Service at 10:00 AM\n\n`;
+                    }
                 }
             }
 
@@ -3248,8 +3128,12 @@
                 if (assign) {
                     const f = MEMBERS.find(m => m.id === assign.facilitator.memberId);
                     const p = MEMBERS.find(m => m.id === assign.preacher.memberId);
-                    text += `  🎤 ${f ? f.name : 'TBA'}\n`;
-                    text += `  📖 ${p ? p.name : 'TBA'}\n`;
+                    if (isAdminLoggedIn) {
+                        text += `  🎤 ${f ? f.name : 'TBA'}\n`;
+                        text += `  📖 ${p ? p.name : 'TBA'}\n`;
+                    } else {
+                        text += `  Sunday Service 10:00 AM\n`;
+                    }
                 }
                 dayEvents.forEach(ev => {
                     text += `  📌 ${ev.title}\n`;
@@ -3685,6 +3569,6 @@
 
         init();
     </script>
+</body>
 
-
-</body></html>
+</html>

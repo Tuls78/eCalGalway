@@ -76,10 +76,10 @@ Access the **Pastor Panel** by tapping the ⚙ icon (Pastor password required).
 
 | Department | Members | Leader |
 |---|---|---|
-| Ladies | 
-| Men | 
-| Youth | 
-| Sunday School | 
+| Ladies | Mrs Pastor L Mudada, Mrs V Dube, Sister Eve, Sister Emily, Mrs F Ncube | Mrs Pastor L Mudada |
+| Men | Mr Dube, Mr T Ncube, Mr V Gill | Mr Dube |
+| Youth | Makanaka, Panayote, Dube Daughter 1 & 2, Thandiwe, Imanathi, Mr V Gill | Mr V Gill |
+| Sunday School | Mrs S Gill, Dube Son, Thulani, Siyanqoba | Mrs S Gill |
 
 ## Allocation Rules
 
